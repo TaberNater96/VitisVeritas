@@ -9,7 +9,7 @@ Vitis Veritas is a web application designed to explore the unique terroir of the
 - **Deployment:** AWS (EC2)
 - **Development Environment:** WSL (Ubuntu)
 
-## Running PostgreSQL/PostGIS in WSL
+## Running PostgreSQL/PostGIS in WSL (port 5432)
 
 ```bash
 # Start PostgreSQL service

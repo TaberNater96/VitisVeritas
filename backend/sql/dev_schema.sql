@@ -1,7 +1,6 @@
 /*
-Development Schema
+Development Database Schema
 
-Database: vitis_veritas_dev
 Created: 7/13/2025
 Environment: WSL 2
 */
