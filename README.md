@@ -1,84 +1,13 @@
-vitis-veritas-project/
-├── backend/
-│   ├── app/
-│   │   ├── api/
-│   │   │   ├── deps.py
-│   │   │   └── v1/
-│   │   │       ├── endpoints/
-│   │   │       │   ├── recommendations.py # <-- This endpoint's logic will now call the rule engine
-│   │   │       │   ├── terroir.py
-│   │   │       │   └── wineries.py
-│   │   │       └── api.py
-│   │   ├── core/
-│   │   │   ├── config.py
-│   │   │   └── db.py
-│   │   ├── crud/
-│   │   │   ├── crud_terroir.py
-│   │   │   └── crud_wine.py
-│   │   ├── models/
-│   │   │   ├── recommendation.py   # <-- Pydantic models for the rule engine's input/output
-│   │   │   ├── terroir.py
-│   │   │   └── wine.py
-│   │   ├── schemas/
-│   │   │   ├── terroir.py
-│   │   │   └── wine.py
-│   │   ├── services/
-│   │   │   └── recommender/
-│   │   │       ├── __init__.py
-│   │   │       ├── engine.py       # <-- The core recommendation logic (scoring, rules) lives here
-│   │   │       └── rules.py        # <-- Defines the relationships (e.g., Dundee Hills -> Earthy)
-│   │   └── main.py
-│   ├── data/
-│   │   ├── raw/
-│   │   └── processed/
-│   ├── notebooks/ 
-│   │   ├── 01-ETL.ipynb
-│   │   └── 02-Geospatial-Processing.ipynb
-│   ├── tests/
-│   │   ├── conftest.py
-│   │   └── services/
-│   │       └── test_recommender.py 
-│   ├── .env
-│   ├── .gitignore
-│   ├── alembic.ini
-│   ├── Dockerfile
-│   ├── alembic/
-│   └── requirements.txt
-│
-└── frontend/
-    ├── public/
-    │   ├── index.html              # The single HTML page your React app loads into
-    │   └── favicon.ico
-    ├── src/
-    │   ├── api/                    # Functions for calling your backend API
-    │   │   └── apiClient.js        # Central place for axios/fetch configuration
-    │   ├── assets/                 # Images, fonts, etc.
-    │   │   └── images/
-    │   │       └── logo.png
-    │   ├── components/             # Reusable UI components
-    │   │   ├── common/             # Buttons, Modals, Spinners
-    │   │   │   └── LoadingSpinner.js
-    │   │   ├── map/                # Map-specific components
-    │   │   │   ├── Map.js          # The main Mapbox component
-    │   │   │   └── TerroirPopup.js # The popup that appears on map click
-    │   │   └── wine/
-    │   │       ├── WineCard.js     # Component to display a single wine
-    │   │       └── WineList.js     # Component to display a list of WineCards
-    │   ├── hooks/                  # Custom React Hooks (e.g., for data fetching)
-    │   │   └── useWineries.js
-    │   ├── pages/                  # Top-level page components
-    │   │   ├── ExplorePage.js      # The main page with the interactive map
-    │   │   ├── HomePage.js
-    │   │   └── RecommendPage.js    # The page with the recommendation form
-    │   ├── services/               # Logic for state management, etc. (Can be part of `api`)
-    │   ├── styles/                 # Global CSS, themes, etc.
-    │   │   └── global.css
-    │   ├── App.js                  # Main application component (routing)
-    │   ├── App.css
-    │   └── index.js                # Entrypoint for the React application
-    ├── .gitignore
-    ├── package.json                # JS dependencies and scripts (e.g., "start", "build")
-    └── README.md
+# Vitis Veritas: Willamette Valley Terroir Explorer
+
+Vitis Veritas is a web application designed to explore the unique terroir of the Willamette Valley wine region. It provides an interactive map to visualize scientific data about the land (elevation, soil, slope) and a recommendation engine to help users discover wines based on taste profiles. As well as detailed, scientific documentation for the wines of this region.
+
+## Tech Stack
+
+- **Backend:** FastAPI (Python), PostgreSQL with PostGIS, SQLAlchemy, Alembic
+- **Frontend:** React, Mapbox GL JS, Axios
+- **Deployment:** AWS (EC2)
+- **Development Environment:** WSL (Ubuntu)
 
 ## Running PostgreSQL/PostGIS in WSL
 
