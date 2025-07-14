@@ -186,3 +186,16 @@ SELECT current_database(), current_user;
 -- Execute SQL script (connect to DB first)
 \i script.sql
 ```
+
+## Python Virtual Environment
+
+```bash
+# Activate the python virtual environment
+source venv/bin/activate
+
+# Deactivate the python virtual environment
+deactivate
+
+# See the list of installed packages in this environmen
+pip list
+```
