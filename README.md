@@ -2,60 +2,48 @@ vitis-veritas-project/
 ├── backend/
 │   ├── app/
 │   │   ├── api/
-│   │   │   ├── deps.py             # Dependency injection (e.g., get_db_session)
+│   │   │   ├── deps.py
 │   │   │   └── v1/
-│   │   │       ├── __init__.py
 │   │   │       ├── endpoints/
-│   │   │       │   ├── recommendations.py # The /recommend endpoint
-│   │   │       │   ├── terroir.py         # The /terroir endpoint (for map clicks)
-│   │   │       │   └── wineries.py        # The /wineries, /wines endpoints
-│   │   │       └── api.py                 # Main router for the v1 API
+│   │   │       │   ├── recommendations.py # <-- This endpoint's logic will now call the rule engine
+│   │   │       │   ├── terroir.py
+│   │   │       │   └── wineries.py
+│   │   │       └── api.py
 │   │   ├── core/
-│   │   │   ├── __init__.py
-│   │   │   ├── config.py           # Handles settings & environment variables (uses Pydantic)
-│   │   │   └── db.py               # SQLAlchemy engine and session setup
-│   │   ├── crud/                   # (Create, Read, Update, Delete) - Database logic
-│   │   │   ├── __init__.py
-│   │   │   ├── crud_terroir.py     # Functions to query geospatial data
-│   │   │   └── crud_wine.py        # Functions to query wine/winery data
-│   │   ├── models/                 # Pydantic Schemas (for API data shapes)
-│   │   │   ├── __init__.py
-│   │   │   ├── recommendation.py   # Models for recommendation input/output
-│   │   │   ├── terroir.py          # Models for terroir data
-│   │   │   └── wine.py             # Models for Wine, Winery, AVA
-│   │   ├── schemas/                # SQLAlchemy Models (for database table structure)
-│   │   │   ├── __init__.py
-│   │   │   ├── terroir.py          # SQLAlchemy model for the `terroir_data` table
-│   │   │   └── wine.py             # SQLAlchemy models for `wineries`, `wines`, etc.
-│   │   ├── services/               # Business logic not directly related to CRUD
-│   │   │   ├── __init__.py
-│   │   │   └── ml_service.py       # Logic to load and use the ML model
-│   │   └── main.py                 # Main FastAPI app instance and router setup
-│   ├── data/
-│   │   ├── raw/                    # Raw downloaded data (shapefiles, csvs, etc.)
-│   │   │   └── avas/
-│   │   │       └── willamette_valley.shp
-│   │   └── processed/              # Cleaned, processed data ready for DB import
-│   │       └── wineries_geocoded.csv
-│   ├── ml/
+│   │   │   ├── config.py
+│   │   │   └── db.py
+│   │   ├── crud/
+│   │   │   ├── crud_terroir.py
+│   │   │   └── crud_wine.py
 │   │   ├── models/
-│   │   │   ├── wine_recommender_v1.pkl # The actual saved/pickled model file
-│   │   │   └── wine_tfidf_vectorizer_v1.pkl # The saved text vectorizer
-│   │   └── notebooks/
-│   │       ├── 01-Data-Ingestion-and-Cleaning.ipynb
-│   │       ├── 02-Geospatial-Processing.ipynb
-│   │       └── 03-Recommendation-Model-Training.ipynb
-│   ├── tests/                      # Automated tests for your API
-│   │   ├── __init__.py
-│   │   ├── conftest.py             # Pytest fixtures (e.g., test database setup)
-│   │   └── api/
-│   │       └── test_wineries.py    # Example test file for the wineries endpoint
-│   ├── .env                        # !!! IMPORTANT: For local environment variables. DO NOT COMMIT TO GIT.
+│   │   │   ├── recommendation.py   # <-- Pydantic models for the rule engine's input/output
+│   │   │   ├── terroir.py
+│   │   │   └── wine.py
+│   │   ├── schemas/
+│   │   │   ├── terroir.py
+│   │   │   └── wine.py
+│   │   ├── services/
+│   │   │   └── recommender/
+│   │   │       ├── __init__.py
+│   │   │       ├── engine.py       # <-- The core recommendation logic (scoring, rules) lives here
+│   │   │       └── rules.py        # <-- Defines the relationships (e.g., Dundee Hills -> Earthy)
+│   │   └── main.py
+│   ├── data/
+│   │   ├── raw/
+│   │   └── processed/
+│   ├── notebooks/ 
+│   │   ├── 01-ETL.ipynb
+│   │   └── 02-Geospatial-Processing.ipynb
+│   ├── tests/
+│   │   ├── conftest.py
+│   │   └── services/
+│   │       └── test_recommender.py 
+│   ├── .env
 │   ├── .gitignore
-│   ├── alembic.ini                 # Alembic (database migration tool) config
-│   ├── Dockerfile                  # Recipe to containerize the backend for deployment
-│   ├── alembic/                    # Directory for Alembic migration scripts
-│   └── requirements.txt            # Python dependencies
+│   ├── alembic.ini
+│   ├── Dockerfile
+│   ├── alembic/
+│   └── requirements.txt
 │
 └── frontend/
     ├── public/
@@ -129,6 +117,9 @@ psql -U "TaberNater96" -h localhost -d vitis_vertitas_dev
 -- Describe a specific table structure
 \d table_name
 
+-- List all indexes
+\di
+
 -- List all extensions
 \dx
 
@@ -137,4 +128,7 @@ SELECT current_database(), current_user;
 
 -- Exit PostgreSQL
 \q
+
+-- Execute SQL script (connect to DB first)
+\i script.sql
 ```
