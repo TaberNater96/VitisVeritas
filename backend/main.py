@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from app.api.v1.api import api_router
 
 app = FastAPI(
     title="Vitis Veritas API",
@@ -12,3 +13,5 @@ def read_root():
     Root endpoint for the API.
     """
     return {"message": "Hello World"}
+
+app.include_router(api_router)
