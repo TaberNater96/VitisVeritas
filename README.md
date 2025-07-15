@@ -199,3 +199,10 @@ deactivate
 # See the list of installed packages in this environmen
 pip list
 ```
+
+## WSL
+
+```bash
+# Move a file from Windows to WSL (this is an example from downloads to project folder)
+mv /mnt/c/Users/boxca/Downloads/file_name_here /home/tabernater/projects/VitisVeritas
+```
