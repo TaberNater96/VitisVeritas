@@ -4,17 +4,20 @@ import geopandas
 from sqlalchemy import create_engine
 from dotenv import load_dotenv
 from geoalchemy2 import Geometry
-from shapely.geometry import Polygon, MultiPolygon
+from shapely.geometry import MultiPolygon
 
-# Load environment variables from the .env file in the current directory
-load_dotenv()
-
-# --- CONFIGURATION ---
+load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '..', '.env'))
 DATABASE_URL = os.getenv('DATABASE_URL')
 
 def force_to_multipolygon(geom):
     """
-    Converts a Polygon to a MultiPolygon if necessary.
+    Converts a Polygon geometry to a MultiPolygon if necessary.
+
+    Args:
+        geom (shapely.geometry.base.BaseGeometry): The input geometry, expected to be a Polygon or MultiPolygon.
+
+    Returns:
+        shapely.geometry.MultiPolygon: The geometry as a MultiPolygon.
     """
     if geom.geom_type == 'Polygon':
         return MultiPolygon([geom])
@@ -23,6 +26,11 @@ def force_to_multipolygon(geom):
 def ingest_ava(shapefile_path, ava_name, ava_description=None):
     """
     Reads an AVA shapefile, processes it, and inserts it into the database.
+
+    Args:
+        shapefile_path (str): Path to the AVA shapefile (.shp).
+        ava_name (str): Name of the AVA to be inserted.
+        ava_description (str, optional): Description of the AVA. Defaults to None.
     """
     print(f"--- Starting ingestion for AVA: {ava_name} ---")
 
@@ -51,11 +59,8 @@ def ingest_ava(shapefile_path, ava_name, ava_description=None):
     gdf = gdf.to_crs('EPSG:4326')
     print(f"Reprojected to CRS: {gdf.crs}")
 
-    # --------------------------------------------------------------------
-    # THE FIRST FIX: Ensure all geometries are MultiPolygon.
-    # This handles shapefiles that contain single Polygons.
+    # Ensure all geometries are MultiPolygon, this handles shapefiles that contain single Polygons.
     gdf['geometry'] = gdf['geometry'].apply(force_to_multipolygon)
-    # --------------------------------------------------------------------
 
     # 4. Prepare the data for insertion
     final_gdf = geopandas.GeoDataFrame(geometry=gdf.geometry)
@@ -63,15 +68,13 @@ def ingest_ava(shapefile_path, ava_name, ava_description=None):
     final_gdf['description'] = ava_description
     final_gdf = final_gdf.rename(columns={'geometry': 'geom'})
 
-    # --------------------------------------------------------------------
-    # THE SECOND FIX: Manually convert geometry objects to WKT strings.
+    # Manually convert geometry objects to WKT strings.
     final_gdf['geom'] = final_gdf['geom'].apply(lambda x: x.wkt)
-    # --------------------------------------------------------------------
 
     print("Prepared data for insertion (geometry as WKT):")
     print(final_gdf)
 
-    # 5. Insert the data into the database
+    # 5. Insert the GIS data into the database
     try:
         final_gdf.to_sql(
             'avas',
