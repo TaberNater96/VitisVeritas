@@ -69,7 +69,7 @@ CREATE TABLE terroir_grid (
     aspect_degrees REAL,
     avg_gdd_apr_oct REAL,
     avg_insolation_kwh_m2 REAL,
-    soil_id INTEGER REFERENCES soils(id) ON DELETE SET NULL
+    soil_id INTEGER REFERENCES soils(id) ON DELETE SET NULL -- set FK on soils table, if id in soils table is deleted, set all rows with that id to NULL
 );
 CREATE INDEX idx_terroir_grid_geom ON terroir_grid USING GIST (geom);
 CREATE INDEX idx_terroir_grid_soil_id ON terroir_grid (soil_id);
