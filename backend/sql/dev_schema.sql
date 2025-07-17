@@ -2,7 +2,8 @@
 Development Database Schema
 
 Created: 7/13/2025
-Environment: WSL 2
+Environment: PostgreSQL/PostGIS 
+OS: WSL 2
 */
 
 CREATE EXTENSION IF NOT EXISTS postgis;
