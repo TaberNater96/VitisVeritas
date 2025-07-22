@@ -40,7 +40,8 @@ CREATE TABLE wineries (
     location GEOMETRY(Point, 4326),
     ava_id INTEGER REFERENCES avas(id) ON DELETE SET NULL,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    phone VARCHAR(20)
 );
 CREATE INDEX idx_wineries_location ON wineries USING GIST (location);
 CREATE INDEX idx_wineries_ava_id ON wineries (ava_id);
