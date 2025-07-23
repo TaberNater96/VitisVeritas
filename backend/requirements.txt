@@ -1,0 +1,16 @@
+certifi==2025.7.14
+GeoAlchemy2==0.18.0
+geopandas==1.1.1
+greenlet==3.2.3
+numpy==2.2.6
+packaging==25.0
+pandas==2.3.1
+pyogrio==0.11.0
+pyproj==3.7.1
+python-dateutil==2.9.0.post0
+pytz==2025.2
+shapely==2.1.1
+six==1.17.0
+SQLAlchemy==2.0.41
+typing_extensions==4.14.1
+tzdata==2025.2
