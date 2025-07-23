@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/common/Header';
+import Footer from './components/common/Footer';
 // Import page components here as they get created
 // import HomePage from './pages/HomePage';
 // import AVAsPage from './pages/AVAsPage';
@@ -19,7 +20,7 @@ function App() {
         </Routes>
       </main>
 
-      {/* You can add a <Footer /> component here later */}
+      <Footer />
     </BrowserRouter>
   );
 }
