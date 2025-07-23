@@ -208,6 +208,6 @@ npm install mapbox-gl
 # For detecting when a component is visible on screen (for lazy loading)
 npm install react-intersection-observer
 
-# Run the npm server to see code in browser
+# Run the vite server to see live code in browser
 npm run dev
 ```

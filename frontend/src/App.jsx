@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Header from './components/common/Header'; // You will create this soon
+import Header from './components/common/Header';
 // Import page components here as they get created
 // import HomePage from './pages/HomePage';
 // import AVAsPage from './pages/AVAsPage';
@@ -7,8 +7,7 @@ import Header from './components/common/Header'; // You will create this soon
 function App() {
   return (
     <BrowserRouter>
-      {/* The Header will contain your main navigation links */}
-      {/* <Header /> */}
+      <Header />
       
       <main>
         <Routes>

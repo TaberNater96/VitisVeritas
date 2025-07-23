@@ -1,0 +1,239 @@
+/* Reset body flex layout that centers content */
+body {
+  display: block !important;
+  place-items: unset !important;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Component Styles */
+.header {
+  background: linear-gradient(135deg, #2c1810 0%, #4a2c2a 50%, #5d4037 100%);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 3px solid #8bc34a; /* Wine green accent */
+  width: 100%;
+}
+
+.header-container {
+  width: 100%;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  min-height: 80px;
+  position: relative;
+}
+
+/* Brand/Logo Section */
+.header-brand {
+  position: absolute;
+  left: 2rem;
+}
+
+.brand-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand-link:hover {
+  opacity: 0.9;
+}
+
+.brand-title {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #f5f5dc; /* Beige/cream color */
+  letter-spacing: -0.5px;
+  font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+.brand-subtitle {
+  margin: -4px 0 0 0;
+  font-size: 0.75rem;
+  color: #c0aa83; /* Muted gold */
+  font-style: italic;
+  text-transform: lowercase;
+  letter-spacing: 1px;
+}
+
+/* Navigation */
+.header-nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #e8e8e8;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  padding: 0.5rem 0;
+  transition: all 0.3s ease;
+  position: relative;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.nav-link:hover {
+  color: #8bc34a; /* Wine green */
+}
+
+/* Active link styling */
+.nav-link.active {
+  color: #8bc34a;
+}
+
+/* Underline effect for active and hover states */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #8bc34a;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  gap: 3px;
+  position: absolute;
+  right: 2rem;
+}
+
+.hamburger-line {
+  width: 24px;
+  height: 3px;
+  background-color: #e8e8e8;
+  transition: all 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .header-container {
+    padding: 0 1.5rem;
+  }
+  
+  .header-brand {
+    left: 1.5rem;
+  }
+  
+  .mobile-menu-toggle {
+    right: 1.5rem;
+  }
+  
+  .nav-list {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .nav-list {
+    gap: 1rem;
+  }
+  
+  .nav-link {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    padding: 0 1rem;
+    min-height: 70px;
+  }
+  
+  .header-brand {
+    position: static;
+    left: unset;
+  }
+  
+  .brand-title {
+    font-size: 1.5rem;
+  }
+  
+  .brand-subtitle {
+    font-size: 0.65rem;
+  }
+  
+  /* Hide navigation menu on mobile for now */
+  .header-nav {
+    display: none;
+  }
+  
+  /* Show mobile menu toggle */
+  .mobile-menu-toggle {
+    display: flex;
+    position: static;
+    right: unset;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-container {
+    min-height: 60px;
+  }
+  
+  .brand-title {
+    font-size: 1.25rem;
+  }
+  
+  .brand-subtitle {
+    font-size: 0.6rem;
+  }
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Ensure header doesn't overlap content */
+main {
+  flex-grow: 1;
+  width: 100%;
+  background-color: #242424; /* Match the default Vite dark background */
+  color: rgba(255, 255, 255, 0.87);
+  padding: 2rem;
+}
