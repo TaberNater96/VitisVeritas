@@ -209,5 +209,6 @@ npm install mapbox-gl
 npm install react-intersection-observer
 
 # Run the vite server to see live code in browser
+cd frontend
 npm run dev
 ```
