@@ -14,6 +14,9 @@
 main {
   flex-grow: 1;
   width: 100%;
+}
+
+main.with-padding {
   padding: var(--spacing-xl);
 }
 

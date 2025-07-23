@@ -1,0 +1,114 @@
+/* Hero Section Styles */
+.hero {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - var(--header-height));
+  min-height: 600px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.5)
+  );
+  z-index: 2;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  max-width: 1200px;
+  padding: var(--spacing-xl);
+  margin: 0 auto;
+}
+
+.hero-quote {
+  margin: 0;
+}
+
+.quote-text {
+  font-family: var(--font-family-serif);
+  font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+  font-weight: var(--font-weight-normal);
+  line-height: 1.2;
+  color: var(--color-text-primary);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  margin-bottom: var(--spacing-lg);
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+
+.quote-attribution {
+  display: block;
+  font-family: var(--font-family-primary);
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+  font-style: normal;
+  letter-spacing: 1px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero {
+    height: calc(100vh - var(--header-height-mobile));
+    min-height: 500px;
+  }
+  
+  .hero-content {
+    padding: var(--spacing-lg);
+  }
+  
+  .quote-text {
+    line-height: 1.3;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    height: calc(100vh - var(--header-height-small));
+    min-height: 400px;
+  }
+  
+  .hero-content {
+    padding: var(--spacing-md);
+  }
+}
+
+/* Enhanced text readability on various backgrounds */
+@media (prefers-contrast: high) {
+  .quote-text {
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 1);
+  }
+  
+  .quote-attribution {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+  }
+}
