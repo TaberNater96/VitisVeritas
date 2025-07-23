@@ -31,18 +31,13 @@ const isActive = (path) => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/terroir" className={`nav-link ${isActive('/terroir')}`}>
-                Understanding Terroir
+              <Link to="/sommelier" className={`nav-link ${isActive('/sommelier')}`}>
+                The Sommelier
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/avas" className={`nav-link ${isActive('/avas')}`}>
-                AVAs
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/varietals" className={`nav-link ${isActive('/varietals')}`}>
-                Wine Varietals
+              <Link to="/experiences" className={`nav-link ${isActive('/experiences')}`}>
+                Experiences
               </Link>
             </li>
             <li className="nav-item">
@@ -51,8 +46,28 @@ const isActive = (path) => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/sommelier" className={`nav-link ${isActive('/sommelier')}`}>
-                The Sommelier
+              <Link to="/avas" className={`nav-link ${isActive('/avas')}`}>
+                AVAs
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/terroir" className={`nav-link ${isActive('/terroir')}`}>
+                Tasting The Terroir
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/varietals" className={`nav-link ${isActive('/varietals')}`}>
+                Wine Varietals
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/behind-the-vine" className={`nav-link ${isActive('/behind-the-vine')}`}>
+                Behind The Vine
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/about" className={`nav-link ${isActive('/about')}`}>
+                About
               </Link>
             </li>
           </ul>
