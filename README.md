@@ -190,3 +190,24 @@ pip list
 # Move a file from Windows to WSL (this is an example from downloads to project folder)
 mv /mnt/c/Users/boxca/Downloads/file_name_here /home/tabernater/projects/VitisVeritas
 ```
+
+## Front-End Setup
+
+```sh
+# This command uses Vite to create a new React project in a 'frontend' folder
+npm create vite@latest frontend -- --template react
+cd frontend
+npm install
+
+# For routing between pages
+npm install react-router-dom
+
+# For the interactive map
+npm install mapbox-gl
+
+# For detecting when a component is visible on screen (for lazy loading)
+npm install react-intersection-observer
+
+# Run the npm server to see code in browser
+npm run dev
+```

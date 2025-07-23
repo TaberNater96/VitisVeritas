@@ -1,16 +1,17 @@
+**Rough draft of project outline and subject to change as the project evolves**
+
 VitisVeritas/
 ├── .github/
 │   └── workflows/
 │       └── deploy-gh-pages.yml      # GitHub Action for automatic deployment
 │
 ├── backend/
-│   ├── .env                         # Securely holds your local DATABASE_URL
+│   ├── .env
 |   ├── notebooks/
-│   ├── raw_data/                    # Source data (shapefiles, etc.)
-│   │   └── avas/
+│   │   └── ETL.ipynb
+│   ├── data/                         # Source data (shapefiles, etc.)
 |   ├── sql/
-|   │   ├── ingest_avas.py
-|   │   ├── generate_terroir_grid.py
+|   │   ├── ingest_avas.py            # Should only need to be run once
 |   │   └── generate_static_json.py   # The final script that outputs data for the frontend by converting database data to json data
 |   ├── venv/
 │
