@@ -41,8 +41,7 @@ To run this project locally, you will need Node.js, Python, and a running Postgr
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/TaberNater96/vitis-veritas-project.git
-cd vitis-veritas-project
+git clone https://github.com/TaberNater96/VitisVeritas.git
 ```
 
 ### 2. Set Up the Data Pipeline (Backend)

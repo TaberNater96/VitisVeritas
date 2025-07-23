@@ -57,7 +57,8 @@ VitisVeritas/
     │   │   ├── HomePage.jsx
     │   │   ├── AVAsPage.jsx
     │   │   ├── SciencePage.jsx
-    │   │   ├── WinesPage.jsx
+    │   │   ├── WinePage.jsx
+    │   │   ├── TheAlchemyOfTheVinePage.jsx 
     │   │   └── ExperiencePage.jsx
     │   │
     │   ├── services/                    # Logic for external interactions

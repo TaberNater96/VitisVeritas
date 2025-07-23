@@ -46,6 +46,11 @@ const isActive = (path) => {
               </Link>
             </li>
             <li className="nav-item">
+              <Link to="/alchemy" className={`nav-link ${isActive('/alchemy')}`}>
+                The Alchemy Of Wine
+              </Link>
+            </li>
+            <li className="nav-item">
               <Link to="/sommelier" className={`nav-link ${isActive('/sommelier')}`}>
                 The Sommelier
               </Link>
