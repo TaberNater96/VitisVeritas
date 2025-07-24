@@ -46,21 +46,6 @@ CREATE TABLE wineries (
 CREATE INDEX idx_wineries_location ON wineries USING GIST (location);
 CREATE INDEX idx_wineries_ava_id ON wineries (ava_id);
 
-CREATE TABLE wines (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    vintage INTEGER,
-    description TEXT,
-    notes_from_winemaker TEXT,
-    price_per_bottle NUMERIC(8, 2),
-    winery_id INTEGER NOT NULL REFERENCES wineries(id) ON DELETE CASCADE,
-    varietal_id INTEGER REFERENCES varietals(id) ON DELETE SET NULL,
-    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
-);
-CREATE INDEX idx_wines_winery_id ON wines (winery_id);
-CREATE INDEX idx_wines_varietal_id ON wines (varietal_id);
-
 -- Pre-calculated terroir grid data
 CREATE TABLE terroir_grid (
     id SERIAL PRIMARY KEY,
