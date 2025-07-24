@@ -1,0 +1,88 @@
+/* LazyMap.css */
+.lazy-map-section {
+  width: 100%;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.map-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 600px;
+  width: 100%;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 8px;
+  color: #6c757d;
+  border: 2px dashed #dee2e6;
+  transition: all 0.3s ease;
+}
+
+.map-placeholder:hover {
+  background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+  border-color: #adb5bd;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #8B4513; /* Wine/terroir themed color */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { 
+    transform: rotate(0deg); 
+  }
+  100% { 
+    transform: rotate(360deg); 
+  }
+}
+
+.map-placeholder p {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .lazy-map-section {
+    min-height: 400px;
+    margin: 1rem 0;
+  }
+  
+  .map-placeholder {
+    height: 400px;
+    margin: 0 1rem;
+  }
+  
+  .loading-spinner {
+    width: 32px;
+    height: 32px;
+    border-width: 3px;
+  }
+  
+  .map-placeholder p {
+    font-size: 1rem;
+  }
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+  .lazy-map-section {
+    min-height: 300px;
+  }
+  
+  .map-placeholder {
+    height: 300px;
+  }
+}

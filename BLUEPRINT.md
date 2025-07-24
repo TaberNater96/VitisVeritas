@@ -35,18 +35,24 @@ VitisVeritas/
     │   │   │       └── eola_amity_hills.jpg
     │   │   └── styles/
     │   │       ├── main.css             # Global styles, fonts, color variables
-    │   │       └── components.css       # Styles specific to individual components
+    │   │       ├── base.css
+    │   │       ├── normalize.css
+    │   │       └── variables.css
     │   │
     │   ├── components/                  # Reusable UI building blocks
     │   │   ├── common/
     │   │   │   ├── Header.jsx
+    │   │   │   ├── Header.css
     │   │   │   ├── Footer.jsx
-    │   │   │   └── LoadingSpinner.jsx
+    │   │   │   ├── Footer.csss
+    │   │   │   ├── LoadingSpinner.jsx
+    │   │   │   └── LoadingSpinner.css
     │   │   ├── map/
     │   │   │   ├── MapCanvas.jsx        # The core map component
     │   │   │   └── MapControlPanel.jsx  # The sidebar with toggles and legends
     │   │   └── ui/
-    │   │       ├── HeroSection.jsx
+    │   │       ├── Hero.jsx
+    │   │       ├── Hero.css
     │   │       ├── InfoCard.jsx
     │   │       └── SommelierWidget.jsx
     │   │

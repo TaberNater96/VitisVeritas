@@ -1,0 +1,72 @@
+.map-container {
+  width: 100%;
+  height: 600px;
+  position: relative;
+  margin: 2rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.map-header {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 1rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.map-header h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.reset-view-btn {
+  background: #8B4513;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.reset-view-btn:hover {
+  background: #A0522D;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+}
+
+.map-info {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-family: monospace;
+}
+
+/* Mapbox popup styling */
+.mapboxgl-popup-content {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 6px;
+  padding: 0.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.mapboxgl-popup-anchor-top .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {
+  border-color: rgba(255, 255, 255, 0.95) transparent;
+}
