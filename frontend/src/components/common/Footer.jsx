@@ -27,10 +27,7 @@ const Footer = () => {
                 <Link to="/" className="footer-nav-link">Home</Link>
               </li>
               <li className="footer-nav-item">
-                <Link to="/sommelier" className="footer-nav-link">The Sommelier</Link>
-              </li>
-              <li className="footer-nav-item">
-                <Link to="/experiences" className="footer-nav-link">Experiences</Link>
+                <Link to="/terroir" className="footer-nav-link">Tasting The Terroir</Link>
               </li>
               <li className="footer-nav-item">
                 <Link to="/alchemy" className="footer-nav-link">The Alchemy Of Wine</Link>
@@ -39,10 +36,13 @@ const Footer = () => {
                 <Link to="/avas" className="footer-nav-link">AVAs</Link>
               </li>
               <li className="footer-nav-item">
-                <Link to="/terroir" className="footer-nav-link">Tasting The Terroir</Link>
+                <Link to="/varietals" className="footer-nav-link">Wine Varietals</Link>
               </li>
               <li className="footer-nav-item">
-                <Link to="/varietals" className="footer-nav-link">Wine Varietals</Link>
+                <Link to="/experiences" className="footer-nav-link">Experiences</Link>
+              </li>
+              <li className="footer-nav-item">
+                <Link to="/sommelier" className="footer-nav-link">The Sommelier Engine</Link>
               </li>
               <li className="footer-nav-item">
                 <Link to="/behind-the-vine" className="footer-nav-link">Behind The Vine</Link>

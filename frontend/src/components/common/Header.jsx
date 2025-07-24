@@ -31,13 +31,8 @@ const isActive = (path) => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/sommelier" className={`nav-link ${isActive('/sommelier')}`}>
-                The Sommelier
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/experiences" className={`nav-link ${isActive('/experiences')}`}>
-                Experiences
+              <Link to="/terroir" className={`nav-link ${isActive('/terroir')}`}>
+                Tasting The Terroir
               </Link>
             </li>
             <li className="nav-item">
@@ -51,13 +46,18 @@ const isActive = (path) => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/terroir" className={`nav-link ${isActive('/terroir')}`}>
-                Tasting The Terroir
+              <Link to="/varietals" className={`nav-link ${isActive('/varietals')}`}>
+                Wine Varietals
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/varietals" className={`nav-link ${isActive('/varietals')}`}>
-                Wine Varietals
+              <Link to="/experiences" className={`nav-link ${isActive('/experiences')}`}>
+                Experiences
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/sommelier" className={`nav-link ${isActive('/sommelier')}`}>
+                The Sommelier Engine
               </Link>
             </li>
             <li className="nav-item">

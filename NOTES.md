@@ -1,4 +1,4 @@
 * State how this site gives information on all Willamette Valley Vineyards/Wineries to give a full overview of the diversity of wines in this unique region. 
-* Under the hero banner quote, say something like "Let us together become wiser today than we were yesterday" with arrows pointing down for them to scroll down. 
 * As far as points for the wineries on the map, make them the same color as the AVA they are in. Then when a user hovers over the points, a themed description card should pop up with information.
 * For a website symbol, create 2 Vs, one right above the other, with the top one filled halfway inside of it with a red wavy color to look like a filled wine glass.
+* For the Tasting The Terroir page, split up the sections into science fields such as geology, geography, meteorology, physics, chemistry, and biology.
