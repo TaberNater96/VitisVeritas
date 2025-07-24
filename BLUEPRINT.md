@@ -19,7 +19,7 @@ VitisVeritas/
     ├── public/
     │   ├── data/
     │   │   ├── avas_summary.json      # Lightweight data for the AVAs page (name, description, image path)
-    │   │   ├── avas_geo.geojson       # Full geometry for the map
+    │   │   ├── avas.geojson       # Full geometry for the map
     │   │   ├── wineries.geojson       # Winery locations and details
     │   │   ├── varietals.json         # Data for the Wines page
     │   │   └── terroir_grid.json      # The heaviest file, loaded last
