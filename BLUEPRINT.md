@@ -57,7 +57,8 @@ VitisVeritas/
     │   │       └── SommelierWidget.jsx
     │   │
     │   ├── hooks/                       # Custom React hooks for shared logic
-    │   │   └── useDataCache.js          # A custom hook to handle fetching and caching
+    │   │   ├── useIntersectionObserver.js
+    │   │   └── useDataCache.js
     │   │
     │   ├── pages/                       # Each file represents a full page view
     │   │   ├── HomePage.jsx
