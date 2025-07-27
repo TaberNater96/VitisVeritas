@@ -89,6 +89,38 @@
   padding: 0.5rem;
   font-weight: bold;
   color: #333;
+  max-width: 200px;
+  width: auto;
+}
+
+/* Override Mapbox popup content for winery popups specifically */
+.mapboxgl-popup-content:has(.winery-popup) {
+  padding: 1rem !important;
+  max-width: 450px !important;
+  min-width: 380px !important;
+  width: 450px !important;
+  font-weight: normal !important;
+}
+
+/* Ensure hover popups stay small and don't get winery card styling */
+.mapboxgl-popup-content:not(:has(.winery-popup)) {
+  padding: 0.5rem !important;
+  font-weight: bold !important;
+  max-width: 200px !important;
+  width: auto !important;
+  min-width: unset !important;
+}
+
+/* Center the popup tip for winery popups */
+.winery-popup-mapbox .mapboxgl-popup-tip {
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+}
+
+.winery-popup-mapbox .mapboxgl-popup-content {
+  transform: translateX(-50%) !important;
+  left: 50% !important;
+  position: relative !important;
 }
 
 .mapboxgl-popup-anchor-top .mapboxgl-popup-tip,
@@ -143,4 +175,53 @@
     font-size: 0.8rem;
     padding: 0.4rem;
   }
+}
+
+/* Winery Popup Styles */
+.winery-popup {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 450px;
+  min-width: 380px;
+  width: 100%;
+}
+
+.winery-name {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #8B4513;
+  margin: 0 0 0.5rem 0;
+  text-align: center;
+}
+
+.winery-divider {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #8B4513, transparent);
+  margin: 0.5rem 0;
+}
+
+.winery-description {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #333;
+  margin: 0.5rem 0;
+  text-align: justify;
+}
+
+.winery-details {
+  font-size: 0.85rem;
+  color: #555;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.winery-details a {
+  color: #8B4513;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.winery-details a:hover {
+  color: #A0522D;
+  text-decoration: underline;
 }

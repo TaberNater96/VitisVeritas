@@ -15,9 +15,8 @@ const Hero = () => {
 
       <div className="hero-content hero-content-left">
         <h1 className="hero-main-title">
-          Welcome To The Ultimate<br /> 
-          Guide To The Willamette<br />
-          Valley Terroir
+          The Ultimate Guide To The<br /> 
+          Willamette Valley Terroir<br />
         </h1>
       </div>
 

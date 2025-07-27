@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './MapCanvas.css';
+import wineryIcon from '../../assets/images/vv_logo_nb.png';
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
 
@@ -40,6 +41,7 @@ const MapCanvas = () => {
     map.current.on('load', () => {
       setMapLoaded(true);
       loadAVAData();
+      loadWineryData();
     });
   }, []);
 
@@ -63,7 +65,7 @@ const MapCanvas = () => {
         source: 'avas',
         filter: ['==', 'name', 'Willamette Valley'],
         paint: {
-          'fill-color': '#F5F5F5',
+          'fill-color': '#0c6502',
           'fill-opacity': 0.4
         }
       });
@@ -80,13 +82,13 @@ const MapCanvas = () => {
             ['get', 'name'],
             'Chehalem Mountains', '#DC143C',
             'Dundee Hills', '#8B4513',
-            'Eola-Amity Hills', '#228B22',
+            'Eola-Amity Hills', '#FFD700',
             'Laurelwood District', '#9370DB',
             'Lower Long Tom', '#FF6347',
             'McMinnville', '#4682B4',
             'Mt Pisgah Polk County', '#20B2AA',
             'Ribbon Ridge', '#9932CC',
-            'Tualatin Hills', '#32CD32',
+            'Tualatin Hills', '#6d6d6d',
             'Van Duzer', '#FF69B4',
             'Yamhill-Carlton', '#FF8C00',
             '#696969'
@@ -150,6 +152,142 @@ const MapCanvas = () => {
 
     } catch (error) {
       console.error('Error loading AVA data:', error);
+    }
+  };
+
+  // Load Winery GeoJSON data
+  const loadWineryData = async () => {
+    try {
+      // Load winery data
+      console.log('Loading winery data...');
+      const response = await fetch('/data/wineries.geojson');
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const wineryData = await response.json();
+      console.log('Winery data loaded:', wineryData.features.length, 'wineries');
+
+      // Load the winery icon image
+      const image = new Image();
+      image.onload = () => {
+        console.log('Winery icon loaded successfully');
+        
+        // Add the image to the map
+        map.current.addImage('winery-icon', image);
+
+        // Add winery source
+        map.current.addSource('wineries', {
+          type: 'geojson',
+          data: wineryData
+        });
+
+        // Add winery layer
+        map.current.addLayer({
+          id: 'wineries',
+          type: 'symbol',
+          source: 'wineries',
+          layout: {
+            'icon-image': 'winery-icon',
+            'icon-size': 0.05,
+            'icon-allow-overlap': true,
+            'icon-ignore-placement': false,
+            'icon-anchor': 'bottom' // anchor to bottom so the point is at the actual location
+          }
+        });
+
+        console.log('Winery layer added to map');
+
+        // Add hover popup for winery names
+        const wineryPopup = new mapboxgl.Popup({
+          closeButton: false,
+          closeOnClick: false,
+          offset: [0, -35] // position above the icon
+        });
+
+        map.current.on('mouseenter', 'wineries', (e) => {
+          map.current.getCanvas().style.cursor = 'pointer';
+          const feature = e.features[0];
+          wineryPopup.setLngLat(e.lngLat)
+            .setHTML(`<strong>${feature.properties.name}</strong>`)
+            .addTo(map.current);
+        });
+
+        map.current.on('mouseleave', 'wineries', () => {
+          map.current.getCanvas().style.cursor = '';
+          wineryPopup.remove();
+        });
+
+        // Add click popup for detailed winery information
+        map.current.on('click', 'wineries', (e) => {
+          const feature = e.features[0];
+          const properties = feature.properties;
+          
+          // Format phone number
+          const formatPhoneNumber = (phone) => {
+            if (!phone) return '';
+            const cleaned = phone.replace(/\D/g, '');
+            if (cleaned.length === 11 && cleaned.startsWith('1')) {
+              const withoutCountryCode = cleaned.substring(1);
+              return `(${withoutCountryCode.substring(0, 3)}) ${withoutCountryCode.substring(3, 6)}-${withoutCountryCode.substring(6)}`;
+            } else if (cleaned.length === 10) {
+              return `(${cleaned.substring(0, 3)}) ${cleaned.substring(3, 6)}-${cleaned.substring(6)}`;
+            }
+            return phone;
+          };
+
+          // Create popup content
+          let popupContent = `
+            <div class="winery-popup">
+              <h3 class="winery-name">${properties.name}</h3>
+              <hr class="winery-divider">
+              <p class="winery-description">${properties.description}</p>
+              <hr class="winery-divider">
+              <div class="winery-details">
+          `;
+
+          // Add contact information with separators
+          const contactInfo = [];
+          
+          if (properties.phone) {
+            contactInfo.push(formatPhoneNumber(properties.phone));
+          }
+          
+          if (properties.address) {
+            contactInfo.push(properties.address);
+          }
+          
+          if (properties.website_url && properties.website_url.trim() !== '') {
+            contactInfo.push(`<a href="${properties.website_url}" target="_blank" rel="noopener noreferrer">Visit Website</a>`);
+          }
+
+          popupContent += contactInfo.join(' | ');
+          popupContent += `
+              </div>
+            </div>
+          `;
+
+          new mapboxgl.Popup({ 
+            offset: [0, -25],
+            closeButton: true,
+            closeOnClick: true,
+            className: 'winery-popup-mapbox'
+          })
+            .setLngLat(e.lngLat)
+            .setHTML(popupContent)
+            .addTo(map.current);
+        });
+      };
+
+      image.onerror = () => {
+        console.error('Failed to load winery icon:', wineryIcon);
+      };
+
+      image.src = wineryIcon;
+
+    } catch (error) {
+      console.error('Error loading winery data:', error);
     }
   };
 
