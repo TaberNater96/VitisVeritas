@@ -12,8 +12,16 @@ const Hero = () => {
         />
         <div className="hero-overlay"></div>
       </div>
-      
-      <div className="hero-content">
+
+      <div className="hero-content hero-content-left">
+        <h1 className="hero-main-title">
+          Welcome To The Ultimate<br /> 
+          Guide To The Willamette<br />
+          Valley Terroir
+        </h1>
+      </div>
+
+      <div className="hero-quote-container">
         <blockquote className="hero-quote">
           <p className="quote-text">
             "Wine can of their wits the wise beguile, make the sage frolic, and the serious smile."
@@ -23,7 +31,7 @@ const Hero = () => {
           </cite>
         </blockquote>
       </div>
-      
+
       <div className="scroll-indicator">
         <div className="chevron-left">
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
