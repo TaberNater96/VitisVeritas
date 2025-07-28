@@ -39,9 +39,6 @@ const Footer = () => {
                 <Link to="/varietals" className="footer-nav-link">Wine Varietals</Link>
               </li>
               <li className="footer-nav-item">
-                <Link to="/experiences" className="footer-nav-link">Experiences</Link>
-              </li>
-              <li className="footer-nav-item">
                 <Link to="/sommelier" className="footer-nav-link">The Sommelier Engine</Link>
               </li>
               <li className="footer-nav-item">

@@ -225,3 +225,71 @@
   color: #A0522D;
   text-decoration: underline;
 }
+
+/* AVA Legend Styles */
+.ava-legend {
+  position: absolute;
+  top: 10px;
+  left: 375px; /* start just after the dropdown area */
+  right: 50px; /* end before the zoom controls */
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 0.75rem .5rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+.ava-legend h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  color: #333;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.legend-items {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  white-space: nowrap;
+}
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  border: 1px solid #333;
+  flex-shrink: 0;
+}
+
+.legend-label {
+  font-size: 0.8rem;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Responsive adjustments for legend */
+@media (max-width: 768px) {
+  .ava-legend {
+    left: 10px;
+    right: 50px; /* Keep space for zoom controls on mobile too */
+    top: 80px; /* Move below the dropdown on smaller screens */
+  }
+  
+  .legend-items {
+    gap: 0.5rem;
+  }
+  
+  .legend-label {
+    font-size: 0.75rem;
+  }
+}

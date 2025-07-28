@@ -41,7 +41,10 @@ const MapCanvas = () => {
     map.current.on('load', () => {
       setMapLoaded(true);
       loadAVAData();
-      loadWineryData();
+      // Load winery data after AVA data to ensure proper layer ordering
+      setTimeout(() => {
+        loadWineryData();
+      }, 100);
     });
   }, []);
 
@@ -133,23 +136,6 @@ const MapCanvas = () => {
         map.current.getCanvas().style.cursor = '';
       });
 
-      // Add popup on hover to show AVA name
-      const popup = new mapboxgl.Popup({
-        closeButton: false,
-        closeOnClick: false
-      });
-
-      map.current.on('mouseenter', 'ava-fills', (e) => {
-        const feature = e.features[0];
-        popup.setLngLat(e.lngLat)
-          .setHTML(`<strong>${feature.properties.name}</strong>`)
-          .addTo(map.current);
-      });
-
-      map.current.on('mouseleave', 'ava-fills', () => {
-        popup.remove();
-      });
-
     } catch (error) {
       console.error('Error loading AVA data:', error);
     }
@@ -183,7 +169,7 @@ const MapCanvas = () => {
           data: wineryData
         });
 
-        // Add winery layer
+        // Add winery layer (make sure it's on top of AVA layers)
         map.current.addLayer({
           id: 'wineries',
           type: 'symbol',
@@ -194,6 +180,9 @@ const MapCanvas = () => {
             'icon-allow-overlap': true,
             'icon-ignore-placement': false,
             'icon-anchor': 'bottom' // anchor to bottom so the point is at the actual location
+          },
+          paint: {
+            'icon-opacity': 1.0 // Ensure full opacity
           }
         });
 
@@ -299,7 +288,7 @@ const MapCanvas = () => {
       duration: 2000,
       essential: true
     });
-    setSelectedAva(''); // Clear dropdown selection
+    setSelectedAva(''); // clear dropdown selection
   };
 
   // Available AVAs for dropdown with specific coordinates
@@ -369,6 +358,21 @@ const MapCanvas = () => {
     }
   };
 
+  // AVA color mapping for legend
+  const avaColors = {
+    'Chehalem Mountains': '#ffffff',
+    'Dundee Hills': '#8B4513',
+    'Eola-Amity Hills': '#052986',
+    'Laurelwood District': '#ddcd17',
+    'Lower Long Tom': '#d30707',
+    'McMinnville': '#4682B4',
+    'Mt Pisgah Polk County': '#20B2AA',
+    'Ribbon Ridge': '#6e03a3',
+    'Tualatin Hills': '#6d6d6d',
+    'Van Duzer': '#FF69B4',
+    'Yamhill-Carlton': '#FF8C00'
+  };
+
   return (
     <div className="map-container">
       <div className="map-header">
@@ -389,6 +393,23 @@ const MapCanvas = () => {
           </button>
         </div>
       </div>
+      
+      {/* AVA Color Legend */}
+      <div className="ava-legend">
+        <h3>AVA Regions</h3>
+        <div className="legend-items">
+          {Object.entries(avaColors).map(([avaName, color]) => (
+            <div key={avaName} className="legend-item">
+              <div 
+                className="legend-color" 
+                style={{ backgroundColor: color }}
+              ></div>
+              <span className="legend-label">{avaName}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      
       <div ref={mapContainer} className="map" />
       <div className="map-info">
         Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}

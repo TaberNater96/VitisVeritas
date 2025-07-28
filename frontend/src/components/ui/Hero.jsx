@@ -37,7 +37,7 @@ const Hero = () => {
             <path d="M7 10L12 15L17 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </div>
-        <p className="scroll-text">Let us together become wiser today than we were yesterday.</p>
+        <p className="scroll-text">Let us become wiser today than we were yesterday.</p>
         <div className="chevron-right">
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M7 10L12 15L17 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>

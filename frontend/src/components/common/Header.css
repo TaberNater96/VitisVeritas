@@ -28,8 +28,32 @@
   transition: opacity var(--transition-base);
 }
 
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  transition: opacity var(--transition-base);
+}
+
 .brand-link:hover {
   opacity: 0.9;
+}
+
+.header-logo-title {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.header-logo {
+  height: 48px;
+  width: 48px;
+  object-fit: contain;
+  margin: 0;
+  display: block;
+  flex-shrink: 0;
 }
 
 .brand-title {

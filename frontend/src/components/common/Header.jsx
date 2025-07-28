@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
+import logo from '../../assets/images/vv_logo_nb.png';
 
 const Header = () => {
 // Get the current location object from React Router
@@ -15,10 +16,13 @@ const isActive = (path) => {
     <header className="header">
       <div className="header-container">
         {/* Logo/Brand Section */}
-        <div className="header-brand">
+        <div className="header-logo-title">
           <Link to="/" className="brand-link">
-            <h1 className="brand-title">Vitis Veritas</h1>
-            <p className="brand-subtitle">The Truth of Wine</p>
+            <img src={logo} alt="Vitis Veritas Logo" className="header-logo" />
+            <div>
+              <h1 className="brand-title">Vitis Veritas</h1>
+              <p className="brand-subtitle">The Truth of Wine</p>
+            </div>
           </Link>
         </div>
 
@@ -50,11 +54,11 @@ const isActive = (path) => {
                 Wine Varietals
               </Link>
             </li>
-            <li className="nav-item">
-              <Link to="/experiences" className={`nav-link ${isActive('/experiences')}`}>
+            {/* <li className="nav-item">
+              <Link to="/experiences" className={`nav-link ${isActive('/experiences')}`}> 
                 Experiences
               </Link>
-            </li>
+            </li> */}
             <li className="nav-item">
               <Link to="/sommelier" className={`nav-link ${isActive('/sommelier')}`}>
                 The Sommelier Engine
