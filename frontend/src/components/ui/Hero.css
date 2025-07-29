@@ -46,8 +46,8 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  max-width: 1200px;
-  width: 80vw;
+  max-width: 50%;
+  width: 50%;
   min-width: 340px;
   padding: var(--spacing-xl) 0;
   margin-left: 3vw;
@@ -61,71 +61,48 @@
   text-align: left;
   align-items: flex-start;
 }
-
-.hero-quote-container {
-  position: absolute;
-  bottom: 100px; /* Adjust this value to position the quote */
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 80%;
-  max-width: 1100px;
-  text-align: center;
-}
-
-.hero-quote {
-  margin: 0;
-  text-align: center;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.quote-text {
-  font-family: var(--font-family-serif);
-  font-size: clamp(1.1rem, 2.5vw, 1.7rem);
-  font-weight: var(--font-weight-normal);
-  line-height: 1.3;
-  color: var(--color-text-primary);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-  margin-bottom: var(--spacing-md);
-  font-style: italic;
-  letter-spacing: 0.5px;
-  text-align: center;
-  width: 100%;
-}
 .hero-main-title {
-  font-family: var(--font-family-serif);
-  font-size: clamp(2.5rem, 5vw, 4.2rem);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text-primary);
-  margin-bottom: 8.5rem;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+  font-family: 'Lucida Calligraphy', 'Brush Script MT', 'Playfair Display', cursive, serif;
+  font-size: clamp(3.5rem, 8vw, 6rem);
+  font-weight: bold;
+  color: var(--color-text-muted); /* Same color as header/footer background */
+  margin-bottom: var(--spacing-xs);
+  text-shadow: 3px 3px 8px rgba(0,0,0,0.95);
   line-height: 1.1;
   letter-spacing: 1px;
-  max-width: 1400px;
+  max-width: 100%;
   width: 100%;
   text-align: left;
-  word-break: normal;
-  white-space: nowrap;
 }
 
-.quote-attribution {
-  display: block;
-  font-family: var(--font-family-primary);
-  font-size: clamp(1rem, 2.5vw, 1.5rem);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text-secondary);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
-  font-style: normal;
-  letter-spacing: 1px;
-  text-align: center;
-  width: 100%;
+.large-v {
+  font-size: 1.5em;
+}
+
+.hero-subtitle {
+  font-family: 'Lucida Calligraphy', 'Brush Script MT', 'Playfair Display', cursive, serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: bold;
+  font-style: italic;
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-3xl);
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.95);
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+  text-align: left;
+}
+
+.hero-description {
+  font-family: 'Verdana', 'Arial', sans-serif;
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+  font-weight: bold;
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-xl);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.95);
+  line-height: 1.5;
+  letter-spacing: 0.3px;
+  text-align: left;
+  max-width: 100%;
 }
 
 /* Responsive Design */
@@ -139,23 +116,24 @@
   .hero-content {
     padding: var(--spacing-lg) 0;
     margin-left: 2vw;
-    max-width: 98vw;
-    width: 95vw;
+    max-width: 95%;
+    width: 95%;
     min-width: 0;
     min-height: 40vh;
     text-align: left;
   }
   .hero-main-title {
-    font-size: clamp(1.5rem, 5vw, 2.5rem);
-    margin-bottom: var(--spacing-md);
-    max-width: 100%;
-    width: 100%;
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    margin-bottom: var(--spacing-xs);
     text-align: left;
   }
-  .quote-text {
-    font-size: clamp(1rem, 2vw, 1.2rem);
-    line-height: 1.3;
-    text-align: center;
+  .hero-subtitle {
+    font-size: clamp(1.4rem, 6vw, 2rem);
+    margin-bottom: var(--spacing-2xl);
+  }
+  .hero-description {
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    line-height: 1.4;
   }
 }
 
@@ -197,10 +175,10 @@
 
 .chevron-left,
 .chevron-right {
-  width: 24px;
-  height: 24px;
+  width: 36px;
+  height: 36px;
   color: var(--color-text-secondary);
-  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.8));
+  filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.9));
   animation: bounce 2s infinite;
 }
 
@@ -216,6 +194,7 @@
 .chevron-right svg {
   width: 100%;
   height: 100%;
+  stroke-width: 3;
 }
 
 @keyframes bounce {
@@ -243,8 +222,8 @@
   
   .chevron-left,
   .chevron-right {
-    width: 20px;
-    height: 20px;
+    width: 32px;
+    height: 32px;
   }
 }
 
@@ -265,8 +244,8 @@
   .chevron-left,
   .chevron-right {
     order: 1;
-    width: 18px;
-    height: 18px;
+    width: 28px;
+    height: 28px;
   }
   
   .chevron-right {

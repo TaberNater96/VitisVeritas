@@ -64,20 +64,11 @@
   font-family: var(--font-family-serif);
 }
 
-.brand-subtitle {
-  margin: -4px 0 0 0;
-  font-size: var(--font-size-base);
-  color: var(--color-text-muted);
-  font-style: italic;
-  text-transform: lowercase;
-  letter-spacing: 1px;
-}
-
 /* Navigation */
 .header-nav {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   max-width: var(--container-max-width);
   margin: 0 auto;
 }
@@ -86,7 +77,7 @@
   display: flex;
   gap: var(--spacing-2xl);
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .nav-item {

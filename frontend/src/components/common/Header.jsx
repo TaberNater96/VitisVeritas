@@ -21,7 +21,6 @@ const isActive = (path) => {
             <img src={logo} alt="Vitis Veritas Logo" className="header-logo" />
             <div>
               <h1 className="brand-title">Vitis Veritas</h1>
-              <p className="brand-subtitle">The Truth of Wine</p>
             </div>
           </Link>
         </div>
