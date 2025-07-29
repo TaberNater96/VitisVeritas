@@ -5,7 +5,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 2rem 0;
+  margin: 0;
+  padding: var(--spacing-3xl) var(--spacing-lg);
 }
 
 .map-placeholder {
@@ -15,16 +16,18 @@
   justify-content: center;
   height: 600px;
   width: 100%;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  max-width: 1200px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
   border-radius: 8px;
-  color: #6c757d;
-  border: 2px dashed #dee2e6;
+  color: #333333;
+  border: 2px dashed rgba(139, 69, 19, 0.3);
   transition: all 0.3s ease;
 }
 
 .map-placeholder:hover {
-  background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
-  border-color: #adb5bd;
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(139, 69, 19, 0.5);
 }
 
 .loading-spinner {

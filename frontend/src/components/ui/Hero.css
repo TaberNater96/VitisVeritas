@@ -51,7 +51,7 @@
   min-width: 340px;
   padding: var(--spacing-xl) 0;
   margin-left: 3vw;
-  margin-top: 25vh;
+  margin-top: 24.5vh;
   margin-bottom: 0;
   min-height: 60vh;
   text-align: left;
@@ -66,7 +66,7 @@
   font-size: clamp(3.5rem, 8vw, 6rem);
   font-weight: bold;
   color: var(--color-text-muted); /* Same color as header/footer background */
-  margin-bottom: var(--spacing-xs);
+  margin-bottom: 1.5vh;
   text-shadow: 3px 3px 8px rgba(0,0,0,0.95);
   line-height: 1.1;
   letter-spacing: 1px;
@@ -85,7 +85,7 @@
   font-weight: bold;
   font-style: italic;
   color: var(--color-text-muted);
-  margin-bottom: var(--spacing-3xl);
+  margin-bottom: 6vh;
   text-shadow: 2px 2px 6px rgba(0,0,0,0.95);
   line-height: 1.2;
   letter-spacing: 0.5px;
@@ -96,9 +96,9 @@
   font-family: 'Verdana', 'Arial', sans-serif;
   font-size: clamp(1.1rem, 2.2vw, 1.4rem);
   font-weight: bold;
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
   margin-bottom: var(--spacing-xl);
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.95);
+  text-shadow: 6px 6px 12px rgb(0, 0, 0);
   line-height: 1.5;
   letter-spacing: 0.3px;
   text-align: left;

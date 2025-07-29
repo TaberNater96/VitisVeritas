@@ -17,6 +17,25 @@
   --color-background: #242424;
   --color-background-light: #1a1a1a;
   
+  /* Gradients */
+  --gradient-terroir: linear-gradient(180deg, 
+    #87CEEB 0%,
+    #87CEEB 25%, 
+    #ffffff 40%, 
+    #048413 60%,
+    #563d2d 80%, 
+    #563d2d 100% 
+  );
+
+  --gradient-wine: linear-gradient(180deg, 
+    #200418 0%,
+    #3e072f 25%, 
+    #4a0237 40%, 
+    #653642 60%,
+    #653642 80%, 
+    #653642 100% 
+  );
+  
   /* Typography */
   --font-family-primary: system-ui, Avenir, Helvetica, Arial, sans-serif;
   --font-family-serif: 'Georgia', 'Times New Roman', serif;
