@@ -9,8 +9,8 @@ mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
 const MapCanvas = () => {
   const mapContainer = useRef(null);
   const map = useRef(null);
-  const [lng, setLng] = useState(-122.6748);
-  const [lat, setLat] = useState(44.7221);
+  const [lng, setLng] = useState(-122.9427);
+  const [lat, setLat] = useState(44.8850);
   const [zoom, setZoom] = useState(7.20); // adjust this for zoom setting
   const [mapLoaded, setMapLoaded] = useState(false);
   const [selectedAva, setSelectedAva] = useState('');
@@ -283,7 +283,7 @@ const MapCanvas = () => {
   // Reset to full Willamette Valley view
   const resetView = () => {
     map.current.flyTo({
-      center: [-122.6748, 44.7221],
+      center: [-122.9427, 44.8850],
       zoom: 7.20,
       duration: 2000,
       essential: true
