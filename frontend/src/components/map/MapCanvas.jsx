@@ -293,17 +293,17 @@ const MapCanvas = () => {
 
   // Available AVAs for dropdown with specific coordinates
   const avaCoordinates = {
-    'Lower Long Tom': { lng: -123.3393, lat: 44.2213, zoom: 11.00 },
-    'Mt Pisgah Polk County': { lng: -123.2863, lat: 44.8815, zoom: 12.33 },
-    'Van Duzer': { lng: -123.2625, lat: 45.0120, zoom: 11.09 },
-    'Eola-Amity Hills': { lng: -123.1205, lat: 45.0434, zoom: 10.42 },
-    'McMinnville': { lng: -123.3314, lat: 45.1552, zoom: 11.09 },
-    'Yamhill-Carlton': { lng: -123.1888, lat: 45.3271, zoom: 10.76 },
-    'Dundee Hills': { lng: -123.0601, lat: 45.2781, zoom: 12.09 },
-    'Ribbon Ridge': { lng: -123.0799, lat: 45.3555, zoom: 12.76 },
-    'Chehalem Mountains': { lng: -122.9491, lat: 45.3815, zoom: 10.42 },
-    'Laurelwood District': { lng: -122.9908, lat: 45.3961, zoom: 10.76 },
-    'Tualatin Hills': { lng: -123.0940, lat: 45.5983, zoom: 10.09 }
+    'Lower Long Tom': { lng: -123.3458, lat: 44.2402, zoom: 11.00 },
+    'Mt Pisgah Polk County': { lng: -123.2904, lat: 44.8843, zoom: 12.33 },
+    'Van Duzer': { lng: -123.2602, lat: 45.0232, zoom: 11.09 },
+    'Eola-Amity Hills': { lng: -123.1393, lat: 45.0664, zoom: 10.42 },
+    'McMinnville': { lng: -123.3440, lat: 45.1727, zoom: 11.09 },
+    'Yamhill-Carlton': { lng: -123.1879, lat: 45.3443, zoom: 10.43 },
+    'Dundee Hills': { lng: -123.0608, lat: 45.2854, zoom: 11.74 },
+    'Ribbon Ridge': { lng: -123.0776, lat: 45.3607, zoom: 12.43 },
+    'Chehalem Mountains': { lng: -122.9660, lat: 45.4017, zoom: 10.42 },
+    'Laurelwood District': { lng: -123.0030, lat: 45.4158, zoom: 10.76 },
+    'Tualatin Hills': { lng: -123.1397, lat: 45.6283, zoom: 9.76 }
   };
 
   const avaList = Object.keys(avaCoordinates);
