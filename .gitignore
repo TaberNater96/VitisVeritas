@@ -42,6 +42,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # Data
+raw/
 *.shp
 *.shx
 *.dbf

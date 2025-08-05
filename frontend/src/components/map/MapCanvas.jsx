@@ -176,13 +176,13 @@ const MapCanvas = () => {
           source: 'wineries',
           layout: {
             'icon-image': 'winery-icon',
-            'icon-size': 0.045,
+            'icon-size': 0.035,
             'icon-allow-overlap': true,
             'icon-ignore-placement': false,
             'icon-anchor': 'bottom' // anchor to bottom so the point is at the actual location
           },
           paint: {
-            'icon-opacity': 1.0 // Ensure full opacity
+            'icon-opacity': 1.0 // full opacity
           }
         });
 
