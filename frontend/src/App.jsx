@@ -4,7 +4,6 @@ import Footer from './components/common/Footer';
 import HomePage from './pages/HomePage';
 import AlchemyPage from './pages/AlchemyPage';
 // Import additional page components here as they get created
-// import AVAsPage from './pages/AVAsPage';
 
 function App() {
   return (
@@ -16,7 +15,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/alchemy" element={<AlchemyPage />} />
           
-          {/* You will add more routes here later */}
+          {/* We will add more routes here later */}
           {/* <Route path="/avas" element={<AVAsPage />} /> */}
         </Routes>
       </main>
