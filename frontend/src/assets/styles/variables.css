@@ -27,13 +27,13 @@
     #563d2d 100% 
   );
 
-  --gradient-wine: linear-gradient(180deg, 
+  --gradient-wine: linear-gradient(135deg, 
     #200418 0%,
     #3e072f 25%, 
     #4a0237 40%, 
     #653642 60%,
     #653642 80%, 
-    #653642 100% 
+    #cd91a0 100% 
   );
   
   /* Typography */

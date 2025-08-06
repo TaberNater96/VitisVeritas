@@ -5,3 +5,4 @@
 * For the map, try and do a selector at the top that has multiple options. It can something like Vineyards/Wineries/Wine Bars, Soil, Microclimate, and Elevation. Then make the selector keep the selections unless clicked on again, so that all layers can be stacked.
 * A way to track total page loads is with mapbox since it already tracks how many times a request of the home page happens. But lazy map loading must be taken off. Though this will not count unique users.
 * Also mention somewhere that much of the data on other sites for the Willamette Valley is out of date, with many missing wineries and even AVAs.
+* Try and figure out how to make each page a different section on Google search results so that it is not just the main index that is being displayed, but has all pages below landing page. Kind of like how willamettevalleywines.com has it when appearing in Google search.
