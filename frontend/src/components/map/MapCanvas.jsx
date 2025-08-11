@@ -192,13 +192,23 @@ const MapCanvas = () => {
         const wineryPopup = new mapboxgl.Popup({
           closeButton: false,
           closeOnClick: false,
-          offset: [0, -35] // position above the icon
+          offset: [0, -25], // Reduce vertical offset to bring closer to icon
+          anchor: 'bottom',
+          className: 'winery-hover-popup'
         });
 
         map.current.on('mouseenter', 'wineries', (e) => {
           map.current.getCanvas().style.cursor = 'pointer';
           const feature = e.features[0];
-          wineryPopup.setLngLat(e.lngLat)
+          // Use the geometry coordinates instead of mouse event coordinates for consistent positioning
+          const coordinates = e.features[0].geometry.coordinates.slice();
+          
+          // Ensure consistent positioning by normalizing longitude
+          while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+          }
+          
+          wineryPopup.setLngLat(coordinates)
             .setHTML(`<strong>${feature.properties.name}</strong>`)
             .addTo(map.current);
         });
@@ -212,6 +222,14 @@ const MapCanvas = () => {
         map.current.on('click', 'wineries', (e) => {
           const feature = e.features[0];
           const properties = feature.properties;
+          
+          // Use the geometry coordinates instead of mouse event coordinates for consistent positioning
+          const coordinates = e.features[0].geometry.coordinates.slice();
+          
+          // Ensure consistent positioning by normalizing longitude
+          while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+          }
           
           // Format phone number
           const formatPhoneNumber = (phone) => {
@@ -258,12 +276,14 @@ const MapCanvas = () => {
           `;
 
           new mapboxgl.Popup({ 
-            offset: [0, -25],
+            offset: [0, -35], // Reduce vertical offset to bring closer to icon
             closeButton: true,
             closeOnClick: true,
-            className: 'winery-popup-mapbox'
+            anchor: 'bottom',
+            className: 'winery-detail-popup',
+            maxWidth: '450px'
           })
-            .setLngLat(e.lngLat)
+            .setLngLat(coordinates)
             .setHTML(popupContent)
             .addTo(map.current);
         });

@@ -82,7 +82,7 @@
   font-family: monospace;
 }
 
-/* Mapbox popup styling */
+/* Mapbox popup styling - Base styles */
 .mapboxgl-popup-content {
   background: rgba(255, 255, 255, 0.95);
   border-radius: 6px;
@@ -91,41 +91,75 @@
   color: #333;
   max-width: 200px;
   width: auto;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Override Mapbox popup content for winery popups specifically */
-.mapboxgl-popup-content:has(.winery-popup) {
+.winery-hover-popup .mapboxgl-popup-content {
+  padding: 0.5rem !important;
+  font-weight: bold !important;
+  max-width: 200px !important;
+  min-width: unset !important;
+  width: auto !important;
+  text-align: center !important;
+  font-size: 0.9rem !important;
+}
+
+.winery-detail-popup .mapboxgl-popup-content {
   padding: 1rem !important;
   max-width: 450px !important;
   min-width: 380px !important;
   width: 450px !important;
   font-weight: normal !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
 }
 
-/* Ensure hover popups stay small and don't get winery card styling */
-.mapboxgl-popup-content:not(:has(.winery-popup)) {
-  padding: 0.5rem !important;
-  font-weight: bold !important;
-  max-width: 200px !important;
-  width: auto !important;
-  min-width: unset !important;
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-content,
+.mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-content,
+.mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-content {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
-/* Center the popup tip for winery popups */
-.winery-popup-mapbox .mapboxgl-popup-tip {
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip {
+  border-top-color: rgba(255, 255, 255, 0.95) !important;
+  border-bottom-color: transparent !important;
+}
+
+.mapboxgl-popup-anchor-bottom .winery-hover-popup .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-bottom-left .winery-hover-popup .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-bottom-right .winery-hover-popup .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-bottom .winery-detail-popup .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-bottom-left .winery-detail-popup .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-bottom-right .winery-detail-popup .mapboxgl-popup-tip,
+.winery-hover-popup .mapboxgl-popup-tip,
+.winery-detail-popup .mapboxgl-popup-tip {
   left: 50% !important;
   transform: translateX(-50%) !important;
+  margin-left: 18.5px !important;
+  margin-right: 0 !important;
 }
 
-.winery-popup-mapbox .mapboxgl-popup-content {
-  transform: translateX(-50%) !important;
-  left: 50% !important;
+.winery-hover-popup .mapboxgl-popup-content,
+.winery-detail-popup .mapboxgl-popup-content {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  transform: none !important;
   position: relative !important;
+  left: 0 !important;
 }
 
 .mapboxgl-popup-anchor-top .mapboxgl-popup-tip,
 .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {
   border-color: rgba(255, 255, 255, 0.95) transparent;
+}
+
+.mapboxgl-popup-tip {
+  border-top-color: rgba(255, 255, 255, 0.95) !important;
+  border-bottom-color: transparent !important;
+  border-left-color: transparent !important;
+  border-right-color: transparent !important;
 }
 
 /* Responsive adjustments */
@@ -159,6 +193,14 @@
   .map-info {
     font-size: 0.7rem;
   }
+  
+  /* Adjust popup sizes for mobile */
+  .winery-detail-popup .mapboxgl-popup-content {
+    max-width: 320px !important;
+    min-width: 280px !important;
+    width: 320px !important;
+    padding: 0.75rem !important;
+  }
 }
 
 @media (max-width: 480px) {
@@ -174,6 +216,26 @@
   .reset-view-btn {
     font-size: 0.8rem;
     padding: 0.4rem;
+  }
+  
+  /* Further adjust popup sizes for small screens */
+  .winery-detail-popup .mapboxgl-popup-content {
+    max-width: 280px !important;
+    min-width: 250px !important;
+    width: 280px !important;
+    padding: 0.5rem !important;
+  }
+  
+  .winery-name {
+    font-size: 1.1rem !important;
+  }
+  
+  .winery-description {
+    font-size: 0.8rem !important;
+  }
+  
+  .winery-details {
+    font-size: 0.75rem !important;
   }
 }
 
