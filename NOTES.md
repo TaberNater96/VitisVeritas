@@ -7,3 +7,4 @@
 * Also mention somewhere that much of the data on other sites for the Willamette Valley is out of date, with many missing wineries and even AVAs.
 * Try and figure out how to make each page a different section on Google search results so that it is not just the main index that is being displayed, but has all pages below landing page. Kind of like how willamettevalleywines.com has it when appearing in Google search.
 * Make sure the winemaking process is correct and in the correct order.
+* Make sure to explain what an AVA is on the main home page before the user gets to the map.

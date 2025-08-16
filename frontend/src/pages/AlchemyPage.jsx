@@ -106,7 +106,7 @@ const AlchemyPage = () => {
             Valley Winemaking
           </h1>
           <p className="alchemy-description">
-            Ever wonder how Willamette Valley wines get that incredible character? It's not magic, it's a blend of science, craft, experience, and serious passion. It's the chemistry in the vineyard, the precision techniques in the cellar, and the people who pour their heart into every bottle. This page will walk through the phases <i>AFTER</i> the grapes have been harvested and are ready to be turned into wine.
+            Ever wonder how Willamette Valley wines get that incredible character? It's not magic, it's a blend of science, craft, experience, and serious passion. From the complex chemistry in the vineyard, to the delicate techniques in the cellar, to the people who pour their heart into every bottle. This page will walk through the phases <i>AFTER</i> the grapes are done growing, and are ready to be turned into wine.
           </p>
         </div>
 

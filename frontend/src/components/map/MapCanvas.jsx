@@ -394,29 +394,10 @@ const MapCanvas = () => {
   };
 
   return (
-    <div className="map-container">
-      <div className="map-header">
-        <h2>Explore the Willamette Valley AVAs</h2>
-        <div className="map-controls">
-          <select 
-            value={selectedAva} 
-            onChange={handleAvaSelection}
-            className="ava-dropdown"
-          >
-            <option value="">Select an AVA</option>
-            {avaList.map(ava => (
-              <option key={ava} value={ava}>{ava}</option>
-            ))}
-          </select>
-          <button onClick={resetView} className="reset-view-btn">
-            Reset View
-          </button>
-        </div>
-      </div>
-      
-      {/* AVA Color Legend */}
+    <div className="map-wrapper">
+      {/* AVA Color Legend - Now above the map */}
       <div className="ava-legend">
-        <h3>AVA Regions</h3>
+        <h3>Willamette Valley AVA Regions</h3>
         <div className="legend-items">
           {Object.entries(avaColors).map(([avaName, color]) => (
             <div key={avaName} className="legend-item">
@@ -429,10 +410,31 @@ const MapCanvas = () => {
           ))}
         </div>
       </div>
-      
-      <div ref={mapContainer} className="map" />
-      <div className="map-info">
-        Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
+
+      <div className="map-container">
+        <div className="map-header">
+          <h2>Explore the Willamette Valley AVAs</h2>
+          <div className="map-controls">
+            <select 
+              value={selectedAva} 
+              onChange={handleAvaSelection}
+              className="ava-dropdown"
+            >
+              <option value="">Select an AVA</option>
+              {avaList.map(ava => (
+                <option key={ava} value={ava}>{ava}</option>
+              ))}
+            </select>
+            <button onClick={resetView} className="reset-view-btn">
+              Reset View
+            </button>
+          </div>
+        </div>
+        
+        <div ref={mapContainer} className="map" />
+        <div className="map-info">
+          Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
+        </div>
       </div>
     </div>
   );
