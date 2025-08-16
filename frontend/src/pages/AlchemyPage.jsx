@@ -144,24 +144,6 @@ const AlchemyPage = () => {
           </section>
         ))}
       </div>
-
-      <div className="alchemy-conclusion">
-        <div className="conclusion-content">
-          <h2>The Art Continues</h2>
-          <p>
-            These twelve phases represent just the beginning of wine's journey. Once bottled, wine 
-            continues to evolve, developing new complexities and characteristics as it ages. The true 
-            alchemy happens not just in the winery, but in every glass shared, every moment celebrated, 
-            and every memory created.
-          </p>
-          <p>
-            Understanding these processes deepens our appreciation for every sip, revealing the 
-            countless decisions and careful attention that went into creating each unique bottle. 
-            This is why wine is more than just a beverage – it's a testament to human ingenuity and 
-            our eternal quest to capture the essence of terroir in liquid form.
-          </p>
-        </div>
-      </div>
     </div>
   );
 };
