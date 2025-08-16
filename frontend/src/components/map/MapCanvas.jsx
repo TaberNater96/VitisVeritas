@@ -374,7 +374,7 @@ const MapCanvas = () => {
     const selectedAvaName = e.target.value;
     setSelectedAva(selectedAvaName);
     if (selectedAvaName) {
-      zoomToAva(selectedAvaName, true); // Pass true to indicate this is from dropdown
+      zoomToAva(selectedAvaName, true); // pass true to indicate this is from dropdown
     }
   };
 
@@ -395,7 +395,6 @@ const MapCanvas = () => {
 
   return (
     <div className="map-wrapper">
-      {/* AVA Color Legend - Now above the map */}
       <div className="ava-legend">
         <h3>Willamette Valley AVA Regions</h3>
         <div className="legend-items">
