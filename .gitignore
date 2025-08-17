@@ -44,6 +44,7 @@ yarn-error.log*
 
 # Data
 raw/
+processed/
 *.shp
 *.shx
 *.dbf
