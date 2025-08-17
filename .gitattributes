@@ -1,0 +1,2 @@
+frontend/public/data/linn_soils.geojson filter=lfs diff=lfs merge=lfs -text
+frontend/public/data/lane_soils.geojson filter=lfs diff=lfs merge=lfs -text
