@@ -43,6 +43,7 @@ CREATE TABLE soils (
     mukey TEXT,
     musym TEXT,
     muname TEXT,
+    county VARCHAR(50),
     geom GEOMETRY(MultiPolygon, 4326)
 );
 
