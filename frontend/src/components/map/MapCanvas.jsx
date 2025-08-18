@@ -14,6 +14,10 @@ const MapCanvas = () => {
   const [zoom, setZoom] = useState(7.20); // adjust this for zoom setting
   const [mapLoaded, setMapLoaded] = useState(false);
   const [selectedAva, setSelectedAva] = useState('');
+  const [selectedCounties, setSelectedCounties] = useState([]);
+  const [countiesData, setCountiesData] = useState([]);
+  const [loadingSoils, setLoadingSoils] = useState({});
+  const activePopupRef = useRef(null);
 
   // Initialize map
   useEffect(() => {
@@ -40,12 +44,66 @@ const MapCanvas = () => {
 
     map.current.on('load', () => {
       setMapLoaded(true);
+      loadCountiesIndex();
       loadAVAData();
       // Load winery data after AVA data to ensure proper layer ordering
       setTimeout(() => {
         loadWineryData();
       }, 100);
+      
+      // Add global mousemove handler to manage soil popups better
+      map.current.on('mousemove', (e) => {
+        // Check if mouse is over any soil layer
+        const features = map.current.queryRenderedFeatures(e.point);
+        const soilFeatures = features.filter(f => f.source && f.source.endsWith('-soils'));
+        const wineryFeatures = features.filter(f => f.source === 'wineries');
+        
+        // If over a winery, hide soil popup to prioritize winery popup
+        if (wineryFeatures.length > 0 && activePopupRef.current) {
+          activePopupRef.current.remove();
+          activePopupRef.current = null;
+          map.current.getCanvas().style.cursor = 'pointer';
+        }
+        // If not over any soil features and not over wineries, remove popup
+        else if (soilFeatures.length === 0 && wineryFeatures.length === 0 && activePopupRef.current) {
+          activePopupRef.current.remove();
+          activePopupRef.current = null;
+          map.current.getCanvas().style.cursor = '';
+        }
+      });
     });
+
+    // Cleanup function
+    return () => {
+      if (activePopupRef.current) {
+        activePopupRef.current.remove();
+        activePopupRef.current = null;
+      }
+      if (map.current) {
+        map.current.remove();
+        map.current = null;
+      }
+    };
+  }, []);
+
+  // Load counties index data
+  const loadCountiesIndex = async () => {
+    try {
+      const response = await fetch('/data/counties_index.json');
+      const data = await response.json();
+      setCountiesData(data.counties);
+    } catch (error) {
+      console.error('Error loading counties index:', error);
+    }
+  };
+
+  // Effect to cleanup soil layers when component unmounts
+  useEffect(() => {
+    return () => {
+      selectedCounties.forEach(countyName => {
+        removeSoilData(countyName);
+      });
+    };
   }, []);
 
   // Load AVA GeoJSON data
@@ -378,6 +436,167 @@ const MapCanvas = () => {
     }
   };
 
+  // Load soil data for a specific county
+  const loadSoilData = async (countyName) => {
+    if (!map.current || !mapLoaded) return;
+
+    const sourceId = `${countyName}-soils`;
+    const layerId = `${countyName}-soils-layer`;
+
+    // Check if already loaded
+    if (map.current.getSource(sourceId)) {
+      return;
+    }
+
+    setLoadingSoils(prev => ({ ...prev, [countyName]: true }));
+
+    try {
+      const response = await fetch(`/data/${countyName}_soils.geojson`);
+      if (!response.ok) {
+        throw new Error(`Failed to load ${countyName} soil data`);
+      }
+      
+      const soilData = await response.json();
+
+      // Add soil data source
+      map.current.addSource(sourceId, {
+        type: 'geojson',
+        data: soilData
+      });
+
+      // Add soil fill layer (semi-transparent)
+      map.current.addLayer({
+        id: layerId,
+        type: 'fill',
+        source: sourceId,
+        paint: {
+          'fill-color': [
+            'case',
+            ['has', 'mukey'],
+            [
+              'interpolate',
+              ['linear'],
+              ['%', ['to-number', ['get', 'mukey']], 6],
+              0, '#DEB887',
+              1, '#D2B48C', 
+              2, '#BC8F8F',
+              3, '#F4A460',
+              4, '#CD853F',
+              5, '#A0522D'
+            ],
+            '#D2B48C'
+          ],
+          'fill-opacity': 0.6
+        }
+      }, 'ava-fills'); // Insert before AVA fills so AVAs are on top
+
+      // Add soil border layer
+      map.current.addLayer({
+        id: `${layerId}-border`,
+        type: 'line',
+        source: sourceId,
+        paint: {
+          'line-color': '#8B4513',
+          'line-width': 0.5,
+          'line-opacity': 0.8
+        }
+      }, 'ava-fills');
+
+      // Add hover popup for soil information with better responsiveness
+      map.current.on('mousemove', layerId, (e) => {
+        if (e.features.length > 0) {
+          map.current.getCanvas().style.cursor = 'pointer';
+          const feature = e.features[0];
+          const coordinates = e.lngLat;
+          
+          // Remove existing popup before creating new one
+          if (activePopupRef.current) {
+            activePopupRef.current.remove();
+          }
+          
+          // Create new popup at current mouse position
+          activePopupRef.current = new mapboxgl.Popup({
+            closeButton: false,
+            closeOnClick: false,
+            offset: [0, -10],
+            className: 'soil-hover-popup'
+          })
+          .setLngLat(coordinates)
+          .setHTML(`
+            <div class="soil-popup-content">
+              <strong>${feature.properties.muname || 'Unknown Soil Type'}</strong>
+              <br><em>${(feature.properties.county || countyName).charAt(0).toUpperCase() + (feature.properties.county || countyName).slice(1)} County</em>
+            </div>
+          `)
+          .addTo(map.current);
+        }
+      });
+
+      map.current.on('mouseleave', layerId, () => {
+        map.current.getCanvas().style.cursor = '';
+        if (activePopupRef.current) {
+          activePopupRef.current.remove();
+          activePopupRef.current = null;
+        }
+      });
+
+      console.log(`Loaded ${countyName} soil data with ${soilData.features.length} features`);
+
+    } catch (error) {
+      console.error(`Error loading ${countyName} soil data:`, error);
+    } finally {
+      setLoadingSoils(prev => ({ ...prev, [countyName]: false }));
+    }
+  };
+
+  // Remove soil data for a specific county
+  const removeSoilData = (countyName) => {
+    if (!map.current) return;
+
+    const sourceId = `${countyName}-soils`;
+    const layerId = `${countyName}-soils-layer`;
+    const borderLayerId = `${layerId}-border`;
+
+    // Remove event listeners first
+    if (map.current.getLayer(layerId)) {
+      map.current.off('mousemove', layerId);
+      map.current.off('mouseleave', layerId);
+    }
+
+    // Remove layers
+    if (map.current.getLayer(layerId)) {
+      map.current.removeLayer(layerId);
+    }
+    if (map.current.getLayer(borderLayerId)) {
+      map.current.removeLayer(borderLayerId);
+    }
+
+    // Remove source
+    if (map.current.getSource(sourceId)) {
+      map.current.removeSource(sourceId);
+    }
+  };
+
+  // Handle county selection change
+  const handleCountySelection = (countyName) => {
+    const isSelected = selectedCounties.includes(countyName);
+    
+    if (isSelected) {
+      // Remove county
+      setSelectedCounties(prev => prev.filter(c => c !== countyName));
+      removeSoilData(countyName);
+    } else {
+      // Add county - load data after map is loaded
+      setSelectedCounties(prev => [...prev, countyName]);
+      if (mapLoaded) {
+        // Small delay to ensure proper loading order
+        setTimeout(() => {
+          loadSoilData(countyName);
+        }, 100);
+      }
+    }
+  };
+
   // AVA color mapping for legend
   const avaColors = {
     'Chehalem Mountains': '#ffffff',
@@ -427,6 +646,26 @@ const MapCanvas = () => {
             <button onClick={resetView} className="reset-view-btn">
               Reset View
             </button>
+          </div>
+        </div>
+
+        <div className="soil-selector">
+          <h3>Select Willamette Valley Counties to View Soil Types</h3>
+          <div className="county-checkboxes">
+            {countiesData.map((county) => (
+              <label key={county.name} className="county-checkbox">
+                <input
+                  type="checkbox"
+                  checked={selectedCounties.includes(county.name)}
+                  onChange={() => handleCountySelection(county.name)}
+                  disabled={loadingSoils[county.name]}
+                />
+                <span className="checkbox-text">
+                  {county.display_name}
+                  {loadingSoils[county.name] && <span className="loading-indicator"> (Loading...)</span>}
+                </span>
+              </label>
+            ))}
           </div>
         </div>
         

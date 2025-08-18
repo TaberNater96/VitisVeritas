@@ -16,7 +16,8 @@ This application is built as a high-performance, content-first static site, demo
 
 *   **Content-Rich Experience:** A beautiful landing page that tells the story of the region before diving into the data.
 *   **Detailed Educational Pages:** Dedicated sections explaining the science of terroir, detailed descriptions of each American Viticultural Area (AVA), and a guide to the primary wine varietals of the Willamette Valley.
-*   **Interactive Terroir Map:** A sophisticated map, loaded "below the fold" for performance, featuring toggleable layers for AVAs, wineries, and powerful terroir visualizations.
+*   **Interactive Terroir Map:** A sophisticated map, loaded "below the fold" for performance, featuring toggleable layers for AVAs, wineries, and comprehensive soil data visualization.
+*   **County-Based Soil Analysis:** Interactive soil polygon visualization for each Willamette Valley county, with detailed soil type information loaded on-demand for optimal performance.
 *   **The Sommelier:** An intelligent recommendation widget that suggests wines based on user-selected flavor profiles.
 *   **Performant by Design:** Built as a static site that leverages browser caching and strategic data loading to ensure a fast and smooth user experience.
 
