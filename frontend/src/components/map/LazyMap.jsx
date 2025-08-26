@@ -5,23 +5,28 @@ import './LazyMap.css';
 
 const LazyMap = () => {
     const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1 });
-    const [hasLoaded, setHasLoaded] = useState(false); // THIS IS THE KEY
+    const [shouldStartLoading, setShouldStartLoading] = useState(false);
 
-    // Once visible, mark as loaded forever
+    // Start loading the map immediately after a short delay to allow hero content to load first
     useEffect(() => {
-        if (isVisible && !hasLoaded) {
-            setHasLoaded(true); // This never goes back to false
-        }
-    }, [isVisible, hasLoaded]);
+        const timer = setTimeout(() => {
+            setShouldStartLoading(true);
+        }, 1000); // 1 second delay to allow hero and initial content to load
+
+        return () => clearTimeout(timer);
+    }, []);
 
     return (
         <section ref={ref} className="lazy-map-section">
-            {hasLoaded ? (
-                <MapCanvas /> // Once loaded, always shows map
+            {shouldStartLoading ? (
+                <MapCanvas isVisible={isVisible} />
             ) : (
                 <div className="map-placeholder">
                     <div className="loading-spinner"></div>
-                    <p>Loading interactive map...</p>
+                    <p>Preparing interactive map...</p>
+                    <p style={{ fontSize: '0.9rem', opacity: 0.8, marginTop: '0.5rem' }}>
+                        Loading will begin shortly
+                    </p>
                 </div>
             )}
         </section>

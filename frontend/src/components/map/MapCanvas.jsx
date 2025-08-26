@@ -2,11 +2,12 @@ import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './MapCanvas.css';
+import '../map/LazyMap.css';
 import wineryIcon from '../../assets/images/vv_logo_nb.png';
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
 
-const MapCanvas = () => {
+const MapCanvas = ({ isVisible = true }) => {
   const mapContainer = useRef(null);
   const map = useRef(null);
   const [lng, setLng] = useState(-122.9427);
@@ -17,7 +18,14 @@ const MapCanvas = () => {
   const [selectedCounties, setSelectedCounties] = useState([]);
   const [countiesData, setCountiesData] = useState([]);
   const [loadingSoils, setLoadingSoils] = useState({});
+  const [loadingStates, setLoadingStates] = useState({
+    counties: false,
+    avas: false,
+    wineries: false,
+    allSoils: false
+  });
   const activePopupRef = useRef(null);
+  const loadingQueueRef = useRef([]);
 
   // Initialize map
   useEffect(() => {
@@ -44,12 +52,9 @@ const MapCanvas = () => {
 
     map.current.on('load', () => {
       setMapLoaded(true);
-      loadCountiesIndex();
-      loadAVAData();
-      // Load winery data after AVA data to ensure proper layer ordering
-      setTimeout(() => {
-        loadWineryData();
-      }, 100);
+      
+      // Start optimized loading sequence
+      loadDataSequentially();
       
       // Add global mousemove handler to manage soil popups better
       map.current.on('mousemove', (e) => {
@@ -86,6 +91,73 @@ const MapCanvas = () => {
     };
   }, []);
 
+  // Optimized sequential loading function
+  const loadDataSequentially = async () => {
+    try {
+      // Step 1: Load counties index (lightweight, needed for soil data later)
+      console.log('Loading counties index...');
+      setLoadingStates(prev => ({ ...prev, counties: true }));
+      await loadCountiesIndex();
+      setLoadingStates(prev => ({ ...prev, counties: false }));
+
+      // Step 2: Load AVAs (priority geojson - most important for user interaction)
+      console.log('Loading AVA data...');
+      setLoadingStates(prev => ({ ...prev, avas: true }));
+      await loadAVAData();
+      setLoadingStates(prev => ({ ...prev, avas: false }));
+
+      // Step 3: Load wineries (secondary priority)
+      console.log('Loading winery data...');
+      setLoadingStates(prev => ({ ...prev, wineries: true }));
+      await loadWineryData();
+      setLoadingStates(prev => ({ ...prev, wineries: false }));
+
+      // Step 4: Preload all soil data in background (largest files, lowest priority)
+      console.log('Starting background loading of all soil data...');
+      setLoadingStates(prev => ({ ...prev, allSoils: true }));
+      await preloadAllSoilData();
+      setLoadingStates(prev => ({ ...prev, allSoils: false }));
+      
+      console.log('All data loading completed!');
+    } catch (error) {
+      console.error('Error in sequential loading:', error);
+    }
+  };
+
+  // Preload all soil data in the background
+  const preloadAllSoilData = async () => {
+    if (!countiesData || countiesData.length === 0) {
+      console.warn('Counties data not available for soil preloading');
+      return;
+    }
+
+    const soilLoadPromises = countiesData.map(async (county) => {
+      try {
+        console.log(`Preloading soil data for ${county.name}...`);
+        // Don't add to map yet, just fetch and cache the data
+        const response = await fetch(`/data/${county.name}_soils.geojson`);
+        if (!response.ok) {
+          throw new Error(`Failed to preload ${county.name} soil data`);
+        }
+        const soilData = await response.json();
+        
+        // Store in a cache for later use
+        if (!window.soilDataCache) {
+          window.soilDataCache = {};
+        }
+        window.soilDataCache[county.name] = soilData;
+        
+        console.log(`Successfully preloaded soil data for ${county.name}`);
+      } catch (error) {
+        console.warn(`Failed to preload soil data for ${county.name}:`, error);
+      }
+    });
+
+    // Load all soil data concurrently (but after other data loads sequentially)
+    await Promise.allSettled(soilLoadPromises);
+    console.log('Soil data preloading completed');
+  };
+
   // Load counties index data
   const loadCountiesIndex = async () => {
     try {
@@ -94,6 +166,7 @@ const MapCanvas = () => {
       setCountiesData(data.counties);
     } catch (error) {
       console.error('Error loading counties index:', error);
+      throw error; // Re-throw to handle in sequential loading
     }
   };
 
@@ -196,6 +269,7 @@ const MapCanvas = () => {
 
     } catch (error) {
       console.error('Error loading AVA data:', error);
+      throw error; // Re-throw to handle in sequential loading
     }
   };
 
@@ -355,6 +429,7 @@ const MapCanvas = () => {
 
     } catch (error) {
       console.error('Error loading winery data:', error);
+      throw error; // Re-throw to handle in sequential loading
     }
   };
 
@@ -451,12 +526,20 @@ const MapCanvas = () => {
     setLoadingSoils(prev => ({ ...prev, [countyName]: true }));
 
     try {
-      const response = await fetch(`/data/${countyName}_soils.geojson`);
-      if (!response.ok) {
-        throw new Error(`Failed to load ${countyName} soil data`);
-      }
+      let soilData;
       
-      const soilData = await response.json();
+      // Check if data is already cached from preloading
+      if (window.soilDataCache && window.soilDataCache[countyName]) {
+        console.log(`Using cached soil data for ${countyName}`);
+        soilData = window.soilDataCache[countyName];
+      } else {
+        console.log(`Fetching soil data for ${countyName}...`);
+        const response = await fetch(`/data/${countyName}_soils.geojson`);
+        if (!response.ok) {
+          throw new Error(`Failed to load ${countyName} soil data`);
+        }
+        soilData = await response.json();
+      }
 
       // Add soil data source
       map.current.addSource(sourceId, {
@@ -613,7 +696,34 @@ const MapCanvas = () => {
   };
 
   return (
-    <div className="map-wrapper">
+    <div className="map-wrapper" style={{ 
+      opacity: isVisible ? 1 : 0, 
+      transition: 'opacity 0.5s ease-in-out',
+      pointerEvents: isVisible ? 'auto' : 'none'
+    }}>
+      {/* Show loading overlay when map is loading but not visible */}
+      {!isVisible && (loadingStates.counties || loadingStates.avas || loadingStates.wineries) && (
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          background: 'rgba(255, 255, 255, 0.9)',
+          padding: '1rem',
+          borderRadius: '8px',
+          textAlign: 'center',
+          zIndex: 1000,
+          backdropFilter: 'blur(5px)'
+        }}>
+          <div className="loading-spinner"></div>
+          <p>Loading map data...</p>
+          {loadingStates.counties && <p style={{ fontSize: '0.8rem', margin: '0.2rem 0' }}>📊 Counties index</p>}
+          {loadingStates.avas && <p style={{ fontSize: '0.8rem', margin: '0.2rem 0' }}>🗺️ AVA regions</p>}
+          {loadingStates.wineries && <p style={{ fontSize: '0.8rem', margin: '0.2rem 0' }}>🍷 Wineries</p>}
+          {loadingStates.allSoils && <p style={{ fontSize: '0.8rem', margin: '0.2rem 0' }}>🌱 Soil data (background)</p>}
+        </div>
+      )}
+      
       <div className="ava-legend">
         <h3>Willamette Valley AVA Regions</h3>
         <div className="legend-items">

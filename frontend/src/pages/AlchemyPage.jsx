@@ -57,7 +57,7 @@ const AlchemyPage = () => {
       id: 'racking',
       title: 'Phase 7: Racking & Lees Management',
       description: 'After pressing (reds) or primary fermentation (whites), wines are racked off heavy solids (gross lees) to prevent off-aromas. Subsequent rackings during maturation clarify the wine, with selective lees retention (and batonnage in some whites) enhancing texture and complexity. This is performed as needed rather than just once (immediately post‑fermentation/press, then periodically during maturation).',
-      image: rackingImage
+      image: rackingImage // ^ add more text for the description above to avoid the image from clipping the box (double check how all container look on larger screens)
     },
     {
       id: 'malolactic',
