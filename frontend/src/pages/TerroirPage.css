@@ -137,7 +137,7 @@
 }
 
 /* Sections Container */
-.terroir-sections {
+.terroir-main .terroir-sections {
   width: 100%;
   max-width: 95%;
   margin: 0 auto;
@@ -453,7 +453,7 @@
 
 /* Responsive Design */
 @media (max-width: 1200px) {
-  .terroir-sections {
+  .terroir-main .terroir-sections {
     max-width: 96%;
     padding: 0 var(--spacing-sm);
   }
@@ -469,7 +469,7 @@
     width: 80%;
   }
   
-  .terroir-sections {
+  .terroir-main .terroir-sections {
     max-width: 97%;
     padding: 0 var(--spacing-xs);
   }
@@ -525,7 +525,7 @@
     height: 28px;
   }
   
-  .terroir-sections {
+  .terroir-main .terroir-sections {
     max-width: 98%;
     padding: var(--spacing-xs);
   }
@@ -572,7 +572,7 @@
     margin-top: 15vh;
   }
   
-  .terroir-sections {
+  .terroir-main .terroir-sections {
     max-width: 99%;
     padding: var(--spacing-xs);
   }

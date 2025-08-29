@@ -66,9 +66,9 @@ main.with-padding {
 }
 
 .quote-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--spacing-xl);
+  width: 100%;
+  margin: 0;
+  padding: 0 var(--spacing-md);
   text-align: center;
 }
 
@@ -112,7 +112,7 @@ main.with-padding {
   }
   
   .quote-container {
-    padding: 0 var(--spacing-lg);
+    padding: 0 var(--spacing-sm);
   }
   
   .quote-text {
@@ -131,7 +131,7 @@ main.with-padding {
   }
   
   .quote-container {
-    padding: 0 var(--spacing-md);
+    padding: 0 var(--spacing-xs);
   }
 }
 
@@ -145,7 +145,7 @@ main.with-padding {
 .intro-container {
   width: 100%;
   margin: 0;
-  padding: 0 var(--spacing-lg);
+  padding: 0 var(--spacing-md);
 }
 
 .intro-content h2 {
@@ -183,7 +183,7 @@ main.with-padding {
   }
   
   .intro-container {
-    padding: 0 var(--spacing-md);
+    padding: 0 var(--spacing-sm);
   }
   
   .intro-content h2 {
@@ -203,7 +203,7 @@ main.with-padding {
   }
   
   .intro-container {
-    padding: 0 var(--spacing-sm);
+    padding: 0 var(--spacing-xs);
   }
   
   .intro-content h2 {
