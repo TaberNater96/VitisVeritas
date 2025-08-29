@@ -330,7 +330,7 @@
 }
 
 .terroir-section.geology .section-title {
-  color: #f5deb3;
+  color: #ffffff;
   border-bottom-color: #daa520;
 }
 
@@ -341,7 +341,7 @@
 
 /* Climate - Sky blue gradients */
 .terroir-section.climate {
-  background: linear-gradient(135deg, #87ceeb 0%, #4682b4 25%, #1e90ff 50%, #0000cd 75%, #191970 100%);
+  background: linear-gradient(135deg, #53b2d7 0%, #277cc1 25%, #0c77e3 50%, #0000cd 75%, #191970 100%);
   color: #ffffff;
 }
 

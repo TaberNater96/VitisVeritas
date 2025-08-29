@@ -5,6 +5,10 @@ import columbiaRiverBasaltsImage from '../assets/images/columbia_river_basalts.p
 import pnMountainsImage from '../assets/images/pn_mountains.jpg';
 import missoulaFloodsImage from '../assets/images/missoula_floods.jpg';
 import subductionImage from '../assets/images/subduction_zone.jpg';
+import pacificClimateImage from '../assets/images/pacific_climate.png';
+import rainShadowImage from '../assets/images/rain_shadow.png';
+import budBreakImage from '../assets/images/bud_break.jpg';
+import cloudsImage from '../assets/images/clouds.jpg';
 
 const TerroirPage = () => {
   const [sectionsInView, setSectionsInView] = useState(new Set());
@@ -89,20 +93,83 @@ const TerroirPage = () => {
       title: 'Climate & Meteorology',
       colorTheme: 'climate',
       content: {
-        introduction: 'The Willamette Valley\'s climate is a delicate dance between marine influence and continental patterns, creating growing conditions that allow grapes to ripen slowly while retaining crucial acidity and aromatic complexity.',
-        paragraphs: [
-          'The valley\'s climate is defined by its position between the Pacific Ocean and the Cascade Range. Marine air flows through the Van Duzer Corridor and other gaps in the Coast Range, moderating temperatures and bringing cooling fog during crucial ripening periods. This marine influence is strongest in the northern valley and diminishes as you move south, creating distinct microclimates within individual AVAs.',
-          'Diurnal temperature variation - the difference between day and night temperatures - is critical for wine quality. Summer days may reach 85-90°F, while nights commonly drop to 45-55°F. This dramatic swing allows grapes to ripen during warm days while preserving acidity and aromatic compounds during cool nights. The growing season averages 190-220 frost-free days, with harvest typically occurring from late August through October.',
-          'Rainfall patterns strongly influence vineyard management decisions. The valley receives 40-60 inches of annual precipitation, with 90% falling between October and April. This wet winter/dry summer pattern means established vines rarely need irrigation, but young plantings may require supplemental water. The timing of fall rains can make or break a vintage, as harvest-time precipitation can dilute flavors and encourage rot pressure.'
-        ],
-        images: [
+        introduction: 'The Willamette Valley exists in a climatic sweet spot that winemakers call the "Goldilocks zone" for cool-climate viticulture. Not too hot, not too cold, not too wet during harvest, not too dry during the growing season. This delicate balance results from a complex interplay of oceanic influences, mountain barriers, and atmospheric patterns that create one of the world\'s premier regions for Pinot Noir and other cool-climate varieties. Understanding these meteorological forces reveals why certain vintages excel, why vineyard sites mere miles apart can ripen weeks differently, and how climate patterns directly translate into the flavors in your glass.',
+        subsections: [
           {
-            placeholder: 'Weather station data visualization showing diurnal temperature patterns throughout growing season',
-            position: 'after-paragraph-2'
+            title: 'The Maritime Influence',
+            content: [
+              'The Pacific Ocean, just 60 miles west, acts like a giant thermostat for the valley. Ocean water stays fairly steady year-round, hovering between 48°F and 58°F off Oregon\'s coast. This stability keeps the valley\'s temperatures in check through ocean air that flows inland. In summer, when inland areas heat up, the temperature difference creates a natural vacuum effect that sucks cool ocean air through gaps in the coastal mountains, especially through the Van Duzer Corridor near Salem.',
+              'This ocean influence shows up most in the dramatic temperature swings between day and night. During growing season, it might hit 85°F in the afternoon but drop to 50°F after dark, a 35-degree swing that\'s essential for great wine. The warm days let vines photosynthesize and build up sugar in the grapes, while cool nights preserve the grapes\' natural tartness and help create the complex aromatic compounds (esters and terpenes) that give wine its bouquet. Without these temperature swings, Willamette Valley wines would lose their signature bright, refreshing quality and complex aromas.'
+            ],
+            image: {
+              src: pacificClimateImage,
+              alt: 'Pacific Ocean climate influence on Willamette Valley',
+              position: 'right'
+            }
           },
           {
-            placeholder: 'Comparative chart of Willamette Valley climate vs. Burgundy, Piedmont, and other cool-climate regions',
-            position: 'after-paragraph-3'
+            title: 'The Rain Shadow Effect',
+            content: [
+              'The Coast Range, rising to heights of 3,000 to 4,000 feet, creates the first rain shadow that affects the valley. As moisture-laden air masses from the Pacific rise over these mountains, they cool and release much of their moisture on the western slopes through orographic precipitation, the process where air masses are forced upward by topography, causing them to cool and drop their moisture. By the time these air masses descend into the Willamette Valley, they\'ve lost much of their rainfall potential.',
+              'The Cascade Range to the east creates an even more dramatic rain shadow. These mountains, reaching elevations over 10,000 feet, wring out most remaining moisture from eastward-moving weather systems. This double rain shadow effect means the Willamette Valley receives about 40 to 45 inches of rain annually, compared to over 100 inches on the Coast Range\'s western slopes and less than 20 inches east of the Cascades. Crucially, this rainfall follows a Mediterranean pattern, with most precipitation occurring from November through May and relatively dry conditions during the critical grape-ripening period of August through October.'
+            ],
+            image: {
+              src: rainShadowImage,
+              alt: 'Rain shadow effect from coastal and cascade mountains',
+              position: 'left'
+            }
+          },
+          {
+            title: 'Growing Degree Days and Heat Accumulation',
+            content: [
+              'Viticulturists measure heat accumulation using Growing Degree Days (GDD), calculated by averaging daily high and low temperatures, subtracting 50°F (the baseline temperature for grape vine growth), and summing these values from April through October. The Willamette Valley typically accumulates between 2,200 and 2,700 GDD annually, placing it in Region I (coolest) or Region II on the Winkler Scale, a classification system for wine regions based on heat accumulation.',
+              'This GDD range is nearly identical to Burgundy, France, explaining why Pinot Noir and Chardonnay, Burgundy\'s noble grapes, perform so exceptionally here. The gradual heat accumulation allows for extended hang time, the period grapes remain on the vine, which enables full phenolic ripeness, when tannins and flavor compounds mature, without excessive sugar accumulation that would lead to high-alcohol wines.'
+            ]
+          },
+          {
+            title: 'Seasonal Weather Patterns',
+            content: [
+              'Spring in the Willamette Valley brings critical challenges and opportunities. Bud break typically occurs in early April when temperatures consistently exceed 50°F. This timing is precarious; early bud break risks frost damage, while late bud break shortens the growing season. Spring frost events, where temperatures drop below 32°F after bud break, can devastate young shoots. Vineyards address this by using various frost mitigation strategies including wind machines that mix warmer air from above with cooler air at vine level, and careful site selection on slopes where cold air drains away.',
+              'Summer establishes the vintage character. High pressure systems from the subtropical Pacific, called the Pacific High, typically develop in July and August, bringing stable, dry conditions. These systems create subsidence inversions, where descending air warms and acts as a cap, preventing cloud formation and precipitation. The average July temperature of 68°F allows steady, unhurried ripening. Heat spikes above 95°F, increasingly common with climate change, can shut down photosynthesis as vines close their stomata to conserve water, potentially disrupting ripening.'
+            ],
+            image: {
+              src: budBreakImage,
+              alt: 'Spring bud break in vineyard',
+              position: 'right'
+            }
+          },
+          {
+            title: 'The Harvest Window Challenge',
+            content: [
+              'Fall weather becomes increasingly unstable as the jet stream, the river of fast-moving air in the upper atmosphere that steers weather systems, begins its seasonal southward migration. The timing of autumn rains versus grape ripeness often determines vintage quality. Early rains can dilute flavors and promote botrytis, a fungus that can be beneficial for certain sweet wines but detrimental for dry wines. Late-arriving rains allow for optimal ripeness but require nerve and careful monitoring from winemakers.',
+              'The "October Question" looms large in the valley. Will grapes achieve full ripeness before autumn rains arrive? This climatic knife-edge creates vintage variation that many consider essential to wine\'s appeal. Years when warm, dry weather extends through October often produce the valley\'s most celebrated vintages, while early rains might necessitate earlier picking, capturing brighter acidity but potentially sacrificing some complexity.'
+            ]
+          },
+          {
+            title: 'Microclimates and Mesoclimates',
+            content: [
+              'Wine valleys are patchworks of smaller climate zones. "Mesoclimates" cover areas from a few dozen to hundreds of acres, while "microclimates" can be as small as single vineyard blocks, each with unique conditions. Even climbing 100 feet uphill can mean the difference between frost-damaged and healthy grapes. The land\'s angle matters too: south-facing slopes get about 20% more sunshine than flat ground (like lying on a beach versus sitting under an umbrella), making grapes ripen faster. North-facing slopes stay cooler, helping grapes keep their refreshing tartness.',
+              'The Van Duzer Corridor shows how geography shapes wine perfectly. This gap in the coastal mountains funnels ocean air straight into the valley like a giant wind tunnel. Vineyards in this "wind river" run 5-10 degrees cooler in the afternoon than sites just miles away. The constant breeze acts like a natural fan, keeping grape bunches dry and preventing disease. Wines from these windswept areas taste distinctly different – they have brighter, more tart flavors, stronger aromas, and a lighter, silkier feel in your mouth rather than that heavy, drying sensation.'
+            ]
+          },
+          {
+            title: 'Wind Patterns and Atmospheric Dynamics',
+            content: [
+              'Wind plays a bigger role in growing grapes than most people realize. In wine valleys, mornings usually start calm and still, which lets fog collect in the low areas. As the day warms up, hot air rises from the valley floor and pulls cool ocean breezes inland through gaps in the mountains. These afternoon winds typically pick up around 3 PM, blowing at 10-15 mph, and help cool things down during the hottest part of the day.',
+              'All this wind actually changes how grapes develop. When vines face steady breezes, they respond by building tougher, thicker grape skins – kind of like how regular exercise builds muscle. These thicker skins contain more of the compounds that give wine its color and that distinctive dry, puckering sensation (tannins). The wind also makes vines lose water faster through their leaves, which sounds bad but can actually be good in moderation. It pushes the roots to grow deeper searching for water, and slightly stressed vines often produce more flavorful grapes. But like anything, too much wind becomes harmful – it can break shoots, make it harder for leaves to do their job of converting sunlight to energy, and stress the vines beyond what\'s helpful.'
+            ],
+            image: {
+              src: cloudsImage,
+              alt: 'Cloud formations and atmospheric patterns over vineyard',
+              position: 'left'
+            }
+          },
+          {
+            title: 'The Atmospheric Terroir Translation',
+            content: [
+              'Every little change in weather shows up in the wine\'s taste. Cool nights help grapes hold onto their natural tartness (malic acid), giving wines that bright, refreshing quality that pairs so well with food. When heat builds up slowly and steadily over the growing season, grapes develop more complex flavors while keeping alcohol levels moderate. Morning fog can be friend or foe, under the right conditions it creates the special "noble rot" needed for sweet dessert wines, but too much causes harmful gray mold that ruins whole bunches. Even changes in air pressure matter: when storms approach and pressure drops, it can trigger wild yeasts in the cellar to spontaneously start fermenting.',
+              'The Willamette Valley\'s weather creates wines that stand apart from others worldwide. They have the elegance and layers of flavor you\'d expect from cool regions, plus the reliability that comes from dry harvest weather, and just enough year-to-year differences to keep things interesting. When you taste that bright cherry flavor in a Willamette Pinot Noir, you\'re literally tasting those cool nights. The refreshing zip comes from ocean breezes. Those smooth, silky tannins developed over the long, gentle growing season. In a very real sense, you\'re not just drinking wine, you\'re drinking the weather itself, all captured in a single bottle.'
+            ]
           }
         ]
       }
@@ -331,7 +398,7 @@ const TerroirPage = () => {
               <path d="m6 9 6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </div>
-          <p className="scroll-text">Let's understand this land from the ground up</p>
+          <p className="scroll-text">Let's understand this land from the ground up.</p>
           <div className="chevron-right">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="m6 9 6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
