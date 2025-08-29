@@ -9,6 +9,10 @@ import pacificClimateImage from '../assets/images/pacific_climate.png';
 import rainShadowImage from '../assets/images/rain_shadow.png';
 import budBreakImage from '../assets/images/bud_break.jpg';
 import cloudsImage from '../assets/images/clouds.jpg';
+import soilTriangleImage from '../assets/images/soil_triangle.png';
+import jorySoilImage from '../assets/images/jory_soil.png';
+import sunVineyardImage from '../assets/images/sun_vineyard.jpg';
+import vineyardSoilImage from '../assets/images/vineyard_soil.jpg';
 
 const TerroirPage = () => {
   const [sectionsInView, setSectionsInView] = useState(new Set());
@@ -179,24 +183,83 @@ const TerroirPage = () => {
       title: 'Soil Science',
       colorTheme: 'soils',
       content: {
-        introduction: 'Soil is where the magic of terroir begins. The Willamette Valley\'s diverse soil types, formed by volcanic activity and flood deposits, create distinct growing environments that profoundly influence grape development and wine character.',
-        paragraphs: [
-          'Jory soils, the valley\'s most famous soil type, formed from weathered Missoula Flood deposits over ancient basalt bedrock. These well-drained, reddish-brown soils are found on hilltops and upper slopes, particularly in the Dundee Hills. Rich in iron oxide and volcanic minerals, Jory soils typically produce more structured, powerful wines with excellent aging potential. The soil\'s excellent drainage forces vines to develop deep root systems, accessing diverse mineral layers.',
-          'Willakenzie soils derive from marine sedimentary rocks uplifted during the formation of the Coast Range. Found primarily on slopes and hillsides, these clay-rich soils have excellent water retention but can be challenging to work. Willakenzie soils often produce more elegant, aromatic wines with distinctive floral notes. The higher clay content creates natural water stress during dry periods, concentrating flavors in the grapes.',
-          'Woodburn and Nekia soils occupy different elevation zones and offer their own contributions to wine character. Woodburn soils in valley floors provide consistent moisture and nutrients, while Nekia soils on volcanic ridges offer exceptional drainage and mineral complexity. Understanding these soil differences helps winemakers select appropriate sites for different grape varieties and wine styles, with Pinot Noir showing remarkable sensitivity to these subtle soil variations.'
-        ],
-        images: [
+        introduction: 'Soil is far more than just dirt holding vines upright. It\'s a complex, living ecosystem where chemistry, physics, biology, and mineralogy converge to create wine\'s fundamental character. In the Willamette Valley, diverse soil types within a small geographic area produce dramatically different wine expressions, even from the same grape variety planted hillsides apart.',
+        subsections: [
           {
-            placeholder: 'Soil profile cross-sections showing Jory, Willakenzie, and Woodburn soil horizons',
-            position: 'after-paragraph-1'
+            title: 'The Architecture of Wine Soils',
+            content: [
+              'Soil consists of four primary components: mineral particles (45%), organic matter (5%), water (25%), and air (25%). The mineral component, derived from weathered parent rock, provides the basic framework. In the Willamette Valley, this ranges from weathered volcanic basalt to marine sedimentary rocks to wind-blown loess, accumulated wind-deposited silt.',
+              'Soil texture, determined by relative proportions of sand, silt, and clay particles, fundamentally affects vine growth. Clay particles, smaller than 0.002 millimeters, dominate many Willamette Valley soils. Their microscopic size creates enormous surface area for chemical reactions and nutrient storage. Clay soils hold water through adhesion forces, providing moisture during dry summers but potentially causing waterlogging in wet conditions. Sandy soils drain rapidly and warm quickly but require irrigation. Silt particles offer moderate water retention and good nutrient availability.'
+            ],
+            image: {
+              src: soilTriangleImage,
+              alt: 'Soil texture triangle showing sand, silt, and clay proportions',
+              position: 'right'
+            }
           },
           {
-            placeholder: 'Interactive soil map of Willamette Valley showing distribution of major soil types',
-            position: 'after-paragraph-2'
+            title: 'The Jory Soil Profile: Willamette Valley\'s Signature',
+            content: [
+              'Oregon\'s official state soil, Jory, demonstrates how rocks, weather, and time work together to create distinctive growing conditions for wine. Born from ancient Columbia River basalt, these soils have been developing for hundreds of thousands of years, creating layers that extend more than six feet down. At the surface, you\'ll find topsoil containing 3 to 5 percent organic matter (decomposed plant material that acts like natural slow-release fertilizer). Below lies a clay-rich layer that formed as rainwater carried tiny particles downward over millennia. This clay zone becomes the primary rooting area where mature grapevines establish themselves.',
+              'Jory soil\'s striking red color comes from iron compounds like hematite and goethite, the same materials that create rust. This iron serves important functions beyond appearance, playing vital roles in plant photosynthesis and internal chemistry. Wine tasters often detect that grapes grown in these iron-rich soils produce wines with distinctive "mineral" or "blood-like" flavors, particularly noticeable in Pinot Noir. This embodies terroir in action, where the soil\'s chemical makeup directly influences the wine\'s character.'
+            ],
+            image: {
+              src: jorySoilImage,
+              alt: 'Jory soil profile showing characteristic red coloration and clay layers',
+              position: 'left'
+            }
           },
           {
-            placeholder: 'Mineral composition charts comparing major Willamette Valley soil types',
-            position: 'after-paragraph-3'
+            title: 'Willakenzie: The Marine Alternative',
+            content: [
+              'Willakenzie soils tell a different geological story. Formed from uplifted marine sedimentary rocks, these soils are typically only two to three feet deep. This shallow profile forces vines to partition energy differently, producing smaller berries with higher skin-to-juice ratios, concentrating flavors and tannins.',
+              'The parent material contains ancient seafloor deposits rich in calcium carbonate from marine organisms. As these weather, they release calcium, which influences pH and structure. Calcium causes clay particles to flocculate, or clump together, improving drainage. This better drainage combined with shallow profiles creates natural stress that many winemakers consider ideal for quality production.'
+            ]
+          },
+          {
+            title: 'The Living Soil',
+            content: [
+              'A teaspoon of healthy vineyard soil contains more microorganisms than Earth\'s human population. Mycorrhizal fungi form the most important biological relationship, colonizing vine roots and extending networks far beyond the root zone, increasing surface area up to 1,000 times. In exchange for carbohydrates, mycorrhizae deliver water and nutrients, particularly phosphorus. Research suggests mycorrhizal diversity correlates with wine complexity.',
+              'The soil microbiome affects disease resistance and stress responses. Beneficial bacteria produce antibiotics suppressing pathogens and trigger systemic resistance in vines. Some bacteria produce plant hormones influencing grape ripening and flavor development. Soil microbial communities increasingly appear as distinctive terroir components as climate or geology.'
+            ]
+          },
+          {
+            title: 'Water Relations and Soil Physics',
+            content: [
+              'Plant-available water, the difference between field capacity and permanent wilting point, determines how vines experience water stress. Clay-rich Jory soils have high water-holding capacity but also high wilting points, creating mild, consistent stress that encourages deep rooting and flavor concentration without destructive drought.',
+              'Soil structure, the arrangement of particles into aggregates, affects water movement and root penetration. Well-structured soils have macropores for drainage, mesopores for water storage, and micropores within aggregates. Compaction destroys this structure, reducing infiltration and root growth.'
+            ]
+          },
+          {
+            title: 'Soil Temperature Dynamics',
+            content: [
+              'Soil color and composition create distinct thermal patterns that directly impact vine development. Dark Jory soils act like heat absorbers, soaking up solar radiation and warming earlier in spring, which can give vines a head start on growth. However, these clay-rich soils also hold more water, creating a natural cooling effect that moderates temperature swings throughout the day. On the other hand, lighter-colored Willakenzie soils reflect more sunlight away but drain water much faster, which allows them to warm up and cool down more quickly. This difference means that while Jory soils provide steady, moderate temperatures, Willakenzie soils experience more dramatic temperature fluctuations that can stress vines during extreme weather.',
+              'Underground, soil temperature becomes increasingly stable with depth, creating an important refuge for vine roots during challenging conditions. While surface soil temperatures can swing 30°F or more between day and night, temperatures just three feet down remain remarkably constant year-round. This temperature stability becomes vital during heat waves when surface roots essentially shut down to protect themselves from stress. During these periods, the vine\'s deeper roots continue operating normally in the cooler, stable environment below ground, maintaining the photosynthesis needed to ripen grapes properly. This deep root system also explains why established vineyards with mature root networks often produce better fruit during difficult vintage years than younger plantings with shallow root systems.'
+            ],
+            image: {
+              src: sunVineyardImage,
+              alt: 'Sunlight warming vineyard soil and creating temperature gradients',
+              position: 'right'
+            }
+          },
+          {
+            title: 'Terroir Expression Through Soil',
+            content: [
+              'The path from soil to wine flavor involves complex transformations. Mineral nutrients affect enzyme production, influencing metabolic pathways creating flavor precursors. Potassium affects malate metabolism and wine acidity. Nitrogen availability determines amino acid composition, affecting fermentation and aroma production.',
+              'Different soil types consistently produce recognizable flavor signatures in wines, particularly in Pinot Noir where these differences are most apparent. Jory soils tend to yield wines with darker fruit characteristics like blackberry and plum, paired with earthier aromatics reminiscent of forest floor or mushrooms, and firmer tannin structure that gives the wine backbone. Willakenzie soils typically produce brighter expressions featuring red cherry and strawberry flavors, more pronounced floral aromatics like rose petals or violets, and a silkier, more approachable texture. Vineyards planted on marine sedimentary soils often contribute a distinctive minerality that tasters describe as "oyster shell" or "wet stone," while volcanic soils add "smoky" or "graphite" notes that suggest pencil lead or charcoal. These differences aren\'t subtle marketing concepts but measurable chemical variations that trained palates can consistently identify in blind tastings.'
+            ]
+          },
+          {
+            title: 'Managing Soil for Quality',
+            content: [
+              'Understanding soil science allows vineyard managers to make targeted decisions that directly impact wine quality. Cover crop selection becomes strategic: legumes like clover fix atmospheric nitrogen when soils need more nutrients, grasses contribute organic matter and prevent erosion, while brassicas like mustard help control soil-borne pests. Some operations use precision viticulture with soil sensors and GPS mapping to customize management across different vineyard blocks. Others focus on building soil biology through compost and reduced chemical inputs to encourage beneficial microorganisms. The goal isn\'t creating the richest soil possible but achieving balanced nutrition that promotes moderate vine vigor and optimal fruit development.',
+              'Soil functions as a dynamic, living system that actively shapes wine character through countless interactions occurring every moment. Every chemical reaction between root and mineral, every exchange between beneficial fungi and vine roots contributes to the final wine\'s expression. The process spans from geological timescales (slow weathering of ancient basalt) to instantaneous nutrient uptake at root hairs. When you taste a Willamette Valley wine, you\'re experiencing the integrated result of millions of these soil processes, making each sip a liquid expression of the complex underground ecosystem that nurtured those grapes.'
+            ],
+            image: {
+              src: vineyardSoilImage,
+              alt: 'Vineyard soil management practices and soil health indicators',
+              position: 'left'
+            }
           }
         ]
       }
@@ -365,7 +428,7 @@ const TerroirPage = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check
+    handleScroll(); // initial check
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
