@@ -597,3 +597,104 @@ html {
 .terroir-section:nth-child(6) { transition-delay: 0.6s; }
 .terroir-section:nth-child(7) { transition-delay: 0.7s; }
 .terroir-section:nth-child(8) { transition-delay: 0.8s; }
+
+/* Image Modal Styles */
+.clickable-image {
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.clickable-image:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+.image-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+}
+
+.image-modal-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: default;
+}
+
+.image-modal-close {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+  z-index: 1001;
+}
+
+.image-modal-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.8);
+  transform: scale(1.1);
+}
+
+.image-modal-img {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+.image-modal-caption {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 1rem;
+  padding: 0 1rem;
+  line-height: 1.4;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .image-modal-close {
+    top: -30px;
+    right: -10px;
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+  }
+  
+  .image-modal-img {
+    max-height: 70vh;
+  }
+  
+  .image-modal-caption {
+    font-size: 1rem;
+  }
+}

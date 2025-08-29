@@ -16,6 +16,41 @@ import vineyardSoilImage from '../assets/images/vineyard_soil.jpg';
 
 const TerroirPage = () => {
   const [sectionsInView, setSectionsInView] = useState(new Set());
+  const [modalImage, setModalImage] = useState(null);
+
+  // Modal handlers
+  const openImageModal = (imageSrc, imageAlt) => {
+    setModalImage({ src: imageSrc, alt: imageAlt });
+    // Prevent body scroll when modal is open
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeImageModal = () => {
+    setModalImage(null);
+    // Restore body scroll when modal is closed
+    document.body.style.overflow = 'unset';
+  };
+
+  // Handle escape key to close modal
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape' && modalImage) {
+        closeImageModal();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [modalImage]);
+
+  // Cleanup effect to restore body scroll on unmount
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
 
   const terroirSections = [
     {
@@ -435,6 +470,27 @@ const TerroirPage = () => {
     };
   }, []);
 
+  // Image Modal Component
+  const ImageModal = () => {
+    if (!modalImage) return null;
+
+    return (
+      <div className="image-modal-overlay" onClick={closeImageModal}>
+        <div className="image-modal-content" onClick={(e) => e.stopPropagation()}>
+          <button className="image-modal-close" onClick={closeImageModal}>
+            ×
+          </button>
+          <img 
+            src={modalImage.src} 
+            alt={modalImage.alt} 
+            className="image-modal-img"
+          />
+          <p className="image-modal-caption">{modalImage.alt}</p>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="terroir-page">
       {/* Hero Section */}
@@ -503,7 +559,8 @@ const TerroirPage = () => {
                                 <img 
                                   src={subsection.image.src} 
                                   alt={subsection.image.alt}
-                                  className="section-img"
+                                  className="section-img clickable-image"
+                                  onClick={() => openImageModal(subsection.image.src, subsection.image.alt)}
                                 />
                               ) : (
                                 <div className="image-placeholder">
@@ -544,6 +601,9 @@ const TerroirPage = () => {
           ))}
         </div>
       </div>
+      
+      {/* Image Modal */}
+      <ImageModal />
     </div>
   );
 };
