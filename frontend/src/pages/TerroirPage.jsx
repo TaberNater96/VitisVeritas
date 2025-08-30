@@ -18,6 +18,10 @@ import vineyardHillImage from '../assets/images/vineyard_hill.jpg';
 import dualHillImage from '../assets/images/dual_hill.png';
 import prevailingWindsImage from '../assets/images/prevailing_winds.png';
 import wvTopoImage from '../assets/images/wv_topo.png';
+import soilMicrobiomeImage from '../assets/images/soil_microbiome.png';
+import fungiImage from '../assets/images/fungi.png';
+import soilHealthImage from '../assets/images/soil_health.png';
+import vineTrunkImage from '../assets/images/vine_trunk.jpg';
 
 const TerroirPage = () => {
   const [sectionsInView, setSectionsInView] = useState(new Set());
@@ -380,24 +384,75 @@ const TerroirPage = () => {
       title: 'Biology & Ecology',
       colorTheme: 'biology',
       content: {
-        introduction: 'The Willamette Valley vineyard is a complex ecosystem where beneficial organisms and harmful threats exist in delicate balance. Understanding this biological interplay is crucial for sustainable grape growing and wine quality.',
-        paragraphs: [
-          'Soil biology forms the foundation of healthy vineyard ecosystems. Mycorrhizal fungi form symbiotic relationships with vine roots, extending their reach for nutrients and water while receiving carbohydrates in return. These fungal networks can span entire hillsides, connecting plants and facilitating communication through chemical signals. Beneficial bacteria in the rhizosphere help process nutrients and protect against harmful pathogens, while earthworms and other soil organisms improve soil structure and nutrient cycling.',
-          'Cover crops and biodiversity management play crucial roles in vineyard health. Leguminous cover crops like crimson clover fix nitrogen naturally, reducing fertilizer needs. Flowering plants provide habitat for beneficial insects that control pest populations, while diverse plant communities improve soil health and prevent erosion. The timing of cover crop management affects competition with vines for water and nutrients, requiring careful coordination with vine growth cycles.',
-          'Disease and pest management requires constant vigilance and integrated approaches. Powdery mildew, downy mildew, and botrytis threaten grape quality and must be managed through canopy management, fungicide applications, and cultural practices. Phylloxera, an aphid-like insect that devastated European vineyards in the 19th century, requires the use of resistant rootstocks. Other pests like birds, wasps, and various insects require monitoring and management strategies that balance effectiveness with environmental stewardship.'
-        ],
-        images: [
+        introduction: 'Beneath every great vineyard lies an intricate web of biological relationships that profoundly influence wine quality. The Willamette Valley\'s vineyards aren\'t monocultures but complex ecosystems where millions of organisms interact with grapevines in ways that directly affect flavor, aroma, and structure. From microscopic soil bacteria to beneficial insects, from cover crop roots to native yeasts, these biological systems create what many consider the most mysterious and vital component of terroir.',
+        subsections: [
           {
-            placeholder: 'Microscopic imagery showing mycorrhizal fungal networks around vine roots',
-            position: 'after-paragraph-1'
+            title: 'The Soil Microbiome: The Underground Universe',
+            content: [
+              'Just one gram of healthy vineyard soil is absolutely teeming with life, hosting up to a billion bacteria from thousands of different species. These tiny organisms are the unsung heroes of the vineyard, constantly working to break down organic matter and transform minerals into forms that grapevines can actually use. Some bacteria specialize in capturing nitrogen from the air and converting it into nutrients that fuel vine growth, while others unlock phosphorus that\'s trapped in soil minerals. Without these microscopic workers, grapevines would essentially starve even in nutrient-rich soil because they couldn\'t access what they need.',
+              'The fungal community in vineyard soil is just as important as the bacteria. While many people know about mycorrhizal fungi that form partnerships with vine roots, there are also countless other fungi that slowly decompose organic matter throughout the growing season. This creates a steady, gentle release of nutrients that keeps vines growing at just the right pace, avoiding the explosive growth spurts that can happen with synthetic fertilizers and actually hurt wine quality. Many of these fungi also act like natural bodyguards, producing compounds that fight off harmful pathogens or simply outcompeting the bad guys for resources.',
+              'What\'s exciting is that scientists are discovering connections between soil microbe diversity and wine complexity. Different microbial communities release different minerals and produce unique compounds that the vines absorb, which could contribute to the distinct flavors we taste in the finished wine. Forward-thinking Willamette Valley winemakers are now treating their soil microbiome as a main part of what makes their wines unique, using practices like composting, minimal tillage, and diverse cover crops to nurture this underground ecosystem that may be just as important as climate and grape variety in creating exceptional wine.'
+            ],
+            image: {
+              src: soilMicrobiomeImage,
+              alt: 'Soil microbiome showing diverse bacterial and fungal communities',
+              position: 'right'
+            }
           },
           {
-            placeholder: 'Seasonal ecosystem diagram showing beneficial insects, cover crops, and soil organisms',
-            position: 'after-paragraph-2'
+            title: 'Mycorrhizal Networks: The Wood Wide Web',
+            content: [
+              'Arbuscular mycorrhizal fungi (AMF) colonize over 90% of grapevine roots in healthy vineyards, forming one of nature\'s most important symbiotic relationships. These fungi extend hyphal networks far beyond the root zone, increasing the effective root surface area by up to 1,000 times. Through these fungal highways, vines access water and nutrients from soil volumes they could never reach alone. Phosphorus, zinc, copper, and other micronutrients move through mycorrhizal networks to vine roots in exchange for photosynthetically produced sugars.',
+              'But mycorrhizae do more than transport nutrients. They produce glomalin, a glycoprotein that binds soil particles into stable aggregates, improving soil structure and water infiltration. During drought stress, mycorrhizal networks help vines access water from deeper soil layers and can even transfer water between plants. Some research suggests mycorrhizal diversity influences wine aromatic complexity, as different fungal species produce different enzymes that affect nutrient availability and potentially influence metabolic pathways in grapes.',
+              'The mycorrhizal network connects not just vine to fungus but vine to vine, creating a vineyard-wide communication system. Through these networks, vines can share nutrients, water, and even chemical signals warning of pest attacks or disease pressure. This interconnectedness means vineyard management affects not just individual vines but the entire biological community, with practices like excessive fertilization or fungicide use potentially disrupting these beneficial networks.'
+            ],
+            image: {
+              src: fungiImage,
+              alt: 'Mycorrhizal fungal networks connecting plant roots',
+              position: 'left'
+            }
           },
           {
-            placeholder: 'Disease pressure calendar showing common vineyard threats throughout growing season',
-            position: 'after-paragraph-3'
+            title: 'Cover Crops and Companion Plants',
+            content: [
+              'Cover cropping transforms Willamette Valley vineyards into diverse ecosystems rather than monocultures. Different cover crop species provide distinct ecological services. Legumes like crimson clover and vetch fix atmospheric nitrogen through Rhizobium bacteria in their root nodules, providing natural fertilization. Deep-rooted plants like daikon radish break through compacted soil layers, improving drainage and creating channels for vine roots. Grasses add organic matter and prevent erosion on steep slopes while competing with vines for water and nutrients, naturally controlling vigor.',
+              'The timing and management of cover crops critically affects vine performance. Spring cover crops compete with vines during the crucial flowering and fruit set period, potentially reducing yields but increasing concentration. Summer resident vegetation maintains beneficial insect populations and reduces dust that can carry disease spores. Fall-seeded covers protect soil during wet winters while decomposing in spring to release nutrients during the growing season.',
+              'Beyond nutrient cycling, cover crops support complex food webs. Their flowers provide nectar and pollen for beneficial insects, their roots feed soil organisms, and their foliage shelters predatory insects that control pest populations. Some vineyards plant specific cover crop mixtures to attract particular beneficial insects or to produce allelopathic compounds, natural chemicals that suppress weed growth, reducing herbicide needs.'
+            ]
+          },
+          {
+            title: 'Beneficial Insects and Biological Control',
+            content: [
+              'Willamette Valley vineyards are buzzing with life, home to hundreds of different insect species that mostly help rather than harm grape production. Tiny predatory mites keep spider mites in check before they can damage leaves and hurt the vine\'s ability to make energy from sunlight. Lacewings and ladybugs munch on aphids and mealybugs that can spread nasty viral diseases from vine to vine. Even more impressive are the parasitic wasps that hunt down grape leafhopper eggs and lay their own eggs inside them, creating a natural pest control system that works around the clock. All these helpful insects need places to live and things to eat throughout the growing season, which is why the best vineyards maintain hedgerows, plant flowers specifically for beneficial bugs, and go easy on pesticides.',
+              'Smart vineyard managers have learned that the goal isn\'t to wipe out every single pest, but to keep pest numbers below the point where they actually hurt grape production or wine quality. This balancing act, called managing economic thresholds, means leaving enough pests around to feed the good bugs while preventing serious damage. It takes careful observation and a deep understanding of how predators and pests interact, but vineyards that master this approach become incredibly stable ecosystems that need fewer and fewer interventions over time.',
+              'While grapevines don\'t actually need bees for pollination since they\'re wind-pollinated, the presence of native bees like mason bees and bumblebees tells a bigger story about vineyard health. These bees pollinate cover crops and wild plants around the vineyard, and their thriving populations signal that pesticide use is minimal and habitat is abundant. Vineyards with healthy bee populations often produce higher quality wines, not because the bees directly help the grapes, but because they indicate that the entire vineyard ecosystem is balanced and thriving.'
+            ],
+            image: {
+              src: soilHealthImage,
+              alt: 'Beneficial insects and soil health in vineyard ecosystem',
+              position: 'right'
+            }
+          },
+          {
+            title: 'The Vine\'s Internal Biology',
+            content: [
+              'Within grapevines themselves, biological processes directly influence wine quality. Grapevines have their own internal daily rhythms that control when genes turn on and off, affecting everything from how efficiently they make energy from sunlight to which flavor compounds they produce. This is why many winemakers prefer harvesting in the early morning, it\'s not just about cooler temperatures but also because the vine\'s natural acid levels peak before dawn, helping preserve the crisp acidity that makes wines taste balanced and fresh. Throughout the growing season, the vine produces different hormones that act like chemical messengers, especially during ripening when hormones like abscisic acid trigger the development of color, sugar accumulation, and the creation of the aromatic compounds that eventually become the wine\'s bouquet.',
+              'The trunk and woody stem structure of the grapevine, often called the cordon system, serves as both the vine\'s highway and storage facility. These permanent woody parts transport water, nutrients, and energy between the roots and leaves while also storing carbohydrates during winter that fuel new growth each spring. The age and health of these woody structures matter tremendously, older vines with well-established trunks and cordons tend to produce more concentrated, complex fruit because their extensive wood network allows for better regulation of water and nutrient flow. The way these permanent structures are trained and pruned also influences how the vine distributes its energy, with different training systems creating microclimates within the vine canopy that affect how grapes ripen and develop their flavors.',
+              'The phylloxera crisis of the late 1800s, while devastating at the time, accidentally led to one of the most important discoveries in winemaking: how much the rootstock affects wine character. Today, most wine grapes are actually two plants in one, with the fruit-producing variety grafted onto a different rootstock chosen for specific qualities. These rootstocks have dramatically different abilities to soak up nutrients from the soil, survive drought conditions, and control how vigorously the vine grows. Some rootstocks send their roots deep and straight down like anchors, while others spread their roots wide and shallow like a net, and these different root patterns completely change how the vine accesses water and minerals, ultimately influencing what the finished wine tastes like.'
+            ],
+            image: {
+              src: vineTrunkImage,
+              alt: 'Grapevine trunk',
+              position: 'left'
+            }
+          },
+          {
+            title: 'Native Yeasts and Fermentation Ecology',
+            content: [
+              'The whitish, waxy coating you see on grape skins isn\'t just for show, it\'s actually home to an incredible diversity of wild yeasts that change depending on where the vineyard is located, what the weather was like that year, and how the grapes were grown. These native yeasts include not only the famous Saccharomyces cerevisiae that most people know about, but dozens of other species that many winemakers believe are essential for capturing the true character of a specific place. During the early stages of fermentation, wild yeasts with names like Hanseniaspora, Candida, and Metschnikowia take the lead, producing special enzymes and flavor compounds that you simply can\'t get from store-bought commercial yeasts.',
+              'How a vineyard is managed has a huge impact on which wild yeasts call it home. Organic and biodynamic vineyards tend to have much more diverse yeast communities, which may be one reason their wines often taste more complex and interesting. Even the copper sprays that organic growers use to prevent disease end up selecting for yeasts that can tolerate copper, creating unique yeast populations. Cover crops and wild plants around the vineyard act like yeast hotels, keeping populations alive between growing seasons. Birds also play a surprising role, carrying yeasts on their feet and feathers as they move from vine to vine and vineyard to vineyard, helping spread the biological signature that makes each region\'s wines distinctive.',
+              'When you really dig into vineyard biology, it becomes clear that exceptional wines don\'t come from sterile, factory-like conditions but from thriving, messy ecosystems where countless living things all contribute something to the final bottle. This biological side of terroir includes everything from soil microbes that help vines absorb nutrients, to wild yeasts that guide fermentation, to fungal networks that keep vines healthy, to beneficial insects that maintain the delicate balance of the vineyard ecosystem.'
+            ]
           }
         ]
       }
