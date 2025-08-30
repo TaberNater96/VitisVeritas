@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './AlchemyPage.css';
 import wineMakingImage from '../assets/images/wine_making.jpg';
 import harvestImage from '../assets/images/harvest.jpg';
@@ -16,6 +16,8 @@ import bottlingImage from '../assets/images/bottling.jpg';
 import rackingImage from '../assets/images/racking.jpg';
 
 const AlchemyPage = () => {
+  const [sectionsInView, setSectionsInView] = useState(new Set());
+
   const wineProcessPhases = [
     {
       id: 'harvest',
@@ -97,6 +99,40 @@ const AlchemyPage = () => {
     }
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = document.querySelectorAll('.phase-section');
+      const windowHeight = window.innerHeight;
+      const scrollPosition = window.scrollY;
+
+      sections.forEach((section, index) => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        
+        // Check if section is in view (with some buffer)
+        const isInView = scrollPosition + windowHeight > sectionTop + 200 && 
+                        scrollPosition < sectionTop + sectionHeight - 200;
+        
+        if (isInView) {
+          setSectionsInView(prev => new Set([...prev, index]));
+        } else {
+          setSectionsInView(prev => {
+            const newSet = new Set(prev);
+            newSet.delete(index);
+            return newSet;
+          });
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // initial check
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <div className="alchemy-page">
       <div className="alchemy-hero" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url(${wineMakingImage})`}}>
@@ -127,7 +163,7 @@ const AlchemyPage = () => {
 
       <div className="phases-container">
         {wineProcessPhases.map((phase, index) => (
-          <section key={phase.id} className={`phase-section ${index % 2 === 0 ? 'phase-left' : 'phase-right'}`}>
+          <section key={phase.id} className={`phase-section ${index % 2 === 0 ? 'phase-left' : 'phase-right'} ${sectionsInView.has(index) ? 'in-view' : ''}`}>
             <div className="phase-content">
               <div className="phase-text">
                 <h2 className="phase-title">{phase.title}</h2>
