@@ -13,6 +13,10 @@ import soilTriangleImage from '../assets/images/soil_triangle.png';
 import jorySoilImage from '../assets/images/jory_soil.png';
 import sunVineyardImage from '../assets/images/sun_vineyard.jpg';
 import vineyardSoilImage from '../assets/images/vineyard_soil.jpg';
+import vineyardHillImage from '../assets/images/vineyard_hill.jpg';
+import dualHillImage from '../assets/images/dual_hill.png';
+import prevailingWindsImage from '../assets/images/prevailing_winds.png';
+import wvTopoImage from '../assets/images/wv_topo.png';
 
 const TerroirPage = () => {
   const [sectionsInView, setSectionsInView] = useState(new Set());
@@ -304,24 +308,63 @@ const TerroirPage = () => {
       title: 'Topography & Microclimates',
       colorTheme: 'topography',
       content: {
-        introduction: 'The rolling hills and varied elevations of the Willamette Valley create countless microclimates, each with its own personality. Understanding how topography influences growing conditions is essential to appreciating the diversity of Oregon wines.',
-        paragraphs: [
-          'Elevation plays a crucial role in site selection, with most premium vineyards planted between 200-800 feet above sea level. Higher elevations experience cooler temperatures, longer growing seasons, and better air drainage - crucial for preventing frost damage and disease pressure. Sites above 800 feet risk insufficient heat accumulation, while those below 200 feet may face frost and humidity challenges. Each 100-foot elevation gain typically correlates to a 1-2°F temperature decrease.',
-          'Slope aspect - the direction a hillside faces - dramatically affects grape growing conditions. South-facing slopes receive maximum sun exposure and warmth, ideal for varieties needing full ripeness. East-facing slopes capture gentle morning sun while avoiding afternoon heat stress. West-facing slopes benefit from afternoon sun but risk exposure to marine winds. North-facing slopes, while cooler, can produce exceptional wines in warm vintages when heat stress is a concern.',
-          'The valley\'s complex topography creates numerous frost pockets and wind patterns that influence site-specific growing conditions. Cold air drainage allows hilltop vineyards to avoid damaging spring and fall frosts, while valley floor sites may experience temperature inversions. Wind patterns, particularly through gaps in the coastal hills, moderate temperatures but can also create desiccating conditions that stress vines if not properly managed.'
-        ],
-        images: [
+        introduction: 'The Willamette Valley\'s varied topography creates a three-dimensional mosaic of growing conditions that profoundly influence wine character. Elevation, slope angle, aspect, and proximity to geographical features combine to create distinct microclimates, small areas with unique atmospheric conditions, and mesoclimates, larger zones spanning dozens to hundreds of acres. These topographical variations explain why vineyards separated by mere miles, or even different blocks within the same property, can produce wines with dramatically different personalities.',
+        subsections: [
           {
-            placeholder: '3D topographic model of Willamette Valley showing elevation gradients and vineyard locations',
-            position: 'after-paragraph-1'
+            title: 'Elevation',
+            content: [
+              'Elevation plays a very important role in Willamette Valley vineyards, which climb from 200 feet on the valley floor to over 1,000 feet on the highest hillsides. Here\'s the basic rule: for every 1,000 feet you go up, it gets about 3.5°F cooler. This cooling effect is actually a good thing for wine grapes. At higher elevations, grapes ripen more slowly, like slow-cooking versus flash-frying, which gives them time to develop complex flavors while keeping their refreshing acidity. The trade-off? High-elevation vineyards often harvest two to three weeks later than those on the valley floor, racing to pick their grapes before the autumn rains arrive.',
+              'There\'s a famous elevation marker at 400 feet that locals call the "Pinot line," named after ancient floods that reached exactly this height. But this line marks something even more important for grape growing: it\'s where the best conditions begin. Below 400 feet, cold air settles like a lake and morning fog lingers. Above this line, something interesting happens on calm nights: warm air creates a blanket over cooler air (called a temperature inversion), forming a protected zone between 400 and 800 feet where frost rarely strikes. Vineyards in this "goldilocks zone" stay warmer at night than both the foggy valley floor and the exposed mountaintops, protecting buds from spring frost while still getting those cool nights that help grapes develop their best flavors.'
+            ],
+            image: {
+              src: vineyardHillImage,
+              alt: 'Vineyard hillside showing elevation gradients',
+              position: 'right'
+            }
           },
           {
-            placeholder: 'Sun exposure diagrams showing seasonal solar angles on different slope aspects',
-            position: 'after-paragraph-2'
+            title: 'Slope Dynamics and Solar Exposure',
+            content: [
+              'The steepness of a hillside dramatically affects vineyard conditions. Think of cold air like invisible water: it\'s heavier than warm air, so it flows downhill and pools in low spots. Even gentle slopes (like a wheelchair ramp) help this cold air keep moving instead of settling on vines and causing frost damage. Steeper hillsides, while great at whisking away frost-causing cold air, make it tough to use machinery and can wash away topsoil during heavy rains. The payoff is significant though: a south-facing hillside tilted at 20 degrees acts like a solar panel, catching about 20% more sunlight than flat ground during the growing season.',
+              'Where you plant on a hillside matters just as much as the hillside itself. The upper third is often the "sweet spot": warm enough to ripen grapes well but cool enough to preserve their zippy acidity, with good airflow that prevents mold. The middle section provides steady conditions for even ripening. Down at the bottom, cold air loves to settle on still nights, creating frost pockets, though these areas often have richer soil and more water. Smart vineyard owners work with these natural zones, planting different grape varieties at different heights to match what each type needs to thrive.'
+            ],
+            image: {
+              src: dualHillImage,
+              alt: 'Dual hillside showing slope dynamics and solar exposure',
+              position: 'left'
+            }
           },
           {
-            placeholder: 'Wind pattern visualization showing marine air flow through Coast Range gaps',
-            position: 'after-paragraph-3'
+            title: 'Aspect: The Compass of Ripening',
+            content: [
+              'Aspect, the compass direction a slope faces, fundamentally determines daily heat accumulation and ripening patterns. South-facing slopes in the Northern Hemisphere receive maximum solar radiation, experiencing peak sun exposure when the sun reaches its highest point. These sites warm earlier in spring, triggering earlier bud break, and maintain higher temperatures throughout the growing season. In the Willamette Valley, south-facing slopes can accumulate 200 to 300 more growing degree days than north-facing slopes at the same elevation, equivalent to being 200 miles further south climatically.',
+              'East-facing slopes receive morning sun, warming quickly after cool nights and drying dew that could promote fungal diseases. This early warming extends the daily photosynthesis period, potentially increasing sugar accumulation. However, they cool earlier in the afternoon, preserving acidity and aromatic compounds. West-facing slopes experience opposite patterns, remaining cooler in the morning but receiving intense afternoon sun. This can be problematic during heat waves when afternoon temperatures peak, potentially causing sunburn on exposed clusters. North-facing slopes, the coolest aspect, receive only indirect sunlight, creating conditions that significantly delay ripening. While challenging for achieving full ripeness in marginal years, these sites excel in warm vintages, producing wines with exceptional freshness and aromatic complexity.',
+              'Southeast aspects often provide the ideal conditions in the Willamette Valley, receiving ample morning sun for photosynthesis while avoiding the most intense afternoon heat. Many of the valley\'s most celebrated vineyards occupy southeast-facing slopes, combining adequate heat accumulation with natural temperature moderation.'
+            ]
+          },
+          {
+            title: 'Wind Patterns and Topographical Funneling',
+            content: [
+              'Hills and valleys act like giant channels that direct wind flow, creating pockets of very different growing conditions. The Van Duzer Corridor, a natural gap in the Coast Range mountains, works like a giant wind tunnel. On hot summer afternoons, when inland temperatures soar, cool ocean air gets sucked through this gap at 20 to 30 mph, like opening a window in a hot room. Vineyards sitting in this "wind river" stay 5 to 10 degrees cooler than their neighbors, and the constant breeze helps prevent mold and mildew. But there\'s such a thing as too much wind: strong gusts can stress the vines and knock off flowers before they become grapes. Throughout the Willamette Valley, prevailing winds generally flow from the northwest in summer and from the southwest during winter storms, with each vineyard site experiencing these patterns differently based on its position in the landscape.',
+              'Vines on exposed ridgetops and those tucked into protected valleys face completely different wind challenges. Up on the ridges, constant wind actually toughens grape skins the same way exercise builds muscle, potentially creating more flavorful, concentrated wines. But too much wind battering can break shoots, force vines to close their breathing pores (reducing growth), and dry them out faster. Meanwhile, vineyards sheltered behind hills might seem lucky to avoid the wind, but still air is a recipe for trouble: humidity builds up, creating perfect conditions for fungal diseases. The best vineyard sites find the sweet spot between these extremes, getting enough breeze to keep vines healthy but not so much that it beats them up.'
+            ],
+            image: {
+              src: prevailingWindsImage,
+              alt: 'Wind patterns and topographical funneling in the Willamette Valley',
+              position: 'right'
+            }
+          },
+          {
+            title: 'Microclimate Mapping and Management',
+            content: [
+              'Modern grape growers have learned that even a single vineyard is really a patchwork of different growing conditions. A rise of just 50 feet, a curve in the hillside that changes sun exposure, or being near a forest edge or stream can create completely different environments for vines just rows apart. Today\'s tech-savvy vineyards use networks of weather stations and temperature sensors scattered throughout their property to track these differences. This data helps them fine-tune everything: which vines to prune when, how to manage the leafy canopy based on sun exposure, and even harvesting different sections days or weeks apart when each zone hits peak ripeness.',
+              'All these landscape features show up directly in your glass of wine. Grapes from high elevations produce wines with bright, zesty acidity and delicate, floral aromas that seem to float above the glass. South-facing slopes deliver bolder wines with riper, darker fruit flavors, like the difference between fresh raspberries and blackberry jam. Sites that get constant wind develop thicker-skinned grapes that create wines with more grip and concentrated flavors. Valley floor vineyards, when handled skillfully, give earlier-ripening wines with gentler, softer personalities. By matching the right grape varieties to the right spots, and harvesting each section at its perfect moment, winemakers can capture the full range of what the Willamette Valley offers. The landscape isn\'t just where grapes grow; it\'s an active partner in winemaking that must be taken carefully into consideration, using elevation, angles, and exposure to shape every aspect of how the vine grows and ultimately how the wine tastes.'
+            ],
+            image: {
+              src: wvTopoImage,
+              alt: 'Topographic map of Willamette Valley showing microclimate zones',
+              position: 'left'
+            }
           }
         ]
       }
