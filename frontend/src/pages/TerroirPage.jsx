@@ -458,33 +458,6 @@ const TerroirPage = () => {
       }
     },
     {
-      id: 'hydrology',
-      title: 'Water & Hydrology',
-      colorTheme: 'hydrology',
-      content: {
-        introduction: 'Water is both blessing and challenge in the Willamette Valley. Understanding how water moves through the landscape and affects vine growth is essential for both vineyard management and wine quality.',
-        paragraphs: [
-          'The valley\'s Mediterranean-style climate creates distinct wet and dry seasons that profoundly influence vineyard management. Winter rains replenish soil moisture and groundwater, while summers are typically dry from July through September. This pattern naturally stresses vines during ripening, concentrating flavors and reducing disease pressure. However, young vines and those on shallow soils may require supplemental irrigation during extended dry periods.',
-          'Drainage characteristics vary dramatically across soil types and topographic positions. Well-drained Jory soils on hilltops rarely experience waterlogging, while clay-rich Willakenzie soils may become saturated during wet periods, potentially causing root stress and delayed bud break. Valley floor sites with poor drainage may require tile drainage systems or raised planting to prevent root rot and other water-related problems.',
-          'Water stress management is a critical factor in wine quality. Moderate water stress during veraison (color change) encourages the production of flavor compounds and reduces vegetative growth, allowing the vine to focus energy on fruit development. However, severe stress can halt ripening and create harsh tannins. Skilled growers monitor soil moisture and vine stress indicators to maintain optimal water balance throughout the growing season.'
-        ],
-        images: [
-          {
-            placeholder: 'Water cycle diagram showing precipitation patterns and soil water movement in vineyard settings',
-            position: 'after-paragraph-1'
-          },
-          {
-            placeholder: 'Vine root system illustration showing water uptake patterns in different soil types',
-            position: 'after-paragraph-2'
-          },
-          {
-            placeholder: 'Drought stress indicators chart showing visual and physiological signs in grape vines',
-            position: 'after-paragraph-3'
-          }
-        ]
-      }
-    },
-    {
       id: 'chemistry',
       title: 'The Chemistry Connection',
       colorTheme: 'chemistry',
@@ -506,33 +479,6 @@ const TerroirPage = () => {
           },
           {
             placeholder: 'Ripening progression charts showing sugar/acid development in different terroir sites',
-            position: 'after-paragraph-3'
-          }
-        ]
-      }
-    },
-    {
-      id: 'synthesis',
-      title: 'Blending It All Together',
-      colorTheme: 'synthesis',
-      content: {
-        introduction: 'Each glass of Willamette Valley wine represents the culmination of millions of years of geological history, thousands of years of climate patterns, and countless biological interactions. Understanding terroir means appreciating how all these elements blend together.',
-        paragraphs: [
-          'The concept of terroir transcends simple soil chemistry or climate data - it represents the complete integration of place, time, and human stewardship. A vineyard\'s terroir includes not just the physical environment but also the accumulated knowledge and decisions of the people who tend it. Traditional practices, innovative techniques, and philosophical approaches all become part of the terroir expression in the finished wine.',
-          'When you taste a Willamette Valley Pinot Noir, you\'re experiencing the translation of place into flavor. The bright acidity might reflect cool morning fog rolling in from the Pacific. The subtle mineral notes could echo the ancient basalt bedrock beneath the vineyard. The wine\'s elegant structure might result from the measured water stress imposed by well-drained hillside soils. Each sip contains the story of its origin.',
-          'Understanding terroir enhances wine appreciation by connecting the sensory experience to the science of place. Rather than simply noting flavor descriptors, you can understand why certain characteristics develop and what they reveal about growing conditions. This knowledge transforms wine tasting from simple pleasure into a deeper appreciation of the remarkable processes that transform soil, sun, and rain into liquid poetry. The next time you enjoy an Oregon wine, remember that you\'re tasting not just fermented grape juice, but a complete ecosystem captured in glass.'
-        ],
-        images: [
-          {
-            placeholder: 'Interactive flowchart showing terroir elements → grape development → wine characteristics',
-            position: 'after-paragraph-1'
-          },
-          {
-            placeholder: 'Comparative tasting chart showing how different terroir sites affect wine flavor profiles',
-            position: 'after-paragraph-2'
-          },
-          {
-            placeholder: 'Artistic representation of vineyard landscape with overlay of scientific elements',
             position: 'after-paragraph-3'
           }
         ]

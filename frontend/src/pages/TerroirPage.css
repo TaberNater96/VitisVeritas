@@ -396,22 +396,6 @@
   border-left-color: #4caf50;
 }
 
-/* Hydrology - Aqua blues to teals */
-.terroir-section.hydrology {
-  background: linear-gradient(135deg, #006064 0%, #00838f 25%, #0097a7 50%, #00acc1 75%, #00bcd4 100%);
-  color: #ffffff;
-}
-
-.terroir-section.hydrology .section-title {
-  color: #e0f2f1;
-  border-bottom-color: #00acc1;
-}
-
-.terroir-section.hydrology .section-introduction {
-  background: rgba(0, 131, 143, 0.3);
-  border-left-color: #00acc1;
-}
-
 /* Chemistry - Purple-pink gradient */
 .terroir-section.chemistry {
   background: linear-gradient(135deg, #4a148c 0%, #6a1b9a 25%, #8e24aa 50%, #ab47bc 75%, #ce93d8 100%);
@@ -426,22 +410,6 @@
 .terroir-section.chemistry .section-introduction {
   background: rgba(106, 27, 154, 0.3);
   border-left-color: #ab47bc;
-}
-
-/* Synthesis - Wine colors with earth undertones */
-.terroir-section.synthesis {
-  background: linear-gradient(135deg, #3e2723 0%, #5d4037 20%, #8b1538 40%, #ad1457 60%, #c2185b 80%, #e91e63 100%);
-  color: #ffffff;
-}
-
-.terroir-section.synthesis .section-title {
-  color: #fce4ec;
-  border-bottom-color: #e91e63;
-}
-
-.terroir-section.synthesis .section-introduction {
-  background: rgba(139, 21, 56, 0.3);
-  border-left-color: #e91e63;
 }
 
 /* Responsive Design */
