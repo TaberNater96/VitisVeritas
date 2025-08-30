@@ -10,6 +10,7 @@ import rainShadowImage from '../assets/images/rain_shadow.png';
 import budBreakImage from '../assets/images/bud_break.jpg';
 import cloudsImage from '../assets/images/clouds.jpg';
 import soilTriangleImage from '../assets/images/soil_triangle.png';
+import soilFoodWebImage from '../assets/images/soil_food_web.png';
 import jorySoilImage from '../assets/images/jory_soil.png';
 import sunVineyardImage from '../assets/images/sun_vineyard.jpg';
 import vineyardSoilImage from '../assets/images/vineyard_soil.jpg';
@@ -258,9 +259,14 @@ const TerroirPage = () => {
           {
             title: 'The Living Soil',
             content: [
-              'A teaspoon of healthy vineyard soil contains more microorganisms than Earth\'s human population. Mycorrhizal fungi form the most important biological relationship, colonizing vine roots and extending networks far beyond the root zone, increasing surface area up to 1,000 times. In exchange for carbohydrates, mycorrhizae deliver water and nutrients, particularly phosphorus. Research suggests mycorrhizal diversity correlates with wine complexity.',
-              'The soil microbiome affects disease resistance and stress responses. Beneficial bacteria produce antibiotics suppressing pathogens and trigger systemic resistance in vines. Some bacteria produce plant hormones influencing grape ripening and flavor development. Soil microbial communities increasingly appear as distinctive terroir components as climate or geology.'
-            ]
+              'A single teaspoon of healthy vineyard soil is packed with more tiny living creatures than there are people on Earth. The real MVPs of this underground world are mycorrhizal fungi, which team up with vine roots in nature\'s version of a business partnership. These fungi act like root extensions, spreading out underground networks that can increase the vine\'s reach by up to 1,000 times, imagine your roots suddenly having access to an area the size of a tennis court instead of a dinner table. The fungi deliver water and nutrients (especially phosphorus) to the vines, and in return, the vines feed them sugars. Wine researchers have discovered something fascinating: vineyards with more diverse fungal communities tend to produce more complex, interesting wines.',
+              'This invisible soil life also acts as the vineyard\'s health and flavor department. Good bacteria work like tiny pharmaceutical factories, producing natural antibiotics that fight off disease-causing organisms and switching on the vine\'s own defense systems. Some bacteria even produce plant hormones that influence when grapes ripen and what flavors develop. Scientists are discovering that each vineyard\'s unique community of soil microbes might be just as important to a wine\'s character as the climate or the type of soil itself. These microscopic communities are so distinctive to each location that they\'re becoming recognized as a key part of what makes wines from different places taste different.'
+            ],
+            image: {
+              src: soilFoodWebImage,
+              alt: 'The soil food web',
+              position: 'right'
+            }
           },
           {
             title: 'Water Relations and Soil Physics',
