@@ -318,7 +318,7 @@
 
 /* Geology - Deep earth tones */
 .terroir-section.geology {
-  background: linear-gradient(135deg, #8b4513 0%, #a0522d 25%, #cd853f 50%, #daa520 75%, #f4a460 100%);
+  background: linear-gradient(135deg, #823b09 0%, #9a451d 25%, #bc742b 50%, #c29012 75%, #d88b46 100%);
   color: #ffffff;
 }
 
@@ -398,7 +398,7 @@
 
 /* Chemistry - Purple-pink gradient */
 .terroir-section.chemistry {
-  background: linear-gradient(135deg, #4a148c 0%, #6a1b9a 25%, #8e24aa 50%, #ab47bc 75%, #ce93d8 100%);
+  background: linear-gradient(135deg, #4a148c 0%, #6a1b9a 25%, #8416a2 50%, #9126a4 75%, #a761b3 100%);
   color: #ffffff;
 }
 

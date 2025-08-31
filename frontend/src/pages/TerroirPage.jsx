@@ -22,6 +22,11 @@ import soilMicrobiomeImage from '../assets/images/soil_microbiome.png';
 import fungiImage from '../assets/images/fungi.png';
 import soilHealthImage from '../assets/images/soil_health.png';
 import vineTrunkImage from '../assets/images/vine_trunk.jpg';
+import metalsImage from '../assets/images/metals.jpg';
+import phLevelsImage from '../assets/images/ph_levels.png';
+import wineAcidImage from '../assets/images/wine_acid.jpg';
+import vineWaterImage from '../assets/images/vine_water.jpg';
+import wineSwirlImage from '../assets/images/wine_swirl.jpg';
 
 const TerroirPage = () => {
   const [sectionsInView, setSectionsInView] = useState(new Set());
@@ -119,6 +124,18 @@ const TerroirPage = () => {
               'The weathering process that creates Jory soil is called laterization, intense chemical weathering in warm, wet conditions that leaches out silica and other minerals while concentrating iron and aluminum oxides. This process, occurring over hundreds of thousands of years, creates soils that are well-drained yet moisture-retentive, perfectly balanced for viticulture. The clay particles in Jory soil are predominantly kaolinite and gibbsite, which have excellent cation exchange capacity, the ability to hold and gradually release nutrients to vine roots.',
               'The Willakenzie series formed from uplifted marine sedimentary rocks of the Spencer and Yamhill formations. These 20-40 million-year-old marine sandstones and siltstones create soils with different characteristics than volcanic-derived soils. Willakenzie soils are typically shallower, forcing vines to struggle more and produce smaller berries with more concentrated flavors. They drain exceptionally well and warm up faster in spring, allowing for earlier bud break and potentially longer growing seasons.'
             ]
+          },
+          {
+            title: 'Mineral Elements and Wine Flavor',
+            content: [
+              'The concept of tasting "minerality" in wine has been a topic of debate between scientists and wine professionals. From a strictly geochemical standpoint, minerals from soil don\'t directly flavor wine because they\'re present at concentrations far below what humans can taste. However, minerals do influence how vines produce flavor compounds. Iron helps activate enzymes that create aromatic molecules in grapes. Manganese affects how vines produce phenolic compounds that contribute to texture and flavor. Zinc plays a role in how yeast behaves during fermentation, which influences the production of esters (fruity aromas) and higher alcohols (various flavor compounds). So while nobody is actually tasting rocks in their wine, the minerals in soil do shape the final flavor profile through these indirect biochemical pathways.',
+              'Sulfur compounds are major players in wine aroma, creating everything from the tropical fruit notes in Sauvignon Blanc to the sometimes controversial "reduced" or meaty notes in certain Syrahs. The amount of sulfur available in soil affects how vines build sulfur-containing amino acids like cysteine and methionine. During fermentation, yeast transforms these amino acids into various aromatic compounds that significantly impact the wine\'s smell and taste. This might explain why wines from volcanic soils, which are naturally rich in sulfur, often display distinctive "smoky" or "struck match" characteristics. The sulfur in these soils doesn\'t directly create these flavors, but it provides the raw materials that vines and yeast convert into these distinctive aromatic compounds.'
+            ],
+            image: {
+              src: metalsImage,
+              alt: 'Mineral elements in soil that influence wine flavor',
+              position: 'right'
+            }
           },
           {
             title: 'Geological Diversity and Wine Complexity',
@@ -459,27 +476,81 @@ const TerroirPage = () => {
     },
     {
       id: 'chemistry',
-      title: 'The Chemistry Connection',
+      title: 'The Chemical Connection',
       colorTheme: 'chemistry',
       content: {
-        introduction: 'The translation from soil minerals to wine flavor involves complex chemical processes that occur throughout the growing season. Understanding these chemical transformations helps explain why terroir truly matters in wine quality and character.',
-        paragraphs: [
-          'Soil pH dramatically affects nutrient availability and vine health. Most Willamette Valley soils range from pH 5.5 to 6.5, slightly acidic conditions that favor the availability of essential nutrients like iron, manganese, and phosphorus. Soils that are too acidic (below pH 5.0) can create aluminum toxicity, while alkaline soils (above pH 7.0) may limit iron availability, causing chlorosis. Soil pH also influences microbial activity and the breakdown of organic matter, affecting the release of nutrients throughout the growing season.',
-          'The relationship between soil chemistry and wine chemistry is complex but measurable. Higher potassium levels in soil can lead to higher pH in wine grapes, affecting the wine\'s acidity and color stability. Calcium and magnesium influence cell wall structure in grapes, affecting juice extraction and tannin development. Iron and other trace minerals may contribute to wine complexity, though their direct impact on flavor is still being studied.',
-          'Brix levels (sugar content) and acid development during ripening reflect the vine\'s response to its growing environment. Cool, well-drained sites typically maintain higher natural acidity while achieving adequate sugar ripeness. Hot sites may develop high sugar levels quickly but lose crucial acidity. The balance between sugar accumulation and acid retention - influenced by soil type, drainage, and microclimate - determines harvest timing and ultimate wine style.'
-        ],
-        images: [
+        introduction: 'Wine is fundamentally a chemical solution, containing over 1,000 different compounds that interact to create flavor, aroma, texture, and color. In the Willamette Valley, the chemical journey from soil to grape to wine involves countless reactions influenced by terroir at every step. Understanding these chemical processes reveals why certain vineyard practices produce specific flavors, how soil chemistry translates to wine character, and why seemingly minor chemical differences create dramatically different sensory experiences.',
+        subsections: [
           {
-            placeholder: 'pH scale visualization showing optimal ranges for vine growth and nutrient availability',
-            position: 'after-paragraph-1'
+            title: 'Soil pH and Nutrient Availability',
+            content: [
+              'Soil pH is basically the acidity level of soil, and it acts like a control knob for which nutrients grapevines can actually use. In the Willamette Valley, most soils are slightly acidic, with pH levels between 5.5 and 6.5. This matters because nutrients change their chemical form depending on the pH. Take iron, for example: at pH 6.0, it exists in a form that vine roots can easily absorb. But if the pH rises to 7.5, that same iron transforms into a different chemical form that roots can\'t take up, even though it\'s still physically present in the soil. When this happens, vine leaves turn yellow because they can\'t produce enough chlorophyll without accessible iron.',
+              'This pH effect happens with nearly all nutrients. Phosphorus becomes locked up and unavailable to plants when soil is too acidic (below pH 5.5) or too alkaline (above pH 7.0), but it\'s readily accessible to roots in that sweet spot between 6.0 and 7.0. Manganese, on the other hand, becomes more and more soluble as soil gets more acidic, which can actually poison vines if pH drops below 5.0. The slightly acidic conditions naturally found in Willamette Valley soils hit a nice balance: most nutrients stay available to vines, while avoiding the aluminum toxicity problems that plague more acidic soils in other regions.',
+              'Beyond controlling nutrient availability, soil pH also affects the biological processes happening underground. Soil microorganisms and plant roots produce enzymes that break down organic matter and cycle nutrients, but these enzymes work best at specific pH levels. The enzymes that release phosphorus from decomposing organic matter are most active around pH 6.5, while those that convert nitrogen compounds into forms vines can use prefer a pH between 6.5 and 7.0. These pH-sensitive biological processes determine how quickly nutrients become available throughout the growing season, directly impacting vine health and grape quality.'
+            ],
+            image: {
+              src: phLevelsImage,
+              alt: 'pH levels and nutrient availability in soil',
+              position: 'right'
+            }
           },
           {
-            placeholder: 'Molecular diagrams showing how soil minerals translate to wine compounds (simplified)',
-            position: 'after-paragraph-2'
+            title: 'The Chemistry of Cation Exchange',
+            content: [
+              'Cation exchange capacity (CEC) is essentially how well soil can hold onto positively charged nutrients. Clay particles and organic matter in the soil carry negative electrical charges, which naturally attract and hold positive nutrients like calcium, magnesium, potassium, and ammonium. Think of it as soil\'s nutrient storage system. This electrical attraction is strong enough to prevent these nutrients from washing away when it rains, but weak enough that vine roots can still access them. When roots breathe out hydrogen ions during their normal metabolic processes, these hydrogen ions swap places with the nutrient ions stuck to soil particles, releasing the nutrients so vines can absorb them.',
+              'The balance of different positive nutrients in the soil matters tremendously for both soil health and vine growth. Calcium typically makes up about 65 to 75 percent of the nutrients held by the soil\'s exchange sites, and it plays a crucial role in creating good soil structure by helping clay particles and organic matter stick together in beneficial clumps. Magnesium should ideally occupy 10 to 15 percent of these exchange sites since it sits at the center of every chlorophyll molecule and helps activate many plant enzymes. Potassium, making up just 2 to 5 percent of exchange sites, might seem minor but it\'s critical for controlling how vine leaves open and close their pores and how sugars move through the plant, which directly impacts grape ripening and eventual wine quality.'
+            ]
           },
           {
-            placeholder: 'Ripening progression charts showing sugar/acid development in different terroir sites',
-            position: 'after-paragraph-3'
+            title: 'Organic Acid Chemistry in Grapes',
+            content: [
+              'Grapes contain two primary organic acids that fundamentally shape wine character: tartaric and malic acid. Tartaric acid, unique among fruits to grapes, remains relatively stable during ripening, providing wine\'s backbone acidity. Its concentration, typically 6-10 g/L at harvest, depends partly on potassium levels in soil. High potassium causes formation of potassium bitartrate, reducing free tartaric acid and raising pH, potentially compromising wine stability and longevity.',
+              'Malic acid follows a more complex chemical journey. Synthesized in grape leaves through carbon fixation, malic acid accumulates in young berries, reaching peak levels at veraison, when grapes begin softening and coloring. During ripening, malic acid undergoes respiratory breakdown through the tricarboxylic acid cycle, with rates dependent on temperature. Cool nights preserve malic acid by slowing respiration, while hot days accelerate its degradation. This explains why Willamette Valley\'s cool nights maintain the bright acidity that defines its wines.'
+            ],
+            image: {
+              src: wineAcidImage,
+              alt: 'Organic acids in grape development',
+              position: 'left'
+            }
+          },
+          {
+            title: 'Phenolic Chemistry and Tannin Development',
+            content: [
+              'Phenolic compounds are the molecules that give wine its color, structure, and many of its flavors. These include tannins (which create that drying sensation in red wines), anthocyanins (the red and purple pigments), and flavonoids (various flavor compounds). Grapevines produce these compounds through a specific biochemical pathway called the shikimic acid pathway, and production ramps up or down based on environmental conditions. When vines experience UV exposure, water stress, or especially nitrogen deficiency, they shift their internal chemistry away from making proteins and toward making these phenolic compounds instead. This is why moderate stress on vines can actually improve wine quality, as long as it doesn\'t go too far.',
+              'Tannins in grapes start out as small, individual molecules or short chains that taste harsh and astringent. During fermentation and as wine ages, these small tannin units link together into progressively longer chains through a process called polymerization. Longer tannin chains feel softer and smoother on the palate, which is why aged wines often taste less harsh than young ones. How quickly and completely this linking happens depends on several factors: the wine\'s pH level, storage temperature, and how much oxygen the wine encounters. Wines with lower pH (meaning higher acidity) are particularly good at forming stable complexes between anthocyanins and tannins. This explains why Willamette Valley Pinot Noirs, which typically have bright acidity, often age better and more gracefully than similar wines from warmer regions with higher pH levels.'
+            ]
+          },
+          {
+            title: 'Water Chemistry and Vine Response',
+            content: [
+              'Water in vineyard soils is far more complex than simple H₂O. It\'s actually a solution containing dissolved minerals, organic compounds, and gases that all affect how vines grow and grapes develop. Scientists measure something called electrical conductivity in this soil water, which tells them how much salt and other dissolved substances are present. When salt concentrations are higher, vines have to work harder to pull water from the soil due to osmotic pressure. This extra effort creates mild stress that\'s actually beneficial, causing vines to produce smaller berries with more concentrated flavors rather than large, watery grapes.',
+              'When vines experience water stress, they produce a hormone called abscisic acid (ABA) that triggers important changes in grape development. ABA causes the tiny pores on leaves (stomata) to close, which reduces both water loss and photosynthesis. More importantly for wine quality, ABA accumulation speeds up the production of anthocyanins (color compounds) and switches on specific genes that control flavor development. The precise timing and intensity of water stress throughout the growing season, which depends on how well the soil holds water and local rainfall patterns, directly determines the chemical composition of the finished wine. Too little stress and wines lack concentration; too much and vines shut down completely. Getting this balance right is one of the key factors separating good vintages from great ones.'
+            ],
+            image: {
+              src: vineWaterImage,
+              alt: 'Water chemistry and vine response',
+              position: 'right'
+            }
+          },
+          {
+            title: 'Fermentation Chemistry',
+            content: [
+              'Native yeast populations in vineyards and wineries create unique chemical signatures in wine through their distinctive metabolic processes. While commercial yeast strains are predictable and efficient, wild non-Saccharomyces yeasts produce different sets of enzymes that affect wine chemistry in interesting ways. These native yeasts break down glycosides (releasing aromatic compounds that were previously bound and undetectable), create different patterns of esters (fruity aromas), and produce varying levels of higher alcohols (which contribute to complexity and mouthfeel). Each wild yeast species also uses nitrogen differently during fermentation, which influences what volatile compounds they produce. This metabolic diversity is why wines fermented with native yeasts often display more complex, sometimes unpredictable flavor profiles compared to those made with commercial strains.',
+              'Malolactic fermentation is another important chemical transformation in winemaking, particularly for red wines and some Chardonnays. During this process, lactic acid bacteria convert malic acid, which tastes sharp and reminiscent of green apples, into lactic acid, which has a softer, creamier character. This conversion doesn\'t just change the acid type; it also raises the wine\'s pH and reduces its total acidity, which makes the wine feel rounder and less tart. The bacteria involved also produce additional compounds like diacetyl (responsible for buttery aromas), ethyl lactate (contributing to creamy texture), and various other metabolites that add layers of complexity. The specific populations of lactic acid bacteria naturally present in Willamette Valley wineries have adapted to local conditions over time, contributing distinctive metabolic signatures that help define the regional character of these wines.'
+            ]
+          },
+          {
+            title: 'The Chemical Controller',
+            content: [
+              'Wine pH functions as a master control switch for chemical reactions throughout the winemaking process, from initial fermentation through bottle aging. In the typical Willamette Valley range of pH 3.2 to 3.6, about 6 percent of sulfur dioxide exists in its molecular form, which is the version that actually kills unwanted microbes and prevents oxidation. The rest exists as bisulfite ions that are much less effective. This pH-dependent balance determines how well protected the wine is from spoilage and browning. Color compounds called anthocyanins also change their structure based on pH: at pH 3.2 they appear bright red, but as pH rises toward 3.5 they shift toward purple, and would turn yellowish above pH 4.0 if wine pH ever got that high. In addition, pH affects how proteins and tannins interact, whether tartrate crystals will form in the bottle, and how quickly the wine oxidizes as it ages.',
+              'The way we perceive acidity on our palate has more to do with hydrogen ion concentration than the total amount of acid in the wine, and this concentration changes dramatically with small pH shifts. Since pH is a logarithmic scale, a wine at pH 3.2 actually contains nearly twice as many hydrogen ions as a wine at pH 3.5, even though the numbers look close together. These hydrogen ions directly trigger the acid receptors on our tongue, which explains how a pH 3.2 wine tastes noticeably brighter and more tart. The Willamette Valley\'s cool climate allows grapes to develop full flavor and sugar ripeness while keeping their natural malic and tartaric acid levels high. In warmer regions, grapes lose acidity through increased respiration as they ripen, forcing winemakers to choose between picking early for acidity or late for flavor. Willamette Valley winemakers can have both.',
+              'The chemistry of Willamette Valley wines represents an intricate web of reactions happening at every stage from soil to glass. Each vineyard decision sets off chains of chemical events: planting cover crops changes the forms of nitrogen in soil, which affects how yeast produce aromatic compounds during fermentation. Deciding when to harvest determines the balance of different acids, which influences how malolactic bacteria behave and what the final pH will be. Even pruning decisions matter because they affect how many leaves the vine has for photosynthesis, changing the balance of sugars and acids in the grapes. After bottling, wine continues evolving through ongoing chemical reactions that link tannins together, create new aromatic esters, and slowly transform the wine\'s entire chemical makeup over years or decades. When tasting a Willamette Valley wine, those flavors, aromas, and textures result from thousands of interconnected chemical reactions shaped by volcanic soils, cool maritime breezes, and careful winemaking decisions. This remarkable chemical complexity, accessible in every glass, makes the Willamette Valley one of the world\'s most fascinating wine regions from a scientific perspective.'
+            ],
+            image: {
+              src: wineSwirlImage,
+              alt: 'Wine pH and chemical complexity',
+              position: 'left'
+            }
           }
         ]
       }
