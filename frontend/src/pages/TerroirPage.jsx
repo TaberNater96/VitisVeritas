@@ -31,6 +31,8 @@ import wineSwirlImage from '../assets/images/wine_swirl.jpg';
 const TerroirPage = () => {
   const [sectionsInView, setSectionsInView] = useState(new Set());
   const [modalImage, setModalImage] = useState(null);
+  const [activeSection, setActiveSection] = useState(0);
+  const [showSideNav, setShowSideNav] = useState(false);
 
   // Modal handlers
   const openImageModal = (imageSrc, imageAlt) => {
@@ -58,6 +60,21 @@ const TerroirPage = () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
   }, [modalImage]);
+
+  // Smooth scroll to section
+  const scrollToSection = (sectionIndex) => {
+    const section = document.getElementById(`terroir-section-${sectionIndex}`);
+    const headerHeight = 80; // Height of sticky header
+    const offset = 20; // Additional offset for better positioning
+    
+    if (section) {
+      const sectionTop = section.offsetTop - headerHeight - offset;
+      window.scrollTo({
+        top: sectionTop,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   // Cleanup effect to restore body scroll on unmount
   useEffect(() => {
@@ -562,11 +579,46 @@ const TerroirPage = () => {
       const sections = document.querySelectorAll('.terroir-section');
       const windowHeight = window.innerHeight;
       const scrollPosition = window.scrollY;
+      const headerHeight = 80;
+
+      // Check if we're past the hero section but before the footer to show side nav
+      const heroSection = document.querySelector('.terroir-hero');
+      const footerSection = document.querySelector('footer');
+      let shouldShowSideNav = false;
+      
+      if (heroSection && footerSection) {
+        const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+        const footerTop = footerSection.offsetTop;
+        const viewportBottom = scrollPosition + windowHeight;
+        
+        // Show nav if we're past hero but footer is not significantly visible
+        // Hide nav when footer is more than 50% visible in viewport
+        const footerVisibleHeight = Math.max(0, viewportBottom - footerTop);
+        const footerVisibilityRatio = footerVisibleHeight / windowHeight;
+        
+        shouldShowSideNav = (scrollPosition > heroBottom - headerHeight) && (footerVisibilityRatio < 0.5);
+      }
+      
+      setShowSideNav(shouldShowSideNav);
+
+      // Track active section for navigation highlighting
+      let currentActiveSection = 0;
+      let minDistance = Infinity;
 
       sections.forEach((section, index) => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.offsetHeight;
+        const sectionCenter = sectionTop + (sectionHeight / 2);
+        const viewportCenter = scrollPosition + (windowHeight / 2);
+        const distance = Math.abs(sectionCenter - viewportCenter);
+
+        // Update active section based on which section center is closest to viewport center
+        if (distance < minDistance) {
+          minDistance = distance;
+          currentActiveSection = index;
+        }
         
+        // EXISTING ANIMATION LOGIC - DO NOT MODIFY
         // Check if section is in view (with some buffer)
         const isInView = scrollPosition + windowHeight > sectionTop + 200 && 
                         scrollPosition < sectionTop + sectionHeight - 200;
@@ -581,6 +633,8 @@ const TerroirPage = () => {
           });
         }
       });
+
+      setActiveSection(currentActiveSection);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -624,10 +678,11 @@ const TerroirPage = () => {
         <div className="terroir-hero-content">
           <h1 className="terroir-title">Where Earth Becomes Wine</h1>
           <p className="terroir-description">
-            Discover how geology, meteorology, chemistry, biology, topography, physics, and most importantly art, 
-            blend together to create the unique character of Willamette Valley wines. This page will walk through 
-            the life cycle of grapes BEFORE they are harvested and explain how the environment they grow in shapes 
-            their personality.
+            The character of a wine is born from its terroir, a complex blend of biology, chemistry, geology, topology, 
+            and climate that defines its unique identity. From the physics of morning fog to the chemistry of soil microbes, 
+            nearly every scientific discipline plays an indispensable role in crafting the Willamette Valley's distinctive wines 
+            before a single grape is picked. This page will walk through the life cycle of grapes <i>BEFORE</i> they are harvested 
+            and explain how the environment they grow in shapes their personality.
           </p>
         </div>
         
@@ -649,6 +704,27 @@ const TerroirPage = () => {
 
       {/* Main Content */}
       <div className="terroir-main">
+        {/* Side Navigation */}
+        <nav className={`side-nav ${showSideNav ? 'visible' : ''}`}>
+          <div className="side-nav-content">
+            <h3 className="side-nav-title">Navigate The Terroir</h3>
+            <ul className="side-nav-list">
+              {terroirSections.map((section, index) => (
+                <li key={section.id} className="side-nav-item">
+                  <button
+                    className={`side-nav-link ${activeSection === index ? 'active' : ''}`}
+                    onClick={() => scrollToSection(index)}
+                    aria-label={`Go to ${section.title} section`}
+                  >
+                    <span className="side-nav-number">{String(index + 1).padStart(2, '0')}</span>
+                    <span className="side-nav-text">{section.title}</span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </nav>
+
         {/* Sections Container */}
         <div className="terroir-sections">
           {terroirSections.map((section, index) => (
