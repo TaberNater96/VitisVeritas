@@ -17,6 +17,23 @@ import rackingImage from '../assets/images/racking.jpg';
 
 const AlchemyPage = () => {
   const [sectionsInView, setSectionsInView] = useState(new Set());
+  const [activeSection, setActiveSection] = useState(0);
+  const [showSideNav, setShowSideNav] = useState(false);
+
+  // Smooth scroll to section
+  const scrollToSection = (sectionIndex) => {
+    const section = document.querySelectorAll('.phase-section')[sectionIndex];
+    const headerHeight = 80; // Height of sticky header
+    const offset = 20; // Additional offset for better positioning
+    
+    if (section) {
+      const sectionTop = section.offsetTop - headerHeight - offset;
+      window.scrollTo({
+        top: sectionTop,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   const wineProcessPhases = [
     {
@@ -104,11 +121,46 @@ const AlchemyPage = () => {
       const sections = document.querySelectorAll('.phase-section');
       const windowHeight = window.innerHeight;
       const scrollPosition = window.scrollY;
+      const headerHeight = 80;
+
+      // Check if we're past the hero section but before the footer to show side nav
+      const heroSection = document.querySelector('.alchemy-hero');
+      const footerSection = document.querySelector('footer');
+      let shouldShowSideNav = false;
+      
+      if (heroSection && footerSection) {
+        const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+        const footerTop = footerSection.offsetTop;
+        const viewportBottom = scrollPosition + windowHeight;
+        
+        // Show nav if we're past hero but footer is not significantly visible
+        // Hide nav when footer is more than 50% visible in viewport
+        const footerVisibleHeight = Math.max(0, viewportBottom - footerTop);
+        const footerVisibilityRatio = footerVisibleHeight / windowHeight;
+        
+        shouldShowSideNav = (scrollPosition > heroBottom - headerHeight) && (footerVisibilityRatio < 0.5);
+      }
+      
+      setShowSideNav(shouldShowSideNav);
+
+      // Track active section for navigation highlighting
+      let currentActiveSection = 0;
+      let minDistance = Infinity;
 
       sections.forEach((section, index) => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.offsetHeight;
+        const sectionCenter = sectionTop + (sectionHeight / 2);
+        const viewportCenter = scrollPosition + (windowHeight / 2);
+        const distance = Math.abs(sectionCenter - viewportCenter);
+
+        // Update active section based on which section center is closest to viewport center
+        if (distance < minDistance) {
+          minDistance = distance;
+          currentActiveSection = index;
+        }
         
+        // EXISTING ANIMATION LOGIC - DO NOT MODIFY
         // Check if section is in view (with some buffer)
         const isInView = scrollPosition + windowHeight > sectionTop + 200 && 
                         scrollPosition < sectionTop + sectionHeight - 200;
@@ -123,6 +175,8 @@ const AlchemyPage = () => {
           });
         }
       });
+
+      setActiveSection(currentActiveSection);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -160,6 +214,27 @@ const AlchemyPage = () => {
           </div>
         </div>
       </div>
+
+      {/* Side Navigation */}
+      <nav className={`side-nav ${showSideNav ? 'visible' : ''}`}>
+        <div className="side-nav-content">
+          <h3 className="side-nav-title">Navigate Phases</h3>
+          <ul className="side-nav-list">
+            {wineProcessPhases.map((phase, index) => (
+              <li key={phase.id} className="side-nav-item">
+                <button
+                  className={`side-nav-link ${activeSection === index ? 'active' : ''}`}
+                  onClick={() => scrollToSection(index)}
+                  aria-label={`Go to ${phase.title} section`}
+                >
+                  <span className="side-nav-number">{String(index + 1).padStart(2, '0')}</span>
+                  <span className="side-nav-text">{phase.title}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </nav>
 
       <div className="phases-container">
         {wineProcessPhases.map((phase, index) => (
