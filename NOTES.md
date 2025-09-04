@@ -9,3 +9,4 @@
 * Make sure the winemaking process is correct and in the correct order.
 * Make sure to explain what an AVA is on the main home page before the user gets to the map.
 * Say something like "You will never look at a glass of wine the same way again" somewhere on the home page.
+* As far as how the section below the map should be structured, have a main large and center title at the top that says something about how this section is about interpreting the land. Have all sections use the same background so the background (sky to ground) looks like it is progressing from sky to soil. Then have soil texture type section and then soil series section that look similar to alchemy page. 

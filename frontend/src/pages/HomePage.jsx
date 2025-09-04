@@ -1,6 +1,7 @@
 import React from 'react';
 import Hero from "../components/ui/Hero";
 import LazyMap from '../components/map/LazyMap';
+import MapInterpretation from '../components/ui/MapInterpretation';
 
 const HomePage = () => {
   return (
@@ -44,6 +45,9 @@ const HomePage = () => {
 
         {/* Lazy-loaded map */}
         <LazyMap />
+
+        {/* Map Interpretation section with slopes and future components */}
+        <MapInterpretation />
       </div>
     </div>
   );

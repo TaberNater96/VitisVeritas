@@ -1,0 +1,500 @@
+/* Slope Component Styles */
+
+.slope-component {
+  width: 100%;
+  position: relative;
+}
+
+.slope-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* Slope Selector */
+.slope-selector {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-2xl);
+  padding: var(--spacing-lg);
+  background: transparent;
+  border-radius: 12px;
+}
+
+.slope-button {
+  padding: var(--spacing-md) var(--spacing-lg);
+  border: 2px solid var(--color-wine-medium);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--color-wine-dark);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: var(--font-size-base);
+  min-width: 120px;
+}
+
+.slope-button:hover {
+  background: #6B7280;
+  border-color: #4B5563;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.slope-button.active {
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+}
+
+/* Button color classes */
+.slope-button.green.active {
+  background: #4CAF50;
+  border-color: #45a049;
+}
+
+.slope-button.light-green.active {
+  background: #8BC34A;
+  border-color: #7cb342;
+}
+
+.slope-button.yellow.active {
+  background: #FFC107;
+  border-color: #ffb300;
+}
+
+.slope-button.light-orange.active {
+  background: #FFB74D;
+  border-color: #ff9800;
+}
+
+.slope-button.orange.active {
+  background: #FF9800;
+  border-color: #f57c00;
+}
+
+.slope-button.light-red.active {
+  background: #FF7043;
+  border-color: #ff5722;
+}
+
+.slope-button.red.active {
+  background: #F44336;
+  border-color: #d32f2f;
+}
+
+/* Content Layout */
+.slope-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-2xl);
+  margin-bottom: var(--spacing-2xl);
+}
+
+/* Visual Container */
+.slope-visual-container {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 32px 32px 2px 32px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.slope-visual {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.slope-title-display {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.slope-percentage {
+  display: block;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Percentage color classes */
+.slope-percentage.green {
+  color: #4CAF50;
+}
+
+.slope-percentage.light-green {
+  color: #8BC34A;
+}
+
+.slope-percentage.yellow {
+  color: #FFC107;
+}
+
+.slope-percentage.light-orange {
+  color: #FFB74D;
+}
+
+.slope-percentage.orange {
+  color: #FF9800;
+}
+
+.slope-percentage.light-red {
+  color: #FF7043;
+}
+
+.slope-percentage.red {
+  color: #F44336;
+}
+
+.slope-label {
+  display: block;
+  font-size: var(--font-size-xl);
+  color: var(--color-wine-medium);
+  font-weight: 600;
+  margin-top: var(--spacing-sm);
+}
+
+/* Slope Diagram */
+.slope-diagram {
+  position: relative;
+  width: 500px;
+  height: 350px;
+  margin: 0 auto;
+}
+
+/* Axes */
+.axis {
+  position: absolute;
+  background-color: #333;
+}
+
+.x-axis {
+  bottom: 80px;
+  left: 80px;
+  width: 350px;
+  height: 2px;
+}
+
+.y-axis {
+  bottom: 80px;
+  left: 80px;
+  width: 2px;
+  height: 200px;
+}
+
+.slope-line {
+  position: absolute;
+  width: 350px;
+  height: 4px;
+  background-color: #333;
+  transform-origin: left center;
+  transform: rotate(calc(var(--slope-angle) * -1deg));
+  bottom: 80px;
+  left: 80px;
+  border-radius: 2px;
+  transition: transform 0.6s ease-in-out;
+}
+
+/* Dashed vertical line from slope end to x-axis */
+.dashed-line {
+  position: absolute;
+  width: 0;
+  border-left: 3px dashed;
+  bottom: 80px;
+  transition: all 0.6s ease-in-out;
+}
+
+/* Dashed line color classes */
+.dashed-line.green {
+  border-left-color: #4CAF50;
+}
+
+.dashed-line.light-green {
+  border-left-color: #8BC34A;
+}
+
+.dashed-line.yellow {
+  border-left-color: #FFC107;
+}
+
+.dashed-line.light-orange {
+  border-left-color: #FFB74D;
+}
+
+.dashed-line.orange {
+  border-left-color: #FF9800;
+}
+
+.dashed-line.light-red {
+  border-left-color: #FF7043;
+}
+
+.dashed-line.red {
+  border-left-color: #F44336;
+}
+
+/* Labels */
+.x-label {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: #333;
+}
+
+.y-label-axis {
+  position: absolute;
+  bottom: 180px;
+  left: 50px;
+  transform: rotate(-90deg);
+  transform-origin: center;
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: #333;
+}
+
+.y-label {
+  position: absolute;
+  transform: rotate(-90deg);
+  transform-origin: left center;
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.6s ease-in-out;
+  white-space: nowrap;
+}
+
+/* Y-label color classes */
+.y-label.green {
+  color: #4CAF50;
+}
+
+.y-label.light-green {
+  color: #8BC34A;
+}
+
+.y-label.yellow {
+  color: #FFC107;
+}
+
+.y-label.light-orange {
+  color: #FFB74D;
+}
+
+.y-label.orange {
+  color: #FF9800;
+}
+
+.y-label.light-red {
+  color: #FF7043;
+}
+
+.y-label.red {
+  color: #F44336;
+}
+
+/* Stats Container */
+.slope-stats-container {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 32px 32px 2px 32px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.slope-stats h3 {
+  color: var(--color-wine-dark);
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.stat-grid {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md);
+  background: rgba(139, 195, 74, 0.1);
+  border-radius: 8px;
+  border-left: 4px solid var(--color-primary);
+  transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+  background: rgba(139, 195, 74, 0.15);
+  transform: translateX(4px);
+}
+
+/* Color classes for stat items */
+.stat-item.green {
+  border-left-color: #4CAF50;
+  background: rgba(76, 175, 80, 0.1);
+}
+
+.stat-item.light-green {
+  border-left-color: #8BC34A;
+  background: rgba(139, 195, 74, 0.1);
+}
+
+.stat-item.yellow {
+  border-left-color: #FFC107;
+  background: rgba(255, 193, 7, 0.1);
+}
+
+.stat-item.light-orange {
+  border-left-color: #FFB74D;
+  background: rgba(255, 183, 77, 0.1);
+}
+
+.stat-item.orange {
+  border-left-color: #FF9800;
+  background: rgba(255, 152, 0, 0.1);
+}
+
+.stat-item.light-red {
+  border-left-color: #FF7043;
+  background: rgba(255, 112, 67, 0.1);
+}
+
+.stat-item.red {
+  border-left-color: #F44336;
+  background: rgba(244, 67, 54, 0.1);
+}
+
+.stat-label {
+  font-weight: 600;
+  color: var(--color-wine-medium);
+  font-size: var(--font-size-base);
+}
+
+.stat-value {
+  font-weight: 700;
+  color: #333333;
+  font-size: var(--font-size-base);
+}
+
+/* Description */
+.slope-description {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: var(--spacing-2xl);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.description-content {
+  transition: opacity 0.3s ease;
+}
+
+.description-content h3 {
+  color: var(--color-wine-dark);
+  margin-bottom: var(--spacing-lg);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.description-content h4 {
+  color: var(--color-wine-dark);
+  margin: var(--spacing-lg) 0 var(--spacing-md) 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.description-content p {
+  color: var(--color-wine-medium);
+  line-height: 1.7;
+  font-size: 1.2rem;
+  margin-bottom: var(--spacing-md);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .slope-content {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+  
+  .slope-diagram {
+    width: 400px;
+    height: 280px;
+  }
+  
+  .x-axis {
+    width: 280px;
+  }
+  
+  .slope-line {
+    width: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .slope-container {
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+  
+  .slope-selector {
+    gap: var(--spacing-xs);
+    padding: var(--spacing-md);
+  }
+  
+  .slope-button {
+    min-width: 100px;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-sm);
+  }
+  
+  .slope-diagram {
+    width: 350px;
+    height: 240px;
+  }
+  
+  .x-axis {
+    width: 250px;
+  }
+  
+  .slope-line {
+    width: 250px;
+  }
+  
+  .slope-visual-container,
+  .slope-stats-container,
+  .slope-description {
+    padding: var(--spacing-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  .slope-selector {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .slope-button {
+    width: 100%;
+    max-width: 200px;
+  }
+  
+  .stat-item {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    text-align: center;
+  }
+}

@@ -51,3 +51,6 @@ processed/
 *.prj
 *.zip
 *.csv
+
+# Miscellaneous
+NOTES.md

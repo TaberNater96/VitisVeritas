@@ -1,0 +1,98 @@
+/* Map Interpretation Section Styles */
+
+.map-interpretation {
+  width: 100%;
+  background: var(--gradient-terroir);
+  padding: 0;
+  position: relative;
+}
+
+.map-interpretation-divider {
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--color-primary) 20%, 
+    var(--color-wine-medium) 50%, 
+    var(--color-primary) 80%, 
+    transparent 100%
+  );
+  margin: 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.map-interpretation-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--spacing-3xl) 0;
+}
+
+/* Main Header */
+.map-interpretation-header {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+  padding: 0 var(--spacing-md);
+}
+
+.map-interpretation-title {
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 700;
+  font-family: var(--font-family-serif);
+  color: var(--color-wine-dark);
+  margin-bottom: 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.15);
+  letter-spacing: -0.01em;
+}
+
+/* Understanding section - aligned like the main intro */
+.map-interpretation-intro {
+  width: 100%;
+  margin: 0 0 var(--spacing-2xl) 0;
+  padding: 0 var(--spacing-md);
+}
+
+.understanding-title {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: bold;
+  font-family: var(--font-family-serif);
+  color: var(--color-wine-dark);
+  margin-bottom: var(--spacing-lg);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.understanding-description {
+  font-size: calc(var(--font-size-xl) * 1.6);
+  font-family: var(--font-family-serif);
+  color: var(--color-wine-medium);
+  line-height: 1.6;
+  font-weight: 500;
+  text-align: left;
+  max-width: 100%;
+}
+
+/* Sections Container */
+.interpretation-sections {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2xl);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .map-interpretation-container {
+    padding: var(--spacing-2xl) 0;
+  }
+  
+  .map-interpretation-title {
+    font-size: clamp(2rem, 8vw, 3rem);
+    margin-bottom: var(--spacing-xl);
+  }
+  
+  .understanding-title {
+    font-size: clamp(1.3rem, 5vw, 2rem);
+  }
+  
+  .understanding-description {
+    font-size: calc(var(--font-size-lg) * 1.3);
+  }
+}
