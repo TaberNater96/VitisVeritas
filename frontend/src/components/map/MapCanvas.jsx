@@ -24,6 +24,7 @@ const MapCanvas = ({ isVisible = true }) => {
     wineries: false,
     allSoils: false
   });
+  const [elevationEnabled, setElevationEnabled] = useState(true); // Default to enabled
   const activePopupRef = useRef(null);
   const loadingQueueRef = useRef([]);
 
@@ -55,6 +56,9 @@ const MapCanvas = ({ isVisible = true }) => {
       
       // Start optimized loading sequence
       loadDataSequentially();
+      
+      // Load elevation contours by default
+      loadElevationContours();
       
       // Add global mousemove handler to manage soil popups better
       map.current.on('mousemove', (e) => {
@@ -444,6 +448,96 @@ const MapCanvas = ({ isVisible = true }) => {
     setSelectedAva(''); // clear dropdown selection
   };
 
+  // Toggle elevation contour lines
+  const toggleElevation = () => {
+    if (!map.current || !mapLoaded) return;
+
+    if (elevationEnabled) {
+      // Remove elevation layers
+      if (map.current.getLayer('contour-lines')) {
+        map.current.removeLayer('contour-lines');
+      }
+      if (map.current.getLayer('contour-labels')) {
+        map.current.removeLayer('contour-labels');
+      }
+      if (map.current.getSource('contour-source')) {
+        map.current.removeSource('contour-source');
+      }
+      setElevationEnabled(false);
+    } else {
+      // Load elevation contours
+      loadElevationContours();
+      setElevationEnabled(true);
+    }
+  };
+
+  // Function to load elevation contours
+  const loadElevationContours = () => {
+    if (!map.current) return;
+
+    // Add elevation contour lines
+    map.current.addSource('contour-source', {
+      type: 'vector',
+      url: 'mapbox://mapbox.mapbox-terrain-v2'
+    });
+
+    // Add contour lines layer
+    map.current.addLayer({
+      id: 'contour-lines',
+      type: 'line',
+      source: 'contour-source',
+      'source-layer': 'contour',
+      layout: {
+        'line-join': 'round',
+        'line-cap': 'round'
+      },
+      paint: {
+        'line-color': '#8B4513',
+        'line-width': [
+          'interpolate',
+          ['linear'],
+          ['zoom'],
+          10, 0.5,
+          15, 1.5
+        ],
+        'line-opacity': 0.7
+      },
+      filter: [
+        'all',
+        ['==', ['get', 'index'], 5],
+        ['>=', ['get', 'ele'], 0]
+      ]
+    });
+
+    // Add contour labels layer
+    map.current.addLayer({
+      id: 'contour-labels',
+      type: 'symbol',
+      source: 'contour-source',
+      'source-layer': 'contour',
+      layout: {
+        'text-field': [
+          'concat',
+          ['to-string', ['get', 'ele']],
+          'm'
+        ],
+        'text-font': ['Open Sans Regular', 'Arial Unicode MS Regular'],
+        'text-size': 10,
+        'symbol-placement': 'line'
+      },
+      paint: {
+        'text-color': '#8B4513',
+        'text-halo-color': '#ffffff',
+        'text-halo-width': 1
+      },
+      filter: [
+        'all',
+        ['==', ['get', 'index'], 5],
+        ['>=', ['get', 'ele'], 0]
+      ]
+    });
+  };
+
   // Available AVAs for dropdown with specific coordinates
   const avaCoordinates = {
     'Lower Long Tom': { lng: -123.3458, lat: 44.2402, zoom: 11.00 },
@@ -756,6 +850,20 @@ const MapCanvas = ({ isVisible = true }) => {
             <button onClick={resetView} className="reset-view-btn">
               Reset View
             </button>
+          </div>
+        </div>
+
+        <div className="elevation-container">
+          <h3>Toggle Elevation (Zoom In To View)</h3>
+          <div className="elevation-toggle-wrapper">
+            <label className="toggle-switch">
+              <input
+                type="checkbox"
+                checked={elevationEnabled}
+                onChange={toggleElevation}
+              />
+              <span className="toggle-slider"></span>
+            </label>
           </div>
         </div>
 
