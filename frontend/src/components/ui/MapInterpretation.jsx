@@ -1,5 +1,6 @@
 import React from 'react';
 import SlopeSection from './SlopeSection';
+import SoilTexture from './SoilTexture';
 import './MapInterpretation.css';
 
 const MapInterpretation = () => {
@@ -13,7 +14,7 @@ const MapInterpretation = () => {
         </header>
         
         <div className="map-interpretation-intro">
-          <h3 className="understanding-title">Vineyard Slopes</h3>
+          <h2 className="understanding-title">Vineyard Slopes</h2>
           <p className="understanding-description">
             When exploring the map above, you'll notice soil descriptions that include slope percentages, such as "Jory silty loam, 10 to 30 percent slopes." These slope 
             ranges indicate the variety of inclines found within that soil area, from the smallest grade (10%) to the steepest (30%), rather than a single uniform slope. 
@@ -28,8 +29,10 @@ const MapInterpretation = () => {
           {/* Slopes Component */}
           <SlopeSection />
           
+          {/* Soil Texture Component */}
+          <SoilTexture />
+          
           {/* Future sections will be added here */}
-          {/* <SoilTextureSection /> */}
           {/* <SoilSeriesSection /> */}
         </div>
       </div>

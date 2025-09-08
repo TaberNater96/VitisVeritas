@@ -1,0 +1,340 @@
+/* Soil Texture Component Styles */
+
+.soil-texture-component {
+  width: 100%;
+  position: relative;
+  margin-top: var(--spacing-3xl);
+}
+
+.soil-texture-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* Section Title */
+.soil-texture-header {
+  text-align: left;
+  margin-bottom: var(--spacing-2xl);
+  padding-left: 8px;
+}
+
+.soil-texture-title {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: bold;
+  font-family: var(--font-family-serif);
+  color: var(--color-wine-dark);
+  margin-bottom: 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Top Introduction Container */
+.soil-texture-intro-container {
+  display: grid;
+  grid-template-columns: 1fr 700px;
+  gap: var(--spacing-xl);
+  background: #000000;
+  color: #ffffff;
+  padding: var(--spacing-2xl);
+  border-radius: 12px;
+  margin-bottom: var(--spacing-2xl);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+.soil-texture-description p {
+  font-size: 1.5rem;
+  line-height: 1.7;
+  margin: 0;
+  font-family: var(--font-family-serif);
+  font-weight: 400;
+}
+
+.soil-texture-triangle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.triangle-image {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(255,255,255,0.1);
+}
+
+/* Soil Types Grid */
+.soil-types-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-2xl);
+}
+
+/* Individual Soil Type Containers */
+.soil-type-container {
+  border-radius: 12px;
+  padding: var(--spacing-xl);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.soil-type-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+}
+
+/* Sand Container - Light Tan */
+.soil-type-container.sand {
+  background: #F5DEB3;
+  color: #2C1810;
+}
+
+/* Clay Container - Brownish Orange */
+.soil-type-container.clay {
+  background: #573520;
+  color: #FFFFFF;
+}
+
+.soil-type-container.clay * {
+  color: #FFFFFF !important;
+}
+
+/* Silt Container - Dirt Brown */
+.soil-type-container.silt {
+  background: #8f4715;
+  color: #FFFFFF;
+}
+
+.soil-type-container.silt * {
+  color: #FFFFFF !important;
+}
+
+/* Loam Container - Very Dark Brown */
+.soil-type-container.loam {
+  background: #321c0f;
+  color: #FFFFFF;
+}
+
+.soil-type-container.loam * {
+  color: #FFFFFF !important;
+}
+
+/* Container Content Layout */
+.soil-type-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+  align-items: start;
+}
+
+.soil-type-info {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr;
+  gap: var(--spacing-md);
+  align-items: start;
+}
+
+.soil-type-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.soil-type-title {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  font-family: var(--font-family-serif);
+  margin: 0 0 var(--spacing-sm) 0;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Enhanced text shadow for darker background containers */
+.soil-type-container.silt .soil-type-title,
+.soil-type-container.clay .soil-type-title,
+.soil-type-container.loam .soil-type-title {
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.7), 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* Stats Grid */
+.soil-stats {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing-xs) * 0.75);
+  margin-bottom: var(--spacing-md);
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: calc(var(--spacing-xs) * 0.75) 0;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  gap: var(--spacing-sm);
+}
+
+.soil-type-container.sand .stat-row {
+  border-bottom-color: rgba(44,24,16,0.2);
+}
+
+.stat-label {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  opacity: 0.8;
+  flex: 0 0 auto;
+}
+
+.stat-value {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  text-align: right;
+  flex: 0 0 auto;
+}
+
+/* Description Text */
+.soil-description {
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  margin: 0;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+/* Soil Images */
+.soil-type-image {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 60px;
+}
+
+.soil-image {
+  width: 100%;
+  max-width: 180px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+}
+
+.soil-image:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .soil-texture-intro-container {
+    grid-template-columns: 1fr 600px;
+    gap: var(--spacing-lg);
+  }
+  
+  .triangle-image {
+    max-width: 600px;
+  }
+  
+  .soil-texture-description p {
+    font-size: calc(var(--font-size-lg) * 1.8);
+  }
+}
+
+@media (max-width: 1024px) {
+  .soil-texture-intro-container {
+    grid-template-columns: 1fr 500px;
+  }
+  
+  .triangle-image {
+    max-width: 500px;
+  }
+  
+  .soil-texture-description p {
+    font-size: calc(var(--font-size-lg) * 1.6);
+  }
+  
+  .soil-types-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+  }
+}
+
+@media (max-width: 768px) {
+  .soil-texture-container {
+    padding: 0 var(--spacing-sm);
+  }
+  
+  .soil-texture-title {
+    font-size: clamp(1.3rem, 5vw, 2rem);
+  }
+  
+  .soil-texture-intro-container {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg);
+  }
+  
+  .soil-texture-description p {
+    font-size: calc(var(--font-size-lg) * 1.4);
+  }
+  
+  .triangle-image {
+    max-width: 400px;
+  }
+  
+  .soil-types-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+  
+  .soil-type-info {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+    text-align: center;
+  }
+  
+  .soil-type-image {
+    order: -1;
+    justify-content: center;
+  }
+  
+  .soil-image {
+    max-width: 120px;
+    height: 120px;
+  }
+  
+  .stat-row {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--spacing-xs);
+  }
+  
+  .stat-value {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .soil-texture-intro-container {
+    padding: var(--spacing-md);
+  }
+  
+  .soil-texture-description p {
+    font-size: calc(var(--font-size-base) * 1.3);
+  }
+  
+  .soil-type-container {
+    padding: var(--spacing-lg);
+  }
+  
+  .soil-type-title {
+    font-size: var(--font-size-xl);
+  }
+  
+  .triangle-image {
+    max-width: 300px;
+  }
+  
+  .soil-image {
+    max-width: 100px;
+    height: 100px;
+  }
+}

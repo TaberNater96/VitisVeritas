@@ -98,7 +98,7 @@
   font-weight: bold;
   color: var(--color-text-secondary);
   margin-bottom: var(--spacing-xl);
-  text-shadow: 6px 6px 12px rgb(0, 0, 0);
+  text-shadow: 6px 6px 12px rgb(0, 0, 0, 0.95);
   line-height: 1.5;
   letter-spacing: 0.3px;
   text-align: left;
@@ -166,7 +166,7 @@
   font-size: clamp(1.1rem, 2.2vw, 1.3rem);
   font-weight: bold;
   color: var(--color-text-secondary);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.95);
   margin: 0;
   text-align: center;
   letter-spacing: 0.5px;
