@@ -492,15 +492,16 @@ const MapCanvas = ({ isVisible = true }) => {
         'line-cap': 'round'
       },
       paint: {
-        'line-color': '#8B4513',
+        'line-color': '#4d3013ff',
         'line-width': [
           'interpolate',
           ['linear'],
           ['zoom'],
-          10, 0.5,
-          15, 1.5
+          7, 2.0,
+          10, 3.5,
+          15, 5.0
         ],
-        'line-opacity': 0.7
+        'line-opacity': 1.0
       },
       filter: [
         'all',
@@ -521,14 +522,21 @@ const MapCanvas = ({ isVisible = true }) => {
           ['to-string', ['get', 'ele']],
           'm'
         ],
-        'text-font': ['Open Sans Regular', 'Arial Unicode MS Regular'],
-        'text-size': 10,
+        'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
+        'text-size': [
+          'interpolate',
+          ['linear'],
+          ['zoom'],
+          7, 12,
+          10, 14,
+          15, 18
+        ],
         'symbol-placement': 'line'
       },
       paint: {
-        'text-color': '#8B4513',
+        'text-color': '#482d12ff',
         'text-halo-color': '#ffffff',
-        'text-halo-width': 1
+        'text-halo-width': 2
       },
       filter: [
         'all',

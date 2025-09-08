@@ -62,11 +62,11 @@ const SoilTexture = () => {
           <div className="soil-texture-description">
             <p>
                 Soil texture describes the relative proportions of sand, silt, and clay particles in a soil, which determines how water, air, and nutrients move through it. 
-                When you see a soil name like "silty clay loam," the last word (loam) indicates the primary texture class, while any preceding words (silty clay) describe 
+                When you see a soil name like "silty clay loam" on the map above, the last word (loam) indicates the primary texture class, while any preceding words (silty clay) describe 
                 modifiers that show which particles are more prominent. In the case of “silty clay loam”, it is a loam soil with higher amounts of silt and clay. The soil 
-                texture triangle you see to the right visually represents these classifications, with each point in the triangle corresponding to a specific combination of 
+                texture triangle you see to the right does a good job at visually representing these classifications and how they intersect with each other, with each point in the triangle corresponding to a specific combination of 
                 sand, silt, and clay percentages that define distinct soil types. Sandy soils drain quickly and warm up faster in spring, while clay-rich soils hold more 
-                water and nutrients but can become waterlogged; loamy soils offer a balance that many consider ideal for agriculture. For wine grapes, soil texture directly 
+                water and nutrients but can become waterlogged; loamy soils offer a balance that many consider ideal for agriculture.  For wine grapes, soil texture directly 
                 influences vine vigor and grape quality, where sandy soils produce lighter, more aromatic wines due to good drainage and lower fertility, while clay-rich 
                 soils typically yield fuller-bodied, more tannic wines as vines work harder to access water, which concentrates flavors in smaller berries.
             </p>

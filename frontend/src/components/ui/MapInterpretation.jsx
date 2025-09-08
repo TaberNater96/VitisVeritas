@@ -16,7 +16,7 @@ const MapInterpretation = () => {
         <div className="map-interpretation-intro">
           <h2 className="understanding-title">Vineyard Slopes</h2>
           <p className="understanding-description">
-            When exploring the map above, you'll notice soil descriptions that include slope percentages, such as "Jory silty loam, 10 to 30 percent slopes." These slope 
+            When exploring the soils on the map above, you'll notice soil descriptions that include slope percentages, such as "Jory silty loam, 10 to 30 percent slopes." These slope 
             ranges indicate the variety of inclines found within that soil area, from the smallest grade (10%) to the steepest (30%), rather than a single uniform slope. 
             The interactive tool below brings these percentages to life, showing you exactly what each gradient looks like and how it affects vineyard management and wine 
             character. By visualizing these slopes, you'll better understand why a vineyard planted on 25% slopes produces vastly different wines than one on 5% slopes, 
