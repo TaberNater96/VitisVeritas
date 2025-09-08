@@ -29,8 +29,14 @@ const MapInterpretation = () => {
           {/* Slopes Component */}
           <SlopeSection />
           
+          {/* Section Divider */}
+          <div className="section-divider"></div>
+          
           {/* Soil Texture Component */}
           <SoilTexture />
+          
+          {/* Section Divider */}
+          <div className="section-divider"></div>
           
           {/* Future sections will be added here */}
           {/* <SoilSeriesSection /> */}

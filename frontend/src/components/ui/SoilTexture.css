@@ -3,7 +3,7 @@
 .soil-texture-component {
   width: 100%;
   position: relative;
-  margin-top: var(--spacing-3xl);
+  margin-top: calc(var(--spacing-xl) * -0.6);
 }
 
 .soil-texture-container {
