@@ -10,7 +10,6 @@ const HomePage = () => {
       
       {/* Combined terroir sections with unified gradient background */}
       <div className="terroir-sections">
-        {/* Quote section moved from hero */}
         <section className="quote-section">
           <div className="quote-container">
             <blockquote className="quote">
@@ -43,10 +42,8 @@ const HomePage = () => {
           </div>
         </section>
 
-        {/* Lazy-loaded map */}
         <LazyMap />
 
-        {/* Map Interpretation section with slopes and future components */}
         <MapInterpretation />
       </div>
     </div>

@@ -53,21 +53,6 @@ const isActive = (path) => {
                 Wine Varietals
               </Link>
             </li>
-            {/* <li className="nav-item">
-              <Link to="/experiences" className={`nav-link ${isActive('/experiences')}`}> 
-                Experiences
-              </Link>
-            </li> */}
-            <li className="nav-item">
-              <Link to="/sommelier" className={`nav-link ${isActive('/sommelier')}`}>
-                The Sommelier Engine
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/behind-the-vine" className={`nav-link ${isActive('/behind-the-vine')}`}>
-                Behind The Vine
-              </Link>
-            </li>
             <li className="nav-item">
               <Link to="/about" className={`nav-link ${isActive('/about')}`}>
                 About

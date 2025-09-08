@@ -7,9 +7,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-container">
-        {/* Top Section with Navigation and Info */}
         <div className="footer-content">
-          {/* Brand Section */}
           <div className="footer-section footer-brand">
             <h3 className="footer-brand-title">Vitis Veritas</h3>
             <p className="footer-brand-subtitle">The Truth of Wine</p>
@@ -37,12 +35,6 @@ const Footer = () => {
               </li>
               <li className="footer-nav-item">
                 <Link to="/varietals" className="footer-nav-link">Wine Varietals</Link>
-              </li>
-              <li className="footer-nav-item">
-                <Link to="/sommelier" className="footer-nav-link">The Sommelier Engine</Link>
-              </li>
-              <li className="footer-nav-item">
-                <Link to="/behind-the-vine" className="footer-nav-link">Behind The Vine</Link>
               </li>
               <li className="footer-nav-item">
                 <Link to="/about" className="footer-nav-link">About</Link>
