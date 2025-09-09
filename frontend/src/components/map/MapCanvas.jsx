@@ -247,22 +247,7 @@ const MapCanvas = ({ isVisible = true }) => {
         }
       });
 
-      // Add click interaction for zooming
-      map.current.on('click', 'ava-fills', (e) => {
-        if (e.features.length > 0) {
-          const feature = e.features[0];
-          const avaName = feature.properties.name;
-          
-          // Don't zoom if clicking on Willamette Valley (parent AVA)
-          if (avaName === 'Willamette Valley') {
-            return;
-          }
-          
-          zoomToAva(avaName);
-        }
-      });
-
-      // Change cursor on hover
+            // Change cursor on hover
       map.current.on('mouseenter', 'ava-fills', () => {
         map.current.getCanvas().style.cursor = 'pointer';
       });
