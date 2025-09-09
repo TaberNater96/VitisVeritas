@@ -1,6 +1,7 @@
 import React from 'react';
 import SlopeSection from './SlopeSection';
 import SoilTexture from './SoilTexture';
+import SoilSeries from './SoilSeries';
 import './MapInterpretation.css';
 
 const MapInterpretation = () => {
@@ -26,20 +27,16 @@ const MapInterpretation = () => {
         </div>
 
         <div className="interpretation-sections">
-          {/* Slopes Component */}
           <SlopeSection />
           
-          {/* Section Divider */}
           <div className="section-divider"></div>
           
-          {/* Soil Texture Component */}
           <SoilTexture />
           
-          {/* Section Divider */}
           <div className="section-divider"></div>
           
-          {/* Future sections will be added here */}
-          {/* <SoilSeriesSection /> */}
+          <SoilSeries />
+          
         </div>
       </div>
     </section>

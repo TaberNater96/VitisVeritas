@@ -20,9 +20,9 @@
   /* Gradients */
   --gradient-terroir: linear-gradient(180deg, 
     #87CEEB 0%,
-    #87CEEB 25%, 
-    #ffffff 40%, 
-    #048413 60%,
+    #ffffff 25%, 
+    #048413 40%, 
+    #563d2d 60%,
     #563d2d 80%, 
     #563d2d 100% 
   );
