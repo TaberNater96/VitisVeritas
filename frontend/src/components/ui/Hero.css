@@ -65,7 +65,7 @@
   font-family: 'Lucida Calligraphy', 'Brush Script MT', 'Playfair Display', cursive, serif;
   font-size: clamp(3.5rem, 8vw, 6rem);
   font-weight: bold;
-  color: var(--color-text-muted); /* Same color as header/footer background */
+  color: var(--color-text-muted);
   margin-bottom: 1.5vh;
   text-shadow: 3px 3px 8px rgba(0,0,0,0.95);
   line-height: 1.1;

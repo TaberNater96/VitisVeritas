@@ -453,21 +453,62 @@ const MapCanvas = ({ isVisible = true }) => {
     if (!map.current || !mapLoaded) return;
 
     if (elevationEnabled) {
-      // Remove elevation layers
-      if (map.current.getLayer('contour-lines')) {
-        map.current.removeLayer('contour-lines');
+      // Hide elevation layers
+      try {
+        // Hide base map contours by setting their visibility to none
+        const style = map.current.getStyle();
+        const layers = style.layers;
+        
+        const contourLayers = layers.filter(layer => 
+          layer.id && (
+            layer.id.includes('contour') || 
+            layer.id.includes('hillshade') ||
+            (layer.source === 'composite' && layer['source-layer'] === 'contour')
+          )
+        );
+        
+        contourLayers.forEach(layer => {
+          try {
+            map.current.setLayoutProperty(layer.id, 'visibility', 'none');
+          } catch (e) {
+            // Silently handle any layers that can't be modified
+          }
+        });
+        
+        map.current._vv_contoursCustomized = false;
+        setElevationEnabled(false);
+      } catch (error) {
+        console.error('Error removing elevation layers:', error);
       }
-      if (map.current.getLayer('contour-labels')) {
-        map.current.removeLayer('contour-labels');
-      }
-      if (map.current.getSource('contour-source')) {
-        map.current.removeSource('contour-source');
-      }
-      setElevationEnabled(false);
     } else {
-      // Load elevation contours
-      loadElevationContours();
-      setElevationEnabled(true);
+      // Show elevation contours
+      try {
+        // Show base map contours
+        const style = map.current.getStyle();
+        const layers = style.layers;
+        
+        const contourLayers = layers.filter(layer => 
+          layer.id && (
+            layer.id.includes('contour') || 
+            layer.id.includes('hillshade') ||
+            (layer.source === 'composite' && layer['source-layer'] === 'contour')
+          )
+        );
+        
+        contourLayers.forEach(layer => {
+          try {
+            map.current.setLayoutProperty(layer.id, 'visibility', 'visible');
+          } catch (e) {
+            // Silently handle any layers that can't be modified
+          }
+        });
+        
+        // Load our custom contour styling
+        loadElevationContours();
+        setElevationEnabled(true);
+      } catch (error) {
+        console.error('Error loading elevation contours:', error);
+      }
     }
   };
 
@@ -475,75 +516,35 @@ const MapCanvas = ({ isVisible = true }) => {
   const loadElevationContours = () => {
     if (!map.current) return;
 
-    // Add elevation contour lines
-    map.current.addSource('contour-source', {
-      type: 'vector',
-      url: 'mapbox://mapbox.mapbox-terrain-v2'
-    });
-
-    // Add contour lines layer
-    map.current.addLayer({
-      id: 'contour-lines',
-      type: 'line',
-      source: 'contour-source',
-      'source-layer': 'contour',
-      layout: {
-        'line-join': 'round',
-        'line-cap': 'round'
-      },
-      paint: {
-        'line-color': '#4d3013ff',
-        'line-width': [
-          'interpolate',
-          ['linear'],
-          ['zoom'],
-          7, 2.0,
-          10, 3.5,
-          15, 5.0
-        ],
-        'line-opacity': 1.0
-      },
-      filter: [
-        'all',
-        ['==', ['get', 'index'], 5],
-        ['>=', ['get', 'ele'], 0]
-      ]
-    });
-
-    // Add contour labels layer
-    map.current.addLayer({
-      id: 'contour-labels',
-      type: 'symbol',
-      source: 'contour-source',
-      'source-layer': 'contour',
-      layout: {
-        'text-field': [
-          'concat',
-          ['to-string', ['get', 'ele']],
-          'm'
-        ],
-        'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
-        'text-size': [
-          'interpolate',
-          ['linear'],
-          ['zoom'],
-          7, 12,
-          10, 14,
-          15, 18
-        ],
-        'symbol-placement': 'line'
-      },
-      paint: {
-        'text-color': '#482d12ff',
-        'text-halo-color': '#ffffff',
-        'text-halo-width': 2
-      },
-      filter: [
-        'all',
-        ['==', ['get', 'index'], 5],
-        ['>=', ['get', 'ele'], 0]
-      ]
-    });
+    try {
+      // Control the base map's existing contour layers
+      const style = map.current.getStyle();
+      const layers = style.layers;
+      
+      // Look for existing contour layers in the base style
+      const contourLayers = layers.filter(layer => 
+        layer.id && (
+          layer.id.includes('contour') || 
+          layer.id.includes('hillshade') ||
+          (layer.source === 'composite' && layer['source-layer'] === 'contour')
+        )
+      );
+      
+      // Make the base contours more visible by modifying their style
+      contourLayers.forEach(layer => {
+        if (layer.paint) {
+          map.current.setPaintProperty(layer.id, 'line-color', '#8B4513');
+          map.current.setPaintProperty(layer.id, 'line-width', 2);
+          map.current.setPaintProperty(layer.id, 'line-opacity', 0.8);
+        }
+      });
+      
+      // Mark that we've customized the contours
+      map.current._vv_contoursCustomized = true;
+      
+    } catch (error) {
+      console.error('Error loading elevation contours:', error);
+    }
   };
 
   // Available AVAs for dropdown with specific coordinates
@@ -843,14 +844,14 @@ const MapCanvas = ({ isVisible = true }) => {
 
       <div className="map-container">
         <div className="map-header">
-          <h2>Explore the Willamette Valley AVAs</h2>
+          <h2>Explore The Willamette Valley AVAs</h2>
           <div className="map-controls">
             <select 
               value={selectedAva} 
               onChange={handleAvaSelection}
               className="ava-dropdown"
             >
-              <option value="">Select an AVA</option>
+              <option value="">Select An AVA</option>
               {avaList.map(ava => (
                 <option key={ava} value={ava}>{ava}</option>
               ))}
@@ -862,7 +863,7 @@ const MapCanvas = ({ isVisible = true }) => {
         </div>
 
         <div className="elevation-container">
-          <h3>Toggle Elevation (Zoom In To View)</h3>
+          <h3>Topographic Elevation (Zoom In To View)</h3>
           <div className="elevation-toggle-wrapper">
             <label className="toggle-switch">
               <input
@@ -876,7 +877,7 @@ const MapCanvas = ({ isVisible = true }) => {
         </div>
 
         <div className="soil-selector">
-          <h3>Select Willamette Valley Counties to View Soil Types</h3>
+          <h3>Select Willamette Valley Counties To View Soil Types</h3>
           <div className="county-checkboxes">
             {countiesData.map((county) => (
               <label key={county.name} className="county-checkbox">

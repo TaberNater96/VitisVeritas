@@ -137,7 +137,7 @@ main.with-padding {
 
 /* Intro Content Section Styles */
 .intro-content {
-  padding: var(--spacing-3xl) 0;
+  padding: var(--spacing-3xl) 0 var(--spacing-xl) 0;
   position: relative;
   width: 100%;
 }
@@ -145,7 +145,11 @@ main.with-padding {
 .intro-container {
   width: 100%;
   margin: 0;
-  padding: 0 var(--spacing-md);
+  padding: var(--spacing-xl);
+  background: linear-gradient(135deg, #0a0107 0%, #1c0415 50%, #2d0422 100%);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .intro-content h2 {
@@ -179,11 +183,12 @@ main.with-padding {
 /* Responsive adjustments for intro content section */
 @media (max-width: 768px) {
   .intro-content {
-    padding: var(--spacing-2xl) 0;
+    padding: var(--spacing-2xl) 0 var(--spacing-lg) 0;
   }
   
   .intro-container {
-    padding: 0 var(--spacing-sm);
+    padding: var(--spacing-lg);
+    margin: 0 var(--spacing-sm);
   }
   
   .intro-content h2 {
@@ -199,11 +204,12 @@ main.with-padding {
 
 @media (max-width: 480px) {
   .intro-content {
-    padding: var(--spacing-xl) 0;
+    padding: var(--spacing-xl) 0 var(--spacing-md) 0;
   }
   
   .intro-container {
-    padding: 0 var(--spacing-xs);
+    padding: var(--spacing-md);
+    margin: 0 var(--spacing-xs);
   }
   
   .intro-content h2 {

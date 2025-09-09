@@ -10,7 +10,7 @@ const MapInterpretation = () => {
       
       <div className="map-interpretation-container">
         <header className="map-interpretation-header">
-          <h2 className="map-interpretation-title">Map Interpretation</h2>
+          <h2 className="map-interpretation-title">Soil Map Interpretation</h2>
         </header>
         
         <div className="map-interpretation-intro">
