@@ -76,6 +76,16 @@ const Footer = () => {
                   TTB AVA Database
                 </a>
               </li>
+              <li className="footer-nav-item">
+                <a 
+                  href="https://www.usda.gov/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="footer-nav-link external-link"
+                >
+                  USDA
+                </a>
+              </li>
             </ul>
           </div>
 

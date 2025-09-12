@@ -23,9 +23,9 @@
   font-size: clamp(1.75rem, 3.5vw, 2.5rem);
   font-weight: bold;
   font-family: var(--font-family-serif);
-  color: #ffffff;
+  color: #000000;
   margin-bottom: 0;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.6);
 }
 
 /* Top Introduction Container */
