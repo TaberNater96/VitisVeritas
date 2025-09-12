@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import './SoilSeries.css';
 
 const SoilSeries = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const soilRefs = useRef({});
   const soilSeriesData = {
     amity: {
       title: 'Amity',
@@ -257,6 +260,35 @@ const SoilSeries = () => {
     }
   };
 
+  // Function to scroll to a specific soil series
+  const scrollToSoilSeries = (key) => {
+    const element = soilRefs.current[key];
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'center' 
+      });
+      setSearchTerm('');
+      setIsDropdownOpen(false);
+    }
+  };
+
+  // Filter soil series based on search term
+  const filteredSoilSeries = Object.entries(soilSeriesData).filter(([key, soil]) =>
+    soil.title.toLowerCase().startsWith(searchTerm.toLowerCase())
+  );
+
+  // Handle search input change
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+    setIsDropdownOpen(e.target.value.length > 0);
+  };
+
+  // Handle selection from dropdown
+  const handleSoilSelect = (key, title) => {
+    scrollToSoilSeries(key);
+  };
+
   return (
     <div className="soil-series-component">
       <div className="soil-series-container">
@@ -281,11 +313,41 @@ const SoilSeries = () => {
           </div>
         </div>
 
+        {/* Search Tool */}
+        <div className="soil-search-container">
+          <div className="soil-search-wrapper">
+            <input
+              type="text"
+              placeholder="Search for a soil series..."
+              value={searchTerm}
+              onChange={handleSearchChange}
+              className="soil-search-input"
+              onFocus={() => setIsDropdownOpen(searchTerm.length > 0)}
+              onBlur={() => setTimeout(() => setIsDropdownOpen(false), 150)}
+            />
+            {isDropdownOpen && filteredSoilSeries.length > 0 && (
+              <div className="soil-search-dropdown">
+                {filteredSoilSeries.map(([key, soil]) => (
+                  <div
+                    key={key}
+                    className="soil-search-option"
+                    onClick={() => handleSoilSelect(key, soil.title)}
+                  >
+                    <span className="soil-option-name">{soil.title}</span>
+                    <span className="soil-option-drainage">{soil.drainageClassification}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+
         {/* Soil Series List */}
         <div className="soil-series-list">
           {Object.entries(soilSeriesData).map(([key, soil], index) => (
             <div 
               key={key} 
+              ref={el => soilRefs.current[key] = el}
               className={`soil-series-item ${index % 2 === 0 ? 'primary' : 'secondary'}`}
             >
               <div className="soil-series-content">

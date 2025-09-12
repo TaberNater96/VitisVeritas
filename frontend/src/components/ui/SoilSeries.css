@@ -30,8 +30,8 @@
 
 /* Top Introduction Container */
 .soil-series-intro-container {
-  background: #ffffff;
-  color: #000000;
+  background: #000000;
+  color: #ffffff;
   padding: var(--spacing-2xl);
   border-radius: 12px;
   margin-bottom: var(--spacing-2xl);
@@ -61,6 +61,87 @@
   height: auto;
   border-radius: 8px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+/* Search Tool Styles */
+.soil-search-container {
+  margin-bottom: var(--spacing-2xl);
+  display: flex;
+  justify-content: center;
+}
+
+.soil-search-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 750px;
+}
+
+.soil-search-input {
+  width: 100%;
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: 1.1rem;
+  border: 2px solid #333333;
+  border-radius: 8px;
+  background: #000000;
+  color: #ffffff;
+  font-family: var(--font-family-serif);
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.soil-search-input:focus {
+  border-color: #ecb33a;
+  box-shadow: 0 0 0 3px rgba(233, 179, 58, 0.2);
+}
+
+.soil-search-input::placeholder {
+  color: #cccccc;
+  opacity: 0.8;
+}
+
+.soil-search-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #000000;
+  border: 2px solid #333333;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.soil-search-option {
+  padding: var(--spacing-md) var(--spacing-lg);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border-bottom: 1px solid #333333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.soil-search-option:hover {
+  background-color: #1a1a1a;
+}
+
+.soil-search-option:last-child {
+  border-bottom: none;
+}
+
+.soil-option-name {
+  font-weight: 600;
+  color: #ffffff;
+  font-family: var(--font-family-serif);
+}
+
+.soil-option-drainage {
+  font-size: 0.9rem;
+  color: #cccccc;
+  font-style: italic;
 }
 
 /* Soil Series List */
@@ -221,6 +302,15 @@
   .soil-series-description p {
     font-size: 1.2rem;
   }
+  
+  .soil-search-input {
+    font-size: 1rem;
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+  
+  .soil-search-option {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
 }
 
 @media (max-width: 480px) {
@@ -235,5 +325,17 @@
   
   .soil-series-description p {
     font-size: 1.1rem;
+  }
+  
+  .soil-search-input {
+    font-size: 0.95rem;
+  }
+  
+  .soil-option-name {
+    font-size: 0.95rem;
+  }
+  
+  .soil-option-drainage {
+    font-size: 0.8rem;
   }
 }
