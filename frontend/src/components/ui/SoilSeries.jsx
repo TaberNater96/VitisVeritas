@@ -67,7 +67,7 @@ const SoilSeries = () => {
       parentMaterial: 'Mixed alluvium',
       awc: '0.18-0.22 in/in',
       cec: '25-35 meq/100g',
-      description: 'The Coburg series represents one of the most agriculturally productive soils in the Willamette Valley, consisting of very deep, moderately well-drained soils formed from mixed alluvium on ancient stream terraces. These fine-textured soils feature a substantial mollic epipedon (50-75 cm thick) and high clay content (35-45 percent) that creates exceptional water and nutrient retention, making them ideal for sustained vine health throughout the growing season. The seasonal high water table at 70-100 cm depth provides consistent moisture availability during important growth periods while maintaining adequate drainage during wet winters. For Willamette Valley viticulture, Coburg soils offer consistency and predictability, producing wines with rich fruit character, balanced acidity, and excellent aging potential due to the soil\'s ability to moderate vine stress and provide steady nutrient availability. The deep, fertile alluvial foundation supports vigorous vine growth while the clay-rich texture contributes to wines with structure, depth, and the characteristic terroir expression that defines premium Willamette Valley Pinot Noir.'
+      description: 'The Coburg series represents one of the most agriculturally productive soils in the Willamette Valley, consisting of very deep, moderately-drained soils formed from mixed alluvium on ancient stream terraces. These fine-textured soils feature a substantial mollic epipedon (50-75 cm thick) and high clay content (35-45 percent) that creates exceptional water and nutrient retention, making them ideal for sustained vine health throughout the growing season. The seasonal high water table at 70-100 cm depth provides consistent moisture availability during important growth periods while maintaining adequate drainage during wet winters. For Willamette Valley viticulture, Coburg soils offer consistency and predictability, producing wines with rich fruit character, balanced acidity, and excellent aging potential due to the soil\'s ability to moderate vine stress and provide steady nutrient availability. The deep, fertile alluvial foundation supports vigorous vine growth while the clay-rich texture contributes to wines with structure, depth, and the characteristic terroir expression that defines premium Willamette Valley Pinot Noir.'
     },
     cove: {
       title: 'Cove',
@@ -150,6 +150,15 @@ const SoilSeries = () => {
       cec: '18-30 meq/100g',
       description: 'Melbourne soils developed from ancient sedimentary rocks and contain significant clay content (35-60%) that naturally regulates water availability to vines during Oregon\'s dry growing season. The clay-rich subsoils force roots to work harder for water and nutrients, naturally limiting yields and concentrating flavors in the grapes. These hillside soils, found at elevations between 200-1,200 feet, produce Pinot Noir with notable depth and structure, often showing darker fruit profiles and earthier characteristics than wines from volcanic soils. The high cation exchange capacity means Melbourne soils hold nutrients exceptionally well, contributing to the complex mineral notes and firm tannin structure that give Willamette Valley wines from these sites their distinctive power and longevity.'
     },
+    melby: {
+      title: 'Melby',
+      soilDepthToBedrock: '40-60 inches',
+      drainageClassification: 'Well Drained',
+      parentMaterial: 'Colluvium and residuum weathered from sedimentary rock',
+      awc: '0.14-0.17 in/in',
+      cec: '18-28 meq/100g',
+      description: 'The Melby series represents one of the most distinctive sedimentary terroirs found in the higher elevations of the Oregon Coast Range, where ancient marine sedimentary rocks have weathered into clay-rich soils that produce wines of exceptional depth and complexity. The characteristic 7.5YR hue and strong brown coloration of these soils is what really shows their sedimentary origin and high clay content, which contributes to wines with distinctive earthy minerality and bold structure. For viticulture, Melby soils offer a balance of drainage and water retention, with their moderately slow permeability creating natural vine stress during the growing season while maintaining sufficient moisture reserves for sustained growth. The higher elevation sites where these soils occur provide cooler microclimates and extended growing seasons, allowing for the development of complex phenolic compounds and natural acidity that make Melby vineyard sites increasingly prized for producing age-worthy wines with pronounced terroir characteristics and exceptional longevity.'
+    },
     nekia: {
       title: 'Nekia',
       soilDepthToBedrock: '20-40 inches',
@@ -167,6 +176,15 @@ const SoilSeries = () => {
       awc: '0.10-0.15 in/in',
       cec: '8-15 meq/100g',
       description: 'Newberg soils occupy the active floodplains and lower terraces of the Willamette Valley, where recent alluvial deposits from mixed sedimentary and igneous sources create coarse-loamy soils with rapid drainage and lower water-holding capacity. These somewhat excessively drained soils, subject to occasional flooding, present unique challenges for viticulture with their sandy textures and limited nutrient retention, requiring careful irrigation management to maintain vine health. While traditionally avoided for premium wine production due to their excessive drainage and lower fertility, strategically managed Newberg sites can produce lighter-bodied Pinot Noir with delicate fruit expression and bright acidity, offering freshness and early approachability. The periodic flood risk and coarse texture make these soils more suitable for annual crops and vegetables, though some innovative growers have found success with certain white varieties that benefit from the stress-inducing drainage and produce wines with crisp, mineral-driven profiles that complement the Willamette Valley\'s portfolio.'
+    },
+    olyic: {
+      title: 'Olyic',
+      soilDepthToBedrock: '40-60+ inches',
+      drainageClassification: 'Well Drained',
+      parentMaterial: 'Residuum and colluvium weathered from basalt',
+      awc: '0.13-0.16 in/in',
+      cec: '15-25 meq/100g',
+      description: 'The Olyic series represents a distinctive volcanic terroir found primarily in the higher elevations of the Oregon Coast Range, where ancient basaltic bedrock has weathered over millennia to create complex, mineral-rich soils prized by progressive winemakers seeking unique vineyard sites. This deep, well-drained soil forms from the weathering of basaltic lava flows, creating a fine-loamy profile with excellent structure and moderate water-holding capacity that supports sustainable viticulture without irrigation. The basaltic parent material imparts distinctive mineralogical characteristics including iron-rich concretions and a characteristic reddish-brown coloration, contributing to wines with pronounced mineral complexity and distinctive terroir expression. For viticulture, Olyic soils offer exceptional drainage combined with sufficient depth for root development, creating ideal conditions for producing concentrated, structured wines with distinctive volcanic characteristics. The higher elevation sites where these soils occur provide cooler growing conditions and extended hang time. This allows for the development of complex flavor compounds and natural acidity that make these vineyard sites increasingly sought after for premium wine production.'
     },
     panther: {
       title: 'Panther',
@@ -230,6 +248,15 @@ const SoilSeries = () => {
       awc: '0.12-0.18 in/in',
       cec: '12-20 meq/100g',
       description: 'Willakenzie soils are moderately deep, well-drained fine-loamy soils formed from ancient marine sedimentary rocks including tuffaceous sandstone and siltstone deposited millions of years ago when the Pacific Ocean covered parts of Oregon. These soils occur on smooth convex hills along the margins of the Willamette Valley and are characterized by moderate depth to bedrock (20-40 inches) and fine-loamy texture with 24-35% clay content . The marine sedimentary parent material creates unique terroir that tends to warm and dry out earlier than volcanic soils, contributing to early ripening and producing wines with distinctive characteristics . Willakenzie soils are particularly prominent in areas like Ribbon Ridge and portions of Yamhill-Carlton AVA, where they produce elegant Pinot Noir wines with vibrant red fruit profiles, excellent energy and brightness, notable minerality, and complex savory undertones that reflect the ancient oceanic origins of these sedimentary deposits .'
+    },
+    witham: {
+      title: 'Witham',
+      soilDepthToBedrock: 'Over 60 inches',
+      drainageClassification: 'Somewhat Poorly Drained',
+      parentMaterial: 'Clayey slope alluvium and colluvium derived from basalt',
+      awc: '0.15-0.18 in/in',
+      cec: '35-50 meq/100g',
+      description: 'The Witham series is mainly characterized by its high clay content and unique vertic properties that create dramatic seasonal changes in soil behavior. This very deep, clay-rich soil forms from weathered basaltic materials that have accumulated in footslope and toeslope positions, creating extremely dense profiles with 50-60 percent clay content and distinctive slickensides that develop from the soil\'s shrink-swell behavior. The vertic nature of these soils means they crack dramatically to the surface during dry summer months, then swell and become nearly impermeable during wet winter periods when a seasonal water table develops. For viticulture, Witham soils present both significant challenges and unique opportunities. The extreme clay content and seasonal waterlogging require careful vineyard management and drainage considerations, but the high cation exchange capacity provides exceptional nutrient retention and the natural stress cycles create ideal conditions for producing intensely concentrated wines with solid structure and aging potential. Wines from Witham soils are known for their power, density, and distinctive mineral character that really shows off the basaltic parent material and unique clay-dominated soil.'
     },
     witzel: {
       title: 'Witzel',

@@ -2,6 +2,7 @@ import React from 'react';
 import Hero from "../components/ui/Hero";
 import LazyMap from '../components/map/LazyMap';
 import MapInterpretation from '../components/ui/MapInterpretation';
+import BackToMapButton from '../components/ui/BackToMapButton';
 
 const HomePage = () => {
   return (
@@ -46,6 +47,9 @@ const HomePage = () => {
 
         <MapInterpretation />
       </div>
+      
+      {/* Back to Map Button */}
+      <BackToMapButton />
     </div>
   );
 };
