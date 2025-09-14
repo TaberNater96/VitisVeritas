@@ -342,6 +342,37 @@
   hyphens: auto;
 }
 
+/* Van Duzer Corridor popup styles */
+.corridor-hover-popup .mapboxgl-popup-content {
+  background: rgba(5, 41, 134, 0.95); /* Same color as Van Duzer AVA but with opacity */
+  color: white;
+  border-radius: 4px;
+  padding: 0.5rem;
+  font-size: 0.85rem;
+  max-width: 300px;
+  min-width: 200px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  pointer-events: none; /* Ensures popup doesn't interfere with mouse events */
+  transition: none; /* Remove transition for instant updates */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  z-index: 100; /* Same z-index as soil popups */
+}
+
+.corridor-hover-popup .mapboxgl-popup-tip {
+  border-top-color: rgba(5, 41, 134, 0.95);
+}
+
+.corridor-popup-content {
+  line-height: 1.3;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+.corridor-popup-content strong {
+  font-weight: bold;
+}
+
 /* Winery popup styles - ensure they appear above soil popups */
 .winery-hover-popup .mapboxgl-popup-content,
 .winery-detail-popup .mapboxgl-popup-content {

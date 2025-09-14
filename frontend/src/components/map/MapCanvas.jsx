@@ -66,6 +66,7 @@ const MapCanvas = ({ isVisible = true }) => {
         const features = map.current.queryRenderedFeatures(e.point);
         const soilFeatures = features.filter(f => f.source && f.source.endsWith('-soils'));
         const wineryFeatures = features.filter(f => f.source === 'wineries');
+        const corridorFeatures = features.filter(f => f.source === 'van-duzer-corridor');
         
         // If over a winery, hide soil popup to prioritize winery popup
         if (wineryFeatures.length > 0 && activePopupRef.current) {
@@ -73,8 +74,8 @@ const MapCanvas = ({ isVisible = true }) => {
           activePopupRef.current = null;
           map.current.getCanvas().style.cursor = 'pointer';
         }
-        // If not over any soil features and not over wineries, remove popup
-        else if (soilFeatures.length === 0 && wineryFeatures.length === 0 && activePopupRef.current) {
+        // If not over any soil features, corridor features, and not over wineries, remove popup
+        else if (soilFeatures.length === 0 && wineryFeatures.length === 0 && corridorFeatures.length === 0 && activePopupRef.current) {
           activePopupRef.current.remove();
           activePopupRef.current = null;
           map.current.getCanvas().style.cursor = '';
@@ -244,6 +245,75 @@ const MapCanvas = ({ isVisible = true }) => {
           'line-color': '#333333',
           'line-width': 2,
           'line-opacity': 0.8
+        }
+      });
+
+      // Load and add Van Duzer Corridor
+      const corridorResponse = await fetch('/data/van_duzer_cor.geojson');
+      const corridorData = await corridorResponse.json();
+
+      // Add Van Duzer Corridor source
+      map.current.addSource('van-duzer-corridor', {
+        type: 'geojson',
+        data: corridorData
+      });
+
+      // Add Van Duzer Corridor fill layer with same color as Van Duzer AVA
+      map.current.addLayer({
+        id: 'van-duzer-corridor-fill',
+        type: 'fill',
+        source: 'van-duzer-corridor',
+        paint: {
+          'fill-color': '#052986', // Same color as Van Duzer AVA
+          'fill-opacity': 0.6
+        }
+      });
+
+      // Add Van Duzer Corridor border layer
+      map.current.addLayer({
+        id: 'van-duzer-corridor-border',
+        type: 'line',
+        source: 'van-duzer-corridor',
+        paint: {
+          'line-color': '#333333',
+          'line-width': 2,
+          'line-opacity': 0.8
+        }
+      });
+
+      // Add smooth hover popup for Van Duzer Corridor using mousemove (like soil popups)
+      map.current.on('mousemove', 'van-duzer-corridor-fill', (e) => {
+        if (e.features.length > 0) {
+          map.current.getCanvas().style.cursor = 'pointer';
+          const coordinates = e.lngLat;
+          
+          // Remove existing popup before creating new one
+          if (activePopupRef.current) {
+            activePopupRef.current.remove();
+          }
+          
+          // Create new popup at current mouse position
+          activePopupRef.current = new mapboxgl.Popup({
+            closeButton: false,
+            closeOnClick: false,
+            offset: [0, -10],
+            className: 'corridor-hover-popup'
+          })
+          .setLngLat(coordinates)
+          .setHTML(`
+            <div class="corridor-popup-content">
+              <strong>Van Duzer Corridor Coastal Winds</strong>
+            </div>
+          `)
+          .addTo(map.current);
+        }
+      });
+
+      map.current.on('mouseleave', 'van-duzer-corridor-fill', () => {
+        map.current.getCanvas().style.cursor = '';
+        if (activePopupRef.current) {
+          activePopupRef.current.remove();
+          activePopupRef.current = null;
         }
       });
 
