@@ -45,7 +45,6 @@
   font-size: var(--font-size-md);
   color: var(--color-text-muted);
   font-style: italic;
-  text-transform: lowercase;
   letter-spacing: 1px;
   margin: 0 0 var(--spacing-md) 0;
 }
@@ -137,6 +136,13 @@
   gap: var(--spacing-md);
 }
 
+.footer-copyright-container {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
 .footer-copyright {
   font-size: var(--font-size-base);
   color: var(--color-text-secondary);
@@ -151,6 +157,51 @@
 
 .footer-author-link:hover {
   color: var(--color-primary-light);
+}
+
+.footer-social-links {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+}
+
+.footer-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-icon {
+  width: 20px;
+  height: 20px;
+  transition: all 0.3s ease;
+}
+
+/* GitHub Icon Styles */
+.github-link {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.github-link:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* LinkedIn Icon Styles */
+.linkedin-link {
+  background-color: #0077b5;
+  color: #ffffff;
+}
+
+.linkedin-link:hover {
+  background-color: #ffffff;
+  color: #0077b5;
 }
 
 .footer-disclaimer {
@@ -188,6 +239,12 @@
     flex-direction: column;
     text-align: center;
     gap: var(--spacing-sm);
+  }
+  
+  .footer-copyright-container {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    align-items: center;
   }
   
   .footer-tech {
