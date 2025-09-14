@@ -592,11 +592,11 @@ const TerroirPage = () => {
         const viewportBottom = scrollPosition + windowHeight;
         
         // Show nav if we're past hero but footer is not significantly visible
-        // Hide nav when footer is more than 50% visible in viewport
+        // Hide nav when footer is more than 15% visible in viewport
         const footerVisibleHeight = Math.max(0, viewportBottom - footerTop);
         const footerVisibilityRatio = footerVisibleHeight / windowHeight;
         
-        shouldShowSideNav = (scrollPosition > heroBottom - headerHeight) && (footerVisibilityRatio < 0.5);
+        shouldShowSideNav = (scrollPosition > heroBottom - headerHeight) && (footerVisibilityRatio < 0.15);
       }
       
       setShowSideNav(shouldShowSideNav);
