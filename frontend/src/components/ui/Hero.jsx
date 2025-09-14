@@ -21,7 +21,7 @@ const Hero = () => {
           ~ The truth of wine
         </h2>
         <p className="hero-description">
-          Welcome to the ultimate guide on the Willamette Valley terroir. Let's elevate your palate by understanding how this land shapes every glass of this world famous wine.
+          Welcome to the ultimate guide on the Willamette Valley terroir. Whether you're here for education, showing off your knowledge, or just to give you something new to talk about at your next wine tasting, this project is packed full of all the information you would need on Willamette Valley viticulture. Let's elevate your palate by understanding how this land shapes every glass of this world famous wine.
         </p>
       </div>
 

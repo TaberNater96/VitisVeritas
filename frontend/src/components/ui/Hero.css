@@ -46,12 +46,12 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  max-width: 50%;
-  width: 50%;
+  max-width: 65%;
+  width: 65%;
   min-width: 340px;
   padding: var(--spacing-xl) 0;
   margin-left: 3vw;
-  margin-top: 24.5vh;
+  margin-top: 20.5vh;
   margin-bottom: 0;
   min-height: 60vh;
   text-align: left;
@@ -96,7 +96,7 @@
   font-family: 'Verdana', 'Arial', sans-serif;
   font-size: clamp(1.1rem, 2.2vw, 1.4rem);
   font-weight: bold;
-  color: var(--color-text-secondary);
+  color: #ffffff;
   margin-bottom: var(--spacing-xl);
   text-shadow: 6px 6px 12px rgb(0, 0, 0, 0.95);
   line-height: 1.5;
@@ -165,7 +165,7 @@
   font-family: var(--font-family-primary);
   font-size: clamp(1.1rem, 2.2vw, 1.3rem);
   font-weight: bold;
-  color: var(--color-text-secondary);
+  color: #ffffff;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.95);
   margin: 0;
   text-align: center;
@@ -177,8 +177,8 @@
 .chevron-right {
   width: 36px;
   height: 36px;
-  color: var(--color-text-secondary);
-  filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.9));
+  color: #ffffff;
+  filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.95));
   animation: bounce 2s infinite;
 }
 

@@ -9,7 +9,6 @@ const HomePage = () => {
     <div className="home-page">
       <Hero />
       
-      {/* Combined terroir sections with unified gradient background */}
       <div className="terroir-sections">
         <section className="quote-section">
           <div className="quote-container">
@@ -24,21 +23,32 @@ const HomePage = () => {
           </div>
         </section>
 
-        {/* Content section to create space between hero and map */}
         <section className="intro-content">
           <div className="intro-container">
             <h2>The Willamette Valley Terroir Virtual Experience</h2>
             <p>
-              Welcome to an immersive exploration of the Willamette Valley's diverse terroir. This interactive experience allows you to delve deep into the intricate relationship between geography, climate, and winemaking that makes this region one of the world's premier wine destinations.
+              Welcome to a unique exploration of the Willamette Valley's terroir! This is far more than just another map showing winery locations. It's an interactive tool designed to give you a complete picture of what makes this region so special for wine. Terroir, for those who are unfamiliar with the term, is the complete natural environment in which a particular wine is produced, including factors such as the soil, geology, topography, and climate. Not just the vineyard as a whole, but the specifc block or even row in which a grapevine is cultivated. By combining detailed USDA (United States Department of Agriculture) soil data with topographic contour lines, this map allows you to see the very foundation of the valley's vineyards. My goal is to help you visualize <i>WHY</i> a wine from one hillside can taste remarkably different from one grown just down the road.
             </p>
+            
+            <hr />
+            
+            <h4>How to explore the map</h4>
             <p>
-              The map below provides a comprehensive view of all Willamette Valley sub-AVAs, complete with detailed boundaries, elevation data, and the precise locations of every known winery and vineyard throughout the valley. As you explore, you'll discover how subtle variations in slope, soil composition, wind patterns, sun exposure, and microclimates create distinct characteristics in each wine produced.
+              I suggest starting with a place you're curious about, whether it's a favorite winery, a specific vineyard, or a broader American Viticultural Area (AVA), which is a federally designated wine grape-growing region. Use the AVA selection tool to instantly navigate to that area. To reveal the detailed soil data, simply choose the corresponding county from the soil selection box (if you aren't familiar with the counties, just keep selecting them until the correct one is displayed on top). This will overlay the map with detailed soil areas for that specific part of the valley.
             </p>
+            
+            <hr />
+            
+            <h4>Comparing terroir</h4>
             <p>
-              By visualizing the terroir surrounding each winery and vineyard, you can begin to understand how these environmental factors influence the character and quality of the wines. This knowledge will help you build a fuller appreciation for what to look for in a wine, what to expect from specific areas, and the scientific reasoning behind these differences. It's this incredible diversity within a relatively small geographic area that makes Willamette Valley wines so unique, complex, and consistently exceptional.
+              Once you've selected an area, zoom in for a bird's-eye view. You'll see contour lines that displays the elevation and slope of the land, alongside the distinct, highly detailed polygons representing every unique soil type. This is where the real interaction and discovery begins. After examining the terroir of your chosen spot, pan over to a different vineyard, even one nearby, and compare the differences in soil and topography. This visual comparison is the key to understanding the intense diversity that exists within the Willamette Valley terroir.
             </p>
+            
+            <hr />
+            
+            <h4>Understanding the details</h4>
             <p>
-              Click on any region, winery, or vineyard to zoom in and explore the detailed terroir characteristics that shape each unique wine experience. Discover the stories written in the landscape and taste them in every glass.
+              If you're unsure what a specific soil type means or want to better visualize what a particular slope looks like, all the information you need is right below the map. Scroll down to the Soil Map Interpretation section, where I walk you through how to read the slope, understand different soil textures, and learn about the characteristics of the specific soil series displayed on the map. For more in-depth descriptions about the Willamette Valley terroir and winemaking process, check out the other pages! Now, go ahead and start exploring the rich tapestry of the Willamette Valley!
             </p>
           </div>
         </section>
@@ -48,7 +58,6 @@ const HomePage = () => {
         <MapInterpretation />
       </div>
       
-      {/* Back to Map Button */}
       <BackToMapButton />
     </div>
   );
