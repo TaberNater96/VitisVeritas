@@ -184,6 +184,72 @@ const MapCanvas = ({ isVisible = true }) => {
     };
   }, []);
 
+  // Add wind arrows to Van Duzer Corridor
+  const addWindArrows = async () => {
+    try {
+      // Create simple solid white arrow SVG
+      const arrowSvg = `
+        <svg width="40" height="20" viewBox="0 0 40 20" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 10 L30 10 M25 6 L30 10 L25 14" 
+                stroke="white" 
+                stroke-width="2" 
+                fill="none" 
+                stroke-linecap="round" 
+                stroke-linejoin="round"/>
+        </svg>
+      `;
+      
+      const arrowDataUrl = 'data:image/svg+xml;base64,' + btoa(arrowSvg);
+      
+      // Load wind arrow coordinates from external GeoJSON file
+      const response = await fetch('/data/wind_arrows.geojson');
+      if (!response.ok) {
+        throw new Error(`Failed to load wind arrows data: ${response.status}`);
+      }
+      const arrowPoints = await response.json();
+      
+      // Load the arrow image
+      const arrowImage = new Image();
+      arrowImage.onload = () => {
+        map.current.addImage('wind-arrow', arrowImage);
+        
+        // Wind arrows
+        map.current.addSource('wind-arrows', {
+          type: 'geojson',
+          data: arrowPoints
+        });
+        
+        // Add wind arrow layer
+        map.current.addLayer({
+          id: 'wind-arrows',
+          type: 'symbol',
+          source: 'wind-arrows',
+          layout: {
+            'icon-image': 'wind-arrow',
+            'icon-size': 0.8, // arrow size (0.5 = smaller, 1.0 = larger)
+            'icon-rotate': ['get', 'bearing'],
+            'icon-allow-overlap': true,
+            'icon-ignore-placement': true
+          },
+          paint: {
+            'icon-opacity': 1.0
+          }
+        });
+        
+        console.log('Wind arrows added to Van Duzer Corridor');
+      };
+      
+      arrowImage.onerror = () => {
+        console.error('Failed to load wind arrow image');
+      };
+      
+      arrowImage.src = arrowDataUrl;
+      
+    } catch (error) {
+      console.error('Error loading wind arrows:', error);
+    }
+  };
+
   // Load AVA GeoJSON data
   const loadAVAData = async () => {
     try {
@@ -280,6 +346,9 @@ const MapCanvas = ({ isVisible = true }) => {
           'line-opacity': 0.8
         }
       });
+
+      // Add wind arrows to show coastal wind flow
+      addWindArrows();
 
       // Add smooth hover popup for Van Duzer Corridor using mousemove (like soil popups)
       map.current.on('mousemove', 'van-duzer-corridor-fill', (e) => {
