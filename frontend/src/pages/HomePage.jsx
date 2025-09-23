@@ -34,7 +34,7 @@ const HomePage = () => {
             
             <h4>How to explore the map</h4>
             <p>
-              I suggest starting with a place you're curious about, whether it's a favorite winery, a specific vineyard, or a broader American Viticultural Area (AVA), which is a federally designated wine grape-growing region. Use the AVA selection tool to instantly navigate to that area. To reveal the detailed soil data, simply choose the corresponding county from the soil selection box (if you aren't familiar with the counties, just keep selecting them until the correct one is displayed on top). This will overlay the map with detailed soil areas for that specific part of the valley.
+              I suggest starting with a place you're curious about, whether it's a favorite winery, a specific vineyard, or a broader American Viticultural Area (AVA), which is a federally designated wine grape-growing region based on various different physical factors. Use the AVA selection tool to instantly navigate to that area. To reveal the detailed soil data, simply choose the corresponding county from the soil selection box (if you aren't familiar with the counties, just keep selecting them until the correct one is displayed on top). This will overlay the map with detailed soil areas for that specific part of the valley. 
             </p>
             
             <hr />

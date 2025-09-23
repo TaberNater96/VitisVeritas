@@ -178,10 +178,9 @@
 .phase-section:nth-child(13) { transition-delay: 1.3s; }
 
 .phase-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-2xl);
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   padding: var(--spacing-2xl);
@@ -191,7 +190,7 @@
 
 /* Alternating backgrounds - Red wine phases (odd) */
 .phase-section:nth-child(odd) .phase-content {
-  background: linear-gradient(135deg, #f51515 0%, #ed5757 50%, #e97777 100%);
+  background: linear-gradient(135deg, #6e0606 0%, #8c2323 50%, #9f5b5b 100%);
   box-shadow: 0 4px 15px rgba(138, 21, 56, 0.3);
 }
 
@@ -228,29 +227,7 @@
   box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
 }
 
-/* Alternate layout for phases */
-.phase-right .phase-content {
-  grid-template-columns: 1fr 1fr;
-}
-
-.phase-right .phase-text {
-  order: 2;
-}
-
-.phase-right .phase-image {
-  order: 1;
-}
-
-/* Phase Text */
-.phase-text {
-  padding-right: var(--spacing-lg);
-}
-
-.phase-right .phase-text {
-  padding-right: 0;
-  padding-left: var(--spacing-lg);
-}
-
+/* Phase Title */
 .phase-title {
   font-family: var(--font-family-serif);
   font-size: clamp(1.5rem, 3vw, 2rem);
@@ -260,6 +237,39 @@
   border-bottom: 2px solid var(--color-primary);
   padding-bottom: var(--spacing-sm);
   display: inline-block;
+  width: 100%;
+}
+
+/* Paragraph-Image Pairs */
+.paragraph-image-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-2xl);
+  align-items: flex-start;
+  margin-bottom: var(--spacing-lg);
+}
+
+.paragraph-image-pair:last-child {
+  margin-bottom: 0;
+}
+
+/* Alternate layout for right-aligned phases */
+.phase-right .paragraph-image-pair {
+  grid-template-columns: 1fr 1fr;
+}
+
+.phase-right .paragraph-container {
+  order: 2;
+}
+
+.phase-right .image-container {
+  order: 1;
+}
+
+/* Paragraph Container */
+.paragraph-container {
+  display: flex;
+  align-items: flex-start;
 }
 
 .phase-description {
@@ -268,19 +278,25 @@
   line-height: 1.7;
   color: var(--color-text-secondary);
   text-align: justify;
+  margin: 0;
 }
 
-/* Phase Image Placeholders */
-.phase-image {
+/* Image Container */
+.image-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 300px;
+  align-items: flex-start;
+}
+
+.wine-process-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
 }
 
 .image-placeholder {
   width: 100%;
-  height: 100%;
+  height: 250px;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
   border: 2px dashed rgba(255, 255, 255, 0.3);
   border-radius: 8px;
@@ -363,22 +379,19 @@
     height: 32px;
   }
   
-  .phase-content {
+  .paragraph-image-pair {
     grid-template-columns: 1fr;
-    gap: var(--spacing-xl);
+    gap: var(--spacing-lg);
   }
   
-  .phase-right .phase-text,
-  .phase-text {
+  .phase-right .paragraph-container,
+  .paragraph-container {
     order: 1;
-    padding-right: 0;
-    padding-left: 0;
   }
   
-  .phase-right .phase-image,
-  .phase-image {
+  .phase-right .image-container,
+  .image-container {
     order: 2;
-    height: 250px;
   }
   
   .phases-container {
@@ -448,8 +461,9 @@
     padding: var(--spacing-xl);
   }
   
-  .phase-image {
-    height: 200px;
+  .wine-process-image {
+    max-height: 200px;
+    object-fit: cover;
   }
   
   .conclusion-content {

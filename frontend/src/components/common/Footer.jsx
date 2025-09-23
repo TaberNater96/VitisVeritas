@@ -73,6 +73,16 @@ const Footer = () => {
                   USDA
                 </a>
               </li>
+              <li className="footer-nav-item">
+                <a 
+                  href="https://www.usgs.gov/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="footer-nav-link external-link"
+                >
+                  USGS
+                </a>
+              </li>
             </ul>
           </div>
 

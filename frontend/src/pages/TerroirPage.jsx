@@ -126,7 +126,7 @@ const TerroirPage = () => {
             title: 'The Great Missoula Floods: A Winemaker\'s Gift',
             content: [
               'The Missoula Floods deposited what geologists call the Willamette Silt, a layer of fine-grained sediment that can reach depths of 100 feet in some areas. This wasn\'t a single event but a series of 40 or more floods, each leaving its own layer of sediment. The floods sorted materials by size: heavier gravels and sands settled first near the valley margins, while the finest silts settled in the valley center as the temporary lake slowly drained.',
-              'This flood-deposited silt created the valley floor soils that are generally too fertile and poorly drained for premium wine grape production, which is why you\'ll find most of the valley\'s best vineyards not on the valley floor, but on the hillsides above the flood line. The 400-foot elevation mark left by these floods is often called the "Pinot line" by local vintners, as vineyards planted above this elevation typically produce superior Pinot Noir.'
+              'This flood-deposited silt created the valley floor soils that are generally too fertile and poorly drained for premium wine grape production, which is why you\'ll find most of the valley\'s best vineyards not on the valley floor, but on the hillsides above the flood line. The elevation mark left by these floods is often called the "Pinot line" by local vintners, as vineyards planted above this elevation typically produce superior Pinot Noir.'
             ],
             image: {
               src: missoulaFloodsImage,

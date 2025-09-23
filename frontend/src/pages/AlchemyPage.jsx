@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react';
 import './AlchemyPage.css';
 import wineMakingImage from '../assets/images/wine_making.jpg';
 import harvestImage from '../assets/images/harvest.jpg';
+import corkingImage from '../assets/images/corking.jpg';
+import grapeSortingImage from '../assets/images/grape_sorting.jpg';
+import grapeHarvestImage from '../assets/images/grape_harvest.jpg';
 import sortingImage from '../assets/images/sorting.jpeg';
-import crushingImage from '../assets/images/crushing.jpeg';
+import crushingImage from '../assets/images/crushing.jpg';
 import macerationImage from '../assets/images/maceration.jpg';
 import fermentationImage from '../assets/images/fermentation.jpg';
 import pressingImage from '../assets/images/pressing.jpg';
@@ -23,8 +26,8 @@ const AlchemyPage = () => {
   // Smooth scroll to section
   const scrollToSection = (sectionIndex) => {
     const section = document.querySelectorAll('.phase-section')[sectionIndex];
-    const headerHeight = 80; // Height of sticky header
-    const offset = 20; // Additional offset for better positioning
+    const headerHeight = 80; // height of sticky header
+    const offset = 20; // additional offset for better positioning
     
     if (section) {
       const sectionTop = section.offsetTop - headerHeight - offset;
@@ -39,80 +42,65 @@ const AlchemyPage = () => {
     {
       id: 'harvest',
       title: 'Phase 1: Harvest',
-      description: 'The winemaking process begins in the vineyard with the crucial decision of when to harvest the grapes. This timing is everything - it determines the sugar levels, acidity, tannin structure, and flavor development of the wine. For red wines, grapes are typically harvested at higher brix levels (24-26°) for fuller body and deeper color extraction. White wine grapes are often picked earlier (20-24° brix) to preserve bright acidity and delicate aromatics. Winemakers carefully monitor brix levels, pH, and taste the grapes daily as harvest approaches. Hand-picking is preferred for premium wines as it allows selective harvesting and prevents premature crushing that could lead to oxidation in whites or unwanted extraction in reds.',
-      image: harvestImage
+      description: `Harvest in the Willamette Valley is unlike anywhere else, stretching from late August through October, much longer than in warmer regions. This extended season happens because the cool climate allows grapes to ripen slowly, developing complex flavors that simply can't be rushed. While California winemakers often focus primarily on sugar levels (measured in Brix), Oregon winemakers obsess over something more nuanced: achieving perfect phenolic ripeness while keeping that bright, natural acidity that makes these wines so food-friendly and age-worthy. Most grapes are still picked by hand here, with crews starting work in the cool morning hours to keep the fruit fresh and prevent unwanted oxidation. The varied microclimates mean that grapes from Dundee Hills might be ready weeks before those in the Van Duzer Corridor, requiring winemakers to constantly taste and test, looking for that perfect balance of pH (ideally between 3.4 and 3.7 for reds), acidity, and most importantly, the development of flavors in both the skins and seeds.
+      
+      Weather plays a huge role in harvest decisions here, the threat of autumn rain creates a strategic chess game for winemakers. Beyond just checking sugar and acid levels, they're evaluating how the tannins are developing and whether the color compounds (anthocyanins) have reached their peak. This is especially crucial for Pinot Noir, where picking too early results in harsh, green-tasting tannins that no amount of aging can fix. The harvest itself involves small picking bins to prevent the weight of grapes from crushing those on the bottom, careful sorting right in the field to remove damaged fruit, and increasingly, refrigerated trucks that keep grapes cool during their journey to the winery. Winemakers also make critical decisions about whole cluster fermentation right in the vineyard - examining whether the stems have turned brown and woody (lignified) enough to add positive spice notes, or if they're still green and would contribute unwanted vegetal flavors.`,
+      image: harvestImage,
+      secondImage: grapeHarvestImage
     },
     {
-      id: 'sorting',
-      title: 'Phase 2: Sorting & Selection',
-      description: 'Once harvested, grapes undergo careful sorting with different approaches for reds and whites. For red wines, whole cluster sorting removes damaged berries while preserving stems if desired for added tannin structure. White wine grapes require gentler handling to prevent skin contact that could lead to unwanted color extraction or bitter compounds. The sorting removes damaged, unripe, or diseased fruit, as well as leaves and debris. Premium white wine production often includes a second sorting after a gentle pressing to remove any remaining imperfections. Optical sorting machines can identify and remove imperfect grapes with incredible precision, though many premium producers still rely on hand sorting for the ultimate quality control.',
-      image: sortingImage
+      id: 'reception-sorting',
+      title: 'Phase 2: Reception and Sorting',
+      description: `When grapes arrive at the winery, they undergo an intensive quality check that shows just how seriously Willamette Valley producers take their craft. The first priority is temperature - keeping grapes between 50 and 60 degrees Fahrenheit prevents fermentation from starting too early and preserves those delicate aromatic compounds that make Oregon wines distinctive. Sorting happens on specialized tables where trained workers remove anything that isn't a perfect grape - leaves, stems, damaged berries, even the occasional ladybug. This meticulous process typically takes one to two hours per ton of grapes, with sorters who know exactly what each vineyard lot needs based on the intended wine style.
+      
+      The sorting approach changes dramatically depending on what wine is being made. For Pinot Noir that will be fermented with whole clusters, entire bunches are examined to see if the stems are mature enough - brown and woody stems add spice and structure, while green stems would ruin the wine with bitter, vegetal notes. White grapes like Chardonnay and Pinot Gris get even more attention, as any damaged berries could release compounds that would make the wine bitter or cause it to brown. Some larger wineries now use optical sorting machines that can identify and remove imperfect berries with incredible precision. The science here is about preventing problems before they start - keeping out under-ripe fruit that contains pyrazines (compounds that taste like bell peppers) and damaged grapes whose enzymes would cause browning and off-flavors, especially in white wines.`,
+      image: sortingImage,
+      secondImage: grapeSortingImage
     },
     {
-      id: 'crushing',
-      title: 'Phase 3: Crushing & Destemming / Whole-Cluster Pressing',
-      description: 'This is where red and white wine production dramatically diverge. For red wines, grapes are crushed to release juice while being destemmed, though some winemakers include whole clusters for added complexity and tannin structure. The crushing must be gentle enough to avoid breaking seeds, which would release bitter compounds. For white wines, many producers skip crushing entirely, moving directly to whole-cluster pressing to minimize skin contact and preserve delicate aromatics. When white grapes are crushed, it happens immediately before pressing with minimal skin contact time. The fundamental difference is that red wines need skin contact for color and tannin extraction, while white wines generally avoid it to maintain their bright, clean character.',
-      image: crushingImage
-    },
-    {
-      id: 'maceration',
-      title: 'Phase 4: Cold Maceration (Optional) / Skin Contact',
-      description: 'Cold maceration is primarily a red wine technique, where crushed grapes are kept at low temperatures (50-60°F) for several days before fermentation begins. This allows gentle extraction of color, aromatics, and flavor compounds from the skins without aggressive alcohol-driven extraction. For white wines, skin contact is usually limited or avoided entirely, though some styles like orange wines or certain Chardonnays benefit from brief skin contact (4-24 hours) to extract additional texture and complexity. When used in white wine production, this phase is carefully monitored to prevent over-extraction of phenolic compounds that could make the wine bitter or overly tannic. The temperature control is crucial in both cases to prevent spontaneous fermentation.',
-      image: macerationImage
+      id: 'crushing-pressing',
+      title: 'Phase 3: Crushing and Pressing',
+      description: `This phase shows the biggest differences between how different grape varieties are handled in the Willamette Valley. For premium Pinot Noir, many winemakers skip crushing entirely, keeping berries whole to allow a gentle, natural fermentation to begin inside the intact grapes. When crushing is used, it's incredibly gentle, just enough to break the skins without crushing seeds, which would release harsh tannins that have no place in elegant Oregon Pinot. Many producers include 15-30% whole clusters in their fermentations, where entire bunches go into tanks uncrushed, starting a process called carbonic maceration that creates complex spice notes and silky tannins. Experienced winemakers often taste the stems throughout ripening to assess their readiness, looking for brown, lignified stems that taste more like cinnamon than green pepper. The decision to use whole clusters depends heavily on the vintage, in cooler years, more grapes are destemmed to avoid those harsh, unripe stem tannins.
+      
+      White wine processing is completely different, designed to get juice with minimal extraction of tannins or color from the skins. Chardonnay and Pinot Gris go straight into pneumatic presses, essentially giant balloons that gently squeeze the grapes in cycles. The first juice that runs out (free-run) is the highest quality, while subsequent pressing cycles at increasing pressure extract more structured but less refined juice. Winemakers rarely press harder than 1.5 bar (about 22 pounds per square inch) to avoid crushing seeds and extracting bitter compounds. Rosé production takes one of two paths: either bleeding off pink juice from red wine tanks after just 2-8 hours of skin contact (called saignée), or pressing red grapes directly like a white wine. The color development is carefully monitored through lab analysis to achieve just the right shade of pink. The underlying science involves managing extraction, higher temperatures and longer contact times pull more compounds from the skins, so precise temperature control and timing are essential for achieving the desired wine style.`,
+      image: crushingImage,
+      secondImage: pressingImage
     },
     {
       id: 'fermentation',
-      title: 'Phase 5: Alcoholic Fermentation',
-      description: 'Fermentation transforms grape sugars into alcohol, but the process differs significantly between red and white wines. Red wine fermentation occurs with the skins present, typically at warmer temperatures (75-85°F) to encourage color and tannin extraction. The fermenting red wine forms a "cap" of skins that must be regularly punched down or pumped over. White wine fermentation happens without skins at cooler temperatures (55-65°F) to preserve delicate aromatics and prevent harsh extraction. White wines often ferment in stainless steel for clean flavors, though premium Chardonnays may ferment in oak barrels for added complexity. Both processes can use wild yeasts for complexity or cultured yeasts for consistency, with fermentation lasting anywhere from one week to several months.',
-      image: fermentationImage
+      title: 'Phase 4: Fermentation',
+      description: `Primary fermentation is where the magic happens - carefully selected yeast strains (Saccharomyces cerevisiae) convert grape sugars into alcohol while extracting all the flavors and aromas that define Oregon wine style. Red wines ferment at 75-85 degrees Fahrenheit in small, open-top vessels that allow winemakers to gently punch down the cap of grape skins that floats to the surface. This happens 2-3 times daily to extract color and tannins without overdoing it. These relatively cool fermentation temperatures - cooler than what's used in warmer climates - preserve the delicate aromatic compounds and elegant tannin structure that Oregon Pinot Noir is famous for. The whole process typically takes 12-16 days, with winemakers constantly monitoring sugar levels, temperature, and most importantly, tasting to determine when the wine has extracted just enough from the skins. The choice between wild yeast (naturally present on grapes) and commercial yeast strains reflects each winery's philosophy - many use a combination to balance reliable fermentation with the complexity that indigenous yeasts bring.
+      
+      White wine fermentation happens in a completely different environment - at just 50-60 degrees Fahrenheit to preserve those volatile aromatic compounds that would evaporate at higher temperatures. Premium Chardonnay often ferments right in French oak barrels, where the wood adds complexity while the slow, cool fermentation develops a creamy texture and beautifully integrated oak flavors. Nearly all Oregon red wines go through malolactic fermentation (MLF), where special bacteria (Oenococcus oeni) convert sharp malic acid into softer lactic acid - think of the difference between a green apple and cream. This can happen either at the same time as the primary fermentation or after it's complete. White wines might undergo MLF depending on the style the winemaker wants - it adds richness and sometimes a buttery character from a compound called diacetyl. Throughout fermentation, winemakers track pH changes (usually increasing by 0.1-0.3), acid levels (dropping by 1-3 grams per liter), and the development of various flavor compounds that contribute to the wine's final character.`,
+      image: fermentationImage,
+      secondImage: malolacticImage
     },
     {
-      id: 'pressing',
-      title: 'Phase 6: Pressing',
-      description: 'Pressing occurs at different stages for red and white wines. For white wines, pressing happens immediately after crushing (or without crushing for whole-cluster pressing), using gentle pressure to extract clean juice while avoiding harsh compounds from skins and seeds. Multiple press fractions are often kept separate, with the first gentle pressings being the highest quality. For red wines, pressing occurs after fermentation is complete - the free-run wine is drained first, then the remaining pomace is pressed. Red wine pressing can use more pressure since color and tannins have already been extracted, but care is still taken to avoid overly harsh extraction. The press wine is often kept separate from free-run wine and may be blended back in controlled amounts.',
-      image: pressingImage
+      id: 'pressing-clarification',
+      title: 'Phase 5: Pressing and Clarification',
+      description: `After fermentation completes, it's time to separate the new wine from all the grape solids. Red wines go into pneumatic presses that work in graduated cycles - first the wine that flows out naturally (free-run), then light pressing at about 0.5-1.0 bar, and finally harder pressing up to 1.5-2.0 bar that extracts more tannic, structured wine. Oregon winemakers taste each fraction separately, making careful blending decisions based on what style they're after and what the vintage has given them. Free-run wine brings elegance and aromatics, while press wine adds structure and color intensity - finding the perfect blend is part art, part science. The entire pressing process typically takes 1-2 days per batch, using pumping systems designed to minimize oxygen exposure that could damage the wine's delicate character.
+      
+      Clarification uses both natural settling and modern technology to achieve crystal-clear wine while preserving quality. Red wines typically cold-settle for 24-48 hours at 50-55 degrees Fahrenheit, allowing dead yeast cells and grape particles (called gross lees) to fall to the bottom naturally. The clear wine is then carefully pumped off this sediment (racked) using specialized equipment that minimizes oxygen pickup. White wines need more intensive clarification because they contain proteins and phenolic compounds that can cause haziness later. After cold settling for 36-48 hours, they're often treated with bentonite clay, which binds to unstable proteins and removes them - this is especially important for Oregon whites because the region's high natural acidity makes proteins even more likely to cause problems. Some winemakers also use pectolytic enzymes to break down pectins (the same compounds that make jam gel), helping the wine clear more quickly and completely.`,
+      image: rackingImage,
+      secondImage: filtrationImage
     },
     {
-      id: 'racking',
-      title: 'Phase 7: Racking & Lees Management',
-      description: 'After pressing (reds) or primary fermentation (whites), wines are racked off heavy solids (gross lees) to prevent off-aromas. Subsequent rackings during maturation clarify the wine, with selective lees retention (and batonnage in some whites) enhancing texture and complexity. This is performed as needed rather than just once (immediately post‑fermentation/press, then periodically during maturation).',
-      image: rackingImage // ^ add more text for the description above to avoid the image from clipping the box (double check how all container look on larger screens)
-    },
-    {
-      id: 'malolactic',
-      title: 'Phase 8: Malolactic Fermentation',
-      description: 'Malolactic fermentation (MLF) converts sharp malic acid into softer lactic acid, but its application varies greatly between wine styles. Most red wines undergo complete MLF, which adds complexity and creates a smoother, rounder mouthfeel essential to red wine character. For white wines, MLF is a stylistic choice: crisp whites like Sauvignon Blanc typically avoid it to maintain bright acidity, while richer whites like many Chardonnays embrace partial or complete MLF for creamy texture and buttery flavors. The process can occur naturally or be inoculated with specific bacteria, taking weeks to months to complete. Temperature control is crucial, as MLF bacteria are sensitive to extremes and can produce off-flavors if not properly managed.',
-      image: malolacticImage
-    },
-    {
-      id: 'aging',
-      title: 'Phase 9: Aging & Maturation',
-      description: 'Aging strategies differ significantly between red and white wines. Red wines typically age longer and often in oak to develop complexity, integrate tannins, and build structure. They may age in various oak formats (barrels, tanks, chips) or neutral vessels for 6 months to several years. White wines generally age for shorter periods, with styles ranging from crisp, early-release wines aged briefly in stainless steel to preserve fruit character, to complex Chardonnays aged in oak with lees stirring (batonnage) for richness and texture. The choice of aging vessel - stainless steel, concrete, new oak, used oak, or alternative formats - dramatically influences the final wine character. Micro-oxygenation during aging helps integrate flavors and soften harsh edges in both styles.',
-      image: agingImage
-    },
-    {
-      id: 'blending',
-      title: 'Phase 10: Blending',
-      description: 'Blending philosophy varies between red and white wine production. Red wines often benefit from complex blends combining different varietals (like Bordeaux blends), vineyard blocks, or barrel selections to achieve balance and complexity. The tannin structure in reds allows for more intricate blending without losing wine identity. White wine blending tends to be more subtle, often focusing on balancing acidity, texture, and aromatics from different lots or lightly blending varietals for complexity. Single-varietal whites may blend different vineyard blocks or fermentation vessels (tank vs. barrel fermented portions). Both styles benefit from the winemaker\'s artistry in creating a final wine that surpasses its individual components, with careful consideration of how each element contributes to the overall balance and character.',
-      image: blendingImage
-    },
-    {
-      id: 'fining',
-      title: 'Phase 11: Fining & Stabilization',
-      description: 'Fining and stabilization techniques are tailored to each wine type. Red wines commonly use protein-based fining agents like egg whites or specialized proteins to soften tannins and remove harsh compounds, while maintaining the wine\'s structure and color. White wines often require more delicate fining with bentonite clay to remove excess proteins that could cause haze, or with other agents to preserve their bright, clean appearance. Both styles undergo cold stabilization to prevent tartrate crystals, though whites are more susceptible to protein haze and require more careful temperature management. The goal is always to maintain the wine\'s intended character while ensuring stability during storage and transport. Some premium wines use minimal fining to preserve texture and complexity.',
-      image: finingImage
-    },
-    {
-      id: 'filtration',
-      title: 'Phase 12: Filtration',
-      description: 'Filtration approaches differ based on wine style and intended market. Red wines, with their more robust structure, can often handle coarser filtration or even remain unfiltered to preserve texture and complexity. When reds are filtered, it\'s typically to remove larger particles while maintaining body and mouthfeel. White wines generally require more extensive filtration to achieve the bright clarity consumers expect, ranging from coarse filtration to sterile filtration depending on the style. Crisp white wines like Pinot Grigio typically receive thorough filtration for pristine clarity, while premium Chardonnays might use minimal filtration to retain texture. The filtration level is a crucial stylistic decision balancing stability, appearance, and wine character - over-filtration can strip away desirable compounds that contribute to mouthfeel and complexity.',
-      image: filtrationImage
+      id: 'aging-maturation',
+      title: 'Phase 6: Aging and Maturation',
+      description: `The aging phase is the longest part of Oregon winemaking, typically lasting 9-22 months depending on the wine style and quality level. French oak dominates in the Willamette Valley, both because of Burgundian influence and because French oak's flavor profile perfectly complements Oregon's cool-climate fruit. Red wines age in 225-liter barrels, with premium Pinot Noir seeing 15-40% new oak and the rest in 1-3 year old barrels that provide subtle oak influence without overpowering the fruit. Choosing barrels is an art form, winemakers select specific cooperages (barrel makers), toast levels (how much the inside is charred), and even which French forests the oak comes from. Vosges and Allier forests are particularly prized for their tight grain and elegant tannins. Cellars are kept at a constant 55-60 degrees Fahrenheit to promote slow, steady development while preventing unwanted microbial activity or excessive evaporation.
+      
+      During aging, wines undergo remarkable chemical changes through controlled oxygen exposure, tannin evolution, and flavor integration. About 2-4% of the wine evaporates through the barrel staves each year (called the "angel's share"), providing just enough oxygen to help tannins link up with color compounds, creating stable colors and a softer mouthfeel. Winemakers regularly top up barrels to prevent too much air space (ullage) that would cause oxidation, and they monitor sulfur dioxide levels monthly, maintaining about 20 parts per million of free SO₂ to prevent spoilage without interfering with the wine's development. White wines might be aged "sur lie" (on the yeast lees) with periodic stirring (bâtonnage) to develop creamy texture and complex flavors as yeast cells break down and release compounds that enhance mouthfeel. The science involves understanding how compounds extract from oak over time, how oxygen drives chemical reactions that soften tannins, and how enzymatic processes slowly transform primary fruit flavors into the complex bouquet found in mature wines.`,
+      image: agingImage,
+      secondImage: blendingImage
     },
     {
       id: 'bottling',
-      title: 'Phase 13: Bottling & Finishing',
-      description: 'Bottling represents the culmination of distinct journeys for red and white wines. Red wines, having typically undergone longer aging, are often more stable at bottling but may benefit from additional bottle aging to further integrate their complex components. The bottling environment must prevent oxidation while maintaining the wine\'s developed character. White wines, especially those meant for early consumption, require careful handling to preserve their fresh, bright qualities. They\'re typically bottled with higher levels of protective sulfur dioxide and may require immediate temperature control. Both styles benefit from inert gas purging and precise filling to prevent oxidation. Post-bottling, reds often improve with time as their tannins soften and flavors meld, while most whites are designed to be enjoyed within a few years of bottling, though premium examples can age beautifully for decades.',
-      image: bottlingImage
+      title: 'Phase 7: Bottling',
+      description: `Bottling represents the culmination of the entire winemaking process, requiring precise technical execution to preserve wine quality and ensure it will age gracefully. Before bottling, winemakers make final blending decisions, combining different lots, barrel selections, and sometimes even different vintages to achieve their signature style and consistency. Extensive lab testing confirms the wine is stable, checking that proteins won't cause haziness, that tartrate crystals won't form in the bottle, and that no unwanted microbes are present. Filtration decisions vary widely based on winemaking philosophy. Some producers use coarse filtration through cellulose pads, others sterile-filter through 0.45-micron membranes, and many red wine producers use minimal or no filtration to preserve texture and complexity.
+      
+      The actual bottling process uses very specific equipment designed to protect wine from its biggest enemy: oxygen. Modern bottling lines blanket the wine with inert gases like nitrogen or carbon dioxide, use counter-pressure fillers that minimize turbulence, and include quality control stations that check fill levels, cork insertion, and capsule application. A final dose of sulfur dioxide (targeting 25-30 parts per million free SO₂) compensates for the small amount of oxygen that inevitably gets picked up during bottling. Natural cork remains the closure of choice for most premium Oregon wines, allowing 0.5-2.0 milligrams per liter of oxygen transmission annually, just enough to allow beneficial aging reactions. After bottling, Oregon Pinot Noir typically needs 2-5 years to show its best, during which time primary fruit flavors evolve into the complex tertiary aromas and flavors that showcase the region's potential for creating truly age-worthy wines.`,
+      image: corkingImage,
+      secondImage: bottlingImage
     }
   ];
 
@@ -237,23 +225,54 @@ const AlchemyPage = () => {
       </nav>
 
       <div className="phases-container">
-        {wineProcessPhases.map((phase, index) => (
-          <section key={phase.id} className={`phase-section ${index % 2 === 0 ? 'phase-left' : 'phase-right'} ${sectionsInView.has(index) ? 'in-view' : ''}`}>
-            <div className="phase-content">
-              <div className="phase-text">
+        {wineProcessPhases.map((phase, index) => {
+          const paragraphs = phase.description.split(/\n\s*\n/).filter(p => p.trim());
+          return (
+            <section key={phase.id} className={`phase-section ${index % 2 === 0 ? 'phase-left' : 'phase-right'} ${sectionsInView.has(index) ? 'in-view' : ''}`}>
+              <div className="phase-content">
                 <h2 className="phase-title">{phase.title}</h2>
-                <p className="phase-description">{phase.description}</p>
+                
+                <div className="paragraph-image-pair">
+                  <div className="paragraph-container">
+                    <p className="phase-description">
+                      {paragraphs[0]}
+                    </p>
+                  </div>
+                  <div className="image-container">
+                    {phase.image ? (
+                      <img src={phase.image} alt={`${phase.title} part 1`} className="wine-process-image" />
+                    ) : (
+                      <div className="image-placeholder">
+                        <span className="placeholder-text">Image Coming Soon</span>
+                        <i className="fas fa-image placeholder-icon"></i>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {paragraphs[1] && (
+                  <div className="paragraph-image-pair">
+                    <div className="paragraph-container">
+                      <p className="phase-description">
+                        {paragraphs[1]}
+                      </p>
+                    </div>
+                    <div className="image-container">
+                      {phase.secondImage ? (
+                        <img src={phase.secondImage} alt={`${phase.title} part 2`} className="wine-process-image" />
+                      ) : (
+                        <div className="image-placeholder">
+                          <span className="placeholder-text">Image Coming Soon</span>
+                          <i className="fas fa-image placeholder-icon"></i>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
               </div>
-              <div className="phase-image">
-                <img 
-                  src={phase.image} 
-                  alt={phase.title}
-                  className="phase-img"
-                />
-              </div>
-            </div>
-          </section>
-        ))}
+            </section>
+          );
+        })}
       </div>
     </div>
   );
