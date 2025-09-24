@@ -910,7 +910,7 @@ const MapCanvas = ({ isVisible = true }) => {
   // AVA color mapping for legend
   const avaColors = {
     'Chehalem Mountains': '#ffffff',
-    'Dundee Hills': '#8B4513',
+    'Dundee Hills': '#64432bff',
     'Eola-Amity Hills': '#FF69B4',
     'Laurelwood District': '#ddcd17',
     'Lower Long Tom': '#20B2AA',
@@ -918,7 +918,7 @@ const MapCanvas = ({ isVisible = true }) => {
     'Mt Pisgah Polk County': '#f52424',
     'Ribbon Ridge': '#6e03a3',
     'Tualatin Hills': '#4682B4',
-    'Van Duzer': '#052986',
+    'Van Duzer': '#304e98ff',
     'Yamhill-Carlton': '#FF8C00'
   };
 
