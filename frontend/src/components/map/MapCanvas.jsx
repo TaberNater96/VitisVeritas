@@ -654,12 +654,25 @@ const MapCanvas = ({ isVisible = true }) => {
         )
       );
       
-      // Make the base contours more visible by modifying their style
+      console.log('Found contour layers:', contourLayers.map(l => ({ id: l.id, minzoom: l.minzoom, maxzoom: l.maxzoom })));
+      
+      // Make the base contours more visible and set lower minimum zoom
       contourLayers.forEach(layer => {
-        if (layer.paint) {
-          map.current.setPaintProperty(layer.id, 'line-color', '#8B4513');
-          map.current.setPaintProperty(layer.id, 'line-width', 2);
-          map.current.setPaintProperty(layer.id, 'line-opacity', 0.8);
+        try {
+          // Modify paint properties for better visibility
+          if (layer.paint) {
+            map.current.setPaintProperty(layer.id, 'line-color', '#844b23ff');
+            map.current.setPaintProperty(layer.id, 'line-width', 1.5);
+            map.current.setPaintProperty(layer.id, 'line-opacity', 0.8);
+          }
+          
+          // Set minimum zoom to 10 so contours appear at zoom level 10 and higher
+          // Keep the original maxzoom or set to 22 if undefined
+          const originalMaxZoom = layer.maxzoom || 22;
+          map.current.setLayerZoomRange(layer.id, 8.5, originalMaxZoom);
+          console.log(`Set zoom range for ${layer.id}: 10-${originalMaxZoom}`);
+        } catch (layerError) {
+          console.log(`Could not modify layer ${layer.id}:`, layerError);
         }
       });
       
@@ -987,7 +1000,7 @@ const MapCanvas = ({ isVisible = true }) => {
         </div>
 
         <div className="elevation-container">
-          <h3>Topographic Elevation (Zoom In To View)</h3>
+          <h3>Topographic Elevation</h3>
           <div className="elevation-toggle-wrapper">
             <label className="toggle-switch">
               <input
