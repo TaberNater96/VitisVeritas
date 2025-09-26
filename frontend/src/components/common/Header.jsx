@@ -44,11 +44,6 @@ const isActive = (path) => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/avas" className={`nav-link ${isActive('/avas')}`}>
-                AVAs
-              </Link>
-            </li>
-            <li className="nav-item">
               <Link to="/about" className={`nav-link ${isActive('/about')}`}>
                 About
               </Link>
