@@ -171,7 +171,7 @@ const MapCanvas = ({ isVisible = true }) => {
       setCountiesData(data.counties);
     } catch (error) {
       console.error('Error loading counties index:', error);
-      throw error; // Re-throw to handle in sequential loading
+      throw error; // re-throw to handle in sequential loading
     }
   };
 
@@ -184,10 +184,9 @@ const MapCanvas = ({ isVisible = true }) => {
     };
   }, []);
 
-  // Add wind arrows to Van Duzer Corridor
   const addWindArrows = async () => {
     try {
-      // Create simple solid white arrow SVG
+      // Simple solid white arrow SVG
       const arrowSvg = `
         <svg width="40" height="20" viewBox="0 0 40 20" xmlns="http://www.w3.org/2000/svg">
           <path d="M5 10 L30 10 M25 6 L30 10 L25 14" 
@@ -309,8 +308,8 @@ const MapCanvas = ({ isVisible = true }) => {
         source: 'avas',
         paint: {
           'line-color': '#333333',
-          'line-width': 2,
-          'line-opacity': 0.8
+          'line-width': 1,
+          'line-opacity': 0.6
         }
       });
 
@@ -404,7 +403,6 @@ const MapCanvas = ({ isVisible = true }) => {
   // Load Winery GeoJSON data
   const loadWineryData = async () => {
     try {
-      // Load winery data
       console.log('Loading winery data...');
       const response = await fetch('/data/wineries.geojson');
       
@@ -415,7 +413,7 @@ const MapCanvas = ({ isVisible = true }) => {
       const wineryData = await response.json();
       console.log('Winery data loaded:', wineryData.features.length, 'wineries');
 
-      // Load the winery icon image
+      // Load the VV winery icon image
       const image = new Image();
       image.onload = () => {
         console.log('Winery icon loaded successfully');
@@ -493,8 +491,10 @@ const MapCanvas = ({ isVisible = true }) => {
           
           // Format phone number
           const formatPhoneNumber = (phone) => {
-            if (!phone) return '';
-            const cleaned = phone.replace(/\D/g, '');
+            if (!phone) return ''; // return empty string if no phone number provided
+            const cleaned = phone.replace(/\D/g, ''); // remove all non-diget characters from the phone number (leaving only numbers)
+
+            // Cleanup the US country code and format the string of numbers into (XXX) XXX-XXXX
             if (cleaned.length === 11 && cleaned.startsWith('1')) {
               const withoutCountryCode = cleaned.substring(1);
               return `(${withoutCountryCode.substring(0, 3)}) ${withoutCountryCode.substring(3, 6)}-${withoutCountryCode.substring(6)}`;
@@ -627,7 +627,7 @@ const MapCanvas = ({ isVisible = true }) => {
           }
         });
         
-        // Load our custom contour styling
+        // Custom contour styling
         loadElevationContours();
         setElevationEnabled(true);
       } catch (error) {

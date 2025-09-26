@@ -41,7 +41,7 @@ const HomePage = () => {
             
             <h4>Comparing terroir</h4>
             <p>
-              Once you've selected an area, zoom in for a bird's-eye view. You'll see contour lines that displays the elevation and slope of the land, alongside the distinct, highly detailed polygons representing every unique soil type. This is where the real interaction and discovery begins as every single soil polygon in the Willamette Valley is labeled along with its relative slope. After examining the terroir of your chosen spot, pan over to a different vineyard, even one nearby, and compare the differences in soil and topography. This visual comparison is the key to understanding the intense diversity that exists within the Willamette Valley terroir.
+              Once you've selected an area, zoom in for a bird's-eye view. You'll see contour lines that displays the elevation and slope of the land, alongside the distinct, highly detailed polygons representing every unique soil type. The more you zoom in, the more contour lines will be loaded onto the map along with relative elevation labels which allows you to see exactly how the land is changing around each vineyard. Remember, the closer the contour lines are together, the steeper the slope. After selecting a soil region is where the real interaction and discovery begins as every single soil polygon in the Willamette Valley is labeled along with its relative slope. After examining the terroir of your chosen spot, pan over to a different vineyard, even one nearby, and compare the differences in soil and topography. This visual comparison is the key to understanding the intense diversity that exists within the Willamette Valley terroir.
             </p>
             
             <hr />
