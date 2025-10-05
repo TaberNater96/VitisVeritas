@@ -4,6 +4,8 @@ Development Database Schema
 Created: 7/13/2025
 Environment: PostgreSQL/PostGIS 
 OS: WSL 2
+
+Note this database is air gapped on a private machine and inaccessible to the web.
 */
 
 CREATE EXTENSION IF NOT EXISTS postgis;
