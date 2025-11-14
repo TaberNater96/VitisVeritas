@@ -7,6 +7,8 @@ import wineryIcon from '../../assets/images/vv_logo_nb.png';
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
 
+const BASE_URL = import.meta.env.BASE_URL;
+
 const MapCanvas = ({ isVisible = true }) => {
   const mapContainer = useRef(null);
   const map = useRef(null);
@@ -140,7 +142,7 @@ const MapCanvas = ({ isVisible = true }) => {
       try {
         console.log(`Preloading soil data for ${county.name}...`);
         // Don't add to map yet, just fetch and cache the data
-        const response = await fetch(`/data/${county.name}_soils.geojson`);
+        const response = await fetch(`${BASE_URL}data/${county.name}_soils.geojson`);
         if (!response.ok) {
           throw new Error(`Failed to preload ${county.name} soil data`);
         }
@@ -166,7 +168,7 @@ const MapCanvas = ({ isVisible = true }) => {
   // Load counties index data
   const loadCountiesIndex = async () => {
     try {
-      const response = await fetch('/data/counties_index.json');
+      const response = await fetch(`${BASE_URL}data/counties_index.json`);
       const data = await response.json();
       setCountiesData(data.counties);
     } catch (error) {
@@ -201,7 +203,7 @@ const MapCanvas = ({ isVisible = true }) => {
       const arrowDataUrl = 'data:image/svg+xml;base64,' + btoa(arrowSvg);
       
       // Load wind arrow coordinates from external GeoJSON file
-      const response = await fetch('/data/wind_arrows.geojson');
+      const response = await fetch(`${BASE_URL}data/wind_arrows.geojson`);
       if (!response.ok) {
         throw new Error(`Failed to load wind arrows data: ${response.status}`);
       }
@@ -253,7 +255,7 @@ const MapCanvas = ({ isVisible = true }) => {
   const loadAVAData = async () => {
     try {
       // Load your AVA data
-      const response = await fetch('/data/avas.geojson');
+      const response = await fetch(`${BASE_URL}data/avas.geojson`);
       const avaData = await response.json();
 
       // Add AVA source
@@ -314,7 +316,7 @@ const MapCanvas = ({ isVisible = true }) => {
       });
 
       // Load and add Van Duzer Corridor
-      const corridorResponse = await fetch('/data/van_duzer_cor.geojson');
+      const corridorResponse = await fetch(`${BASE_URL}data/van_duzer_cor.geojson`);
       const corridorData = await corridorResponse.json();
 
       // Add Van Duzer Corridor source
@@ -404,7 +406,7 @@ const MapCanvas = ({ isVisible = true }) => {
   const loadWineryData = async () => {
     try {
       console.log('Loading winery data...');
-      const response = await fetch('/data/wineries.geojson');
+      const response = await fetch(`${BASE_URL}data/wineries.geojson`);
       
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -774,7 +776,7 @@ const MapCanvas = ({ isVisible = true }) => {
         soilData = window.soilDataCache[countyName];
       } else {
         console.log(`Fetching soil data for ${countyName}...`);
-        const response = await fetch(`/data/${countyName}_soils.geojson`);
+        const response = await fetch(`${BASE_URL}data/${countyName}_soils.geojson`);
         if (!response.ok) {
           throw new Error(`Failed to load ${countyName} soil data`);
         }
