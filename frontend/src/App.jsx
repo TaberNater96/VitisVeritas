@@ -7,10 +7,8 @@ import TerroirPage from './pages/TerroirPage';
 import AboutPage from './pages/AboutPage';
 
 function App() {
-  const basename = import.meta.env.MODE === 'production' ? '/VitisVeritas' : '';
-  
   return (
-    <BrowserRouter basename={basename}>
+    <BrowserRouter>
       <Header />
       
       <main>
