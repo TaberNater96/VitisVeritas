@@ -1,5 +1,10 @@
 import React from 'react';
 import './SoilTexture.css';
+import sandImg from '../../assets/images/sand.jpg';
+import clayImg from '../../assets/images/clay.jpg';
+import siltImg from '../../assets/images/silt.jpg';
+import loamImg from '../../assets/images/loam.jpg';
+import soilTextureTriangleImg from '../../assets/images/soil_texture_triangle.png';
 
 const SoilTexture = () => {
   const soilData = {
@@ -12,7 +17,7 @@ const SoilTexture = () => {
       compaction: 'Resistant',
       workability: 'Easy',
       description: 'Sandy soils provide excellent drainage and warm up quickly in spring, but their low fertility and poor water retention force vines to struggle for nutrients and moisture. In the Willamette Valley, this stress produces lighter-bodied wines with bright, transparent fruit flavors and elegant profiles, mainly suited for aromatic white varieties.',
-      image: 'sand.jpg'
+      image: sandImg
     },
     clay: {
       title: 'Clay',
@@ -23,7 +28,7 @@ const SoilTexture = () => {
       compaction: 'Prone',
       workability: 'Difficult',
       description: 'Clay-rich soils like the iconic red Jory soils of Dundee Hills excel at retaining water and nutrients through high cation exchange capacity, providing consistent hydration while keeping roots cool. These volcanic-origin clay soils produce the Valley\'s most full-bodied, intensely flavored Pinot Noirs with firm tannins, dark fruit characteristics, and exceptional aging potential.',
-      image: 'clay.jpg'
+      image: clayImg
     },
     silt: {
       title: 'Silt',
@@ -34,7 +39,7 @@ const SoilTexture = () => {
       compaction: 'Moderate',
       workability: 'Moderate',
       description: 'The Willamette Valley\'s famous silty soils (like Willakenzie and Loess) hold water tightly in their fine particles, which causes vines work harder to access moisture despite good retention capacity. This controlled stress creates wines with distinctive earthiness, white pepper notes, and softer, rounder profiles with vibrant acidity, especially prominent in the region\'s windblown loess deposits.',
-      image: 'silt.jpg'
+      image: siltImg
     },
     loam: {
       title: 'Loam',
@@ -45,7 +50,7 @@ const SoilTexture = () => {
       compaction: 'Low',
       workability: 'Excellent',
       description: 'Loamy soils combine sand\'s drainage, clay\'s nutrient retention, and silt\'s water-holding capacity, creating the ideal balance for consistent vine growth without excessive stress. Throughout the Willamette Valley, these well-balanced soils produce complex, terroir-driven wines that showcase both fruit purity and structural elegance, making them particularly versatile for multiple grape varieties.',
-      image: 'loam.jpg'
+      image: loamImg
     }
   };
 
@@ -73,7 +78,7 @@ const SoilTexture = () => {
           </div>
           <div className="soil-texture-triangle">
             <img 
-              src="/src/assets/images/soil_texture_triangle.png" 
+              src={soilTextureTriangleImg} 
               alt="Soil Texture Triangle showing the relationship between sand, silt, and clay particles"
               className="triangle-image"
             />
@@ -116,7 +121,7 @@ const SoilTexture = () => {
                 </div>
                 <div className="soil-type-image">
                   <img 
-                    src={`/src/assets/images/${soilData.sand.image}`} 
+                    src={soilData.sand.image} 
                     alt={`${soilData.sand.title} soil texture`}
                     className="soil-image"
                   />
@@ -160,7 +165,7 @@ const SoilTexture = () => {
                 </div>
                 <div className="soil-type-image">
                   <img 
-                    src={`/src/assets/images/${soilData.silt.image}`} 
+                    src={soilData.silt.image} 
                     alt={`${soilData.silt.title} soil texture`}
                     className="soil-image"
                   />
@@ -204,7 +209,7 @@ const SoilTexture = () => {
                 </div>
                 <div className="soil-type-image">
                   <img 
-                    src={`/src/assets/images/${soilData.clay.image}`} 
+                    src={soilData.clay.image} 
                     alt={`${soilData.clay.title} soil texture`}
                     className="soil-image"
                   />
@@ -248,7 +253,7 @@ const SoilTexture = () => {
                 </div>
                 <div className="soil-type-image">
                   <img 
-                    src={`/src/assets/images/${soilData.loam.image}`} 
+                    src={soilData.loam.image} 
                     alt={`${soilData.loam.title} soil texture`}
                     className="soil-image"
                   />

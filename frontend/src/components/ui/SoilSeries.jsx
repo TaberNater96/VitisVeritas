@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import './SoilSeries.css';
+import soilDepthImg from '../../assets/images/soil_depth.png';
 
 const SoilSeries = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -333,7 +334,7 @@ const SoilSeries = () => {
           </div>
           <div className="soil-depth-image-container">
             <img 
-              src="/src/assets/images/soil_depth.png" 
+              src={soilDepthImg} 
               alt="Soil depth illustration"
               className="soil-depth-image"
             />
