@@ -1,9 +1,17 @@
 import React from 'react';
+import SEO from '../components/common/SEO';
 import './AboutPage.css';
 
 const AboutPage = () => {
   return (
     <div className="about-page">
+      <SEO 
+        title="About Vitis Veritas | The Story Behind Oregon's Most Comprehensive Wine Resource"
+        description="Learn about Vitis Veritas, the free interactive platform mapping every Willamette Valley winery, vineyard, soil type, and AVA. Discover the technical journey and passion behind this comprehensive Oregon wine education resource."
+        keywords="Vitis Veritas, Oregon wine resource, Willamette Valley wine guide, wine education, wine terroir map, Oregon wine project, Pinot Noir education, wine platform"
+        url="https://www.vitis-veritas.com/about"
+      />
+      
       <div className="about-content">
         <div className="about-container">
           <h1 className="about-title">About Vitis Veritas</h1>

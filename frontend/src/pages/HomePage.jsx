@@ -1,4 +1,5 @@
 import React from 'react';
+import SEO from '../components/common/SEO';
 import Hero from "../components/ui/Hero";
 import LazyMap from '../components/map/LazyMap';
 import MapInterpretation from '../components/ui/MapInterpretation';
@@ -7,6 +8,13 @@ import BackToMapButton from '../components/ui/BackToMapButton';
 const HomePage = () => {
   return (
     <div className="home-page">
+      <SEO 
+        title="Vitis Veritas | Interactive Willamette Valley Wine & Terroir Map"
+        description="Discover the complete Willamette Valley wine region through our interactive terroir map. Explore soil types, AVAs, topography, and all wineries. Learn what makes Oregon Pinot Noir and Willamette Valley wines exceptional."
+        keywords="Willamette Valley wine map, Oregon wine terroir, Pinot Noir Oregon, wine soil map, Willamette Valley AVA, Oregon wineries, Dundee Hills, Yamhill-Carlton, wine geology, terroir map, Oregon wine region"
+        url="https://www.vitis-veritas.com/"
+      />
+      
       <Hero />
       
       <div className="terroir-sections">

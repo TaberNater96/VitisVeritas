@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import SEO from '../components/common/SEO';
 import './TerroirPage.css';
 import terroirImage from '../assets/images/terroir.jpg';
 import columbiaRiverBasaltsImage from '../assets/images/columbia_river_basalts.png';
@@ -668,6 +669,13 @@ const TerroirPage = () => {
 
   return (
     <div className="terroir-page">
+      <SEO 
+        title="Willamette Valley Terroir | Geology, Climate & Soil Science of Oregon Wine"
+        description="Explore the science of Willamette Valley terroir - from ancient volcanic geology and Missoula Floods to soil composition, climate patterns, and how they create world-class Oregon Pinot Noir. Comprehensive guide to wine terroir."
+        keywords="Willamette Valley terroir, Oregon wine geology, wine soil science, Jory soil, Missoula Floods wine, Columbia River Basalt, marine sediment wine, Oregon climate wine, terroir science, Pinot Noir terroir, volcanic soil wine"
+        url="https://www.vitis-veritas.com/terroir"
+      />
+      
       {/* Hero Section */}
       <section 
         className="terroir-hero" 

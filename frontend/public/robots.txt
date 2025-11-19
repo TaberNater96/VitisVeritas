@@ -1,0 +1,29 @@
+# Vitis Veritas - Robots.txt
+# https://www.vitis-veritas.com/robots.txt
+
+User-agent: *
+Allow: /
+Disallow: /data/
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://www.vitis-veritas.com/sitemap.xml
+
+# Allow search engines to index GeoJSON data for enhanced discovery
+User-agent: Googlebot
+Allow: /data/*.geojson
+
+# Explicitly allow major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Slurp
+Allow: /

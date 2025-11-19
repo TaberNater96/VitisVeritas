@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="fragment" content="!">
+  <script>
+    // Prerender detection and handling
+    (function() {
+      var isPrerender = /bot|googlebot|crawler|spider|robot|crawling|prerender/i.test(navigator.userAgent);
+      if (isPrerender) {
+        // Add a flag for analytics
+        window._isPrerender = true;
+      }
+    })();
+  </script>
+</head>
+</html>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import SEO from '../components/common/SEO';
 import './AlchemyPage.css';
 import wineMakingImage from '../assets/images/wine_making.jpg';
 import harvestImage from '../assets/images/harvest.jpg';
@@ -175,6 +176,13 @@ const AlchemyPage = () => {
 
   return (
     <div className="alchemy-page">
+      <SEO 
+        title="Willamette Valley Winemaking Process | From Harvest to Bottle"
+        description="Explore the complete winemaking process in Oregon's Willamette Valley. Learn about harvest timing, fermentation science, oak aging, and techniques that create world-class Pinot Noir and other premium wines."
+        keywords="Willamette Valley winemaking, Oregon wine process, Pinot Noir fermentation, wine making techniques, harvest Oregon, barrel aging, malolactic fermentation, wine chemistry, Oregon winemakers"
+        url="https://www.vitis-veritas.com/alchemy"
+      />
+      
       <div className="alchemy-hero" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url(${wineMakingImage})`}}>
         <div className="alchemy-hero-content">
           <h1 className="alchemy-title">
