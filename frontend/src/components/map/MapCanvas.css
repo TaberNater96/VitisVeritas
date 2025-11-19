@@ -11,6 +11,15 @@
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  min-height: 400px;
+}
+
+/* Ensure mapbox canvas fills container */
+.map-container .mapboxgl-map,
+.map-container .mapboxgl-canvas-container,
+.map-container .mapboxgl-canvas {
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .map-header {
@@ -255,7 +264,6 @@
     right: auto;
     max-width: 100%;
     margin: 1rem 0;
-    order: 3;
   }
   
   .elevation-container {
@@ -264,7 +272,6 @@
     left: auto;
     max-width: 100%;
     margin: 1rem 0;
-    order: 2;
     min-width: 200px;
   }
   
@@ -273,7 +280,6 @@
     top: auto;
     left: auto;
     margin-bottom: 1rem;
-    order: 1;
   }
   
   .map-controls {
@@ -483,13 +489,28 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .map-container {
-    height: 600px;
+  .map-wrapper {
+    margin: 1rem 0;
   }
   
+  .map-container {
+    height: 500px;
+    border-radius: 4px;
+  }
+  
+  /* Make map header relative and stack at top */
   .map-header {
     position: relative;
-    background: rgba(255, 255, 255, 0.95);
+    top: auto;
+    left: auto;
+    width: 100%;
+    margin-bottom: 0.75rem;
+    padding: 0.75rem;
+    box-sizing: border-box;
+  }
+  
+  .map-header h2 {
+    font-size: 1rem;
     margin-bottom: 0.5rem;
   }
   
@@ -497,6 +518,50 @@
     flex-direction: column;
     align-items: stretch;
     gap: 0.5rem;
+  }
+  
+  /* Make elevation container relative and stack */
+  .elevation-container {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 0.75rem;
+    padding: 0.75rem;
+    box-sizing: border-box;
+  }
+  
+  .elevation-container h3 {
+    font-size: 0.95rem;
+  }
+  
+  .elevation-toggle-wrapper {
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  /* Make soil selector relative and stack */
+  .soil-selector {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 0.75rem;
+    padding: 0.75rem;
+    box-sizing: border-box;
+    min-height: auto;
+  }
+  
+  .soil-selector h3 {
+    font-size: 0.95rem;
+  }
+  
+  .county-checkboxes {
+    grid-template-columns: 1fr;
+    max-height: none;
   }
   
   .ava-dropdown {
@@ -519,15 +584,42 @@
     width: 320px !important;
     padding: 0.75rem !important;
   }
+  
+  /* Adjust AVA legend for mobile */
+  .ava-legend {
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .ava-legend h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .legend-items {
+    gap: 0.5rem;
+  }
+  
+  .legend-label {
+    font-size: 0.75rem;
+  }
 }
 
 @media (max-width: 480px) {
   .map-container {
-    height: 500px;
+    height: 400px;
   }
   
-  .map-header h2 {
-    font-size: 1rem;
+  .map-header,
+  .elevation-container,
+  .soil-selector {
+    padding: 0.5rem;
+  }
+  
+  .map-header h2,
+  .elevation-container h3,
+  .soil-selector h3 {
+    font-size: 0.9rem;
   }
   
   .ava-dropdown,
@@ -554,6 +646,10 @@
   
   .winery-details {
     font-size: 0.75rem !important;
+  }
+  
+  .county-checkbox {
+    font-size: 0.8rem;
   }
 }
 
@@ -653,25 +749,4 @@
   font-size: 0.85rem;
   color: white;
   font-weight: 500;
-}
-
-/* Responsive adjustments for legend */
-@media (max-width: 768px) {
-  .ava-legend {
-    padding: 0.75rem;
-    margin-bottom: 0.75rem; /* Slightly smaller gap on mobile */
-  }
-  
-  .ava-legend h3 {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .legend-items {
-    gap: 0.5rem;
-  }
-  
-  .legend-label {
-    font-size: 0.75rem;
-  }
 }

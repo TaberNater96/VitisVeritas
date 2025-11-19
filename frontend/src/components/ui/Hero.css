@@ -108,43 +108,62 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .hero {
-    height: calc(100vh - var(--header-height-mobile));
-    min-height: 500px;
+    height: auto;
+    min-height: calc(100vh - var(--header-height-mobile));
     align-items: flex-start;
     justify-content: flex-start;
+    padding-bottom: 80px;
   }
   .hero-content {
-    padding: var(--spacing-lg) 0;
-    margin-left: 2vw;
-    max-width: 95%;
-    width: 95%;
+    padding: var(--spacing-md) var(--spacing-md);
+    margin-left: 0;
+    margin-top: 8vh;
+    max-width: 100%;
+    width: 100%;
     min-width: 0;
-    min-height: 40vh;
+    min-height: auto;
     text-align: left;
   }
   .hero-main-title {
-    font-size: clamp(2.5rem, 8vw, 4rem);
-    margin-bottom: var(--spacing-xs);
+    font-size: clamp(2rem, 10vw, 3rem);
+    margin-bottom: var(--spacing-sm);
     text-align: left;
+    line-height: 1.2;
   }
   .hero-subtitle {
-    font-size: clamp(1.4rem, 6vw, 2rem);
-    margin-bottom: var(--spacing-2xl);
+    font-size: clamp(1.2rem, 5vw, 1.8rem);
+    margin-bottom: var(--spacing-lg);
   }
   .hero-description {
-    font-size: clamp(1rem, 3vw, 1.2rem);
-    line-height: 1.4;
+    font-size: clamp(0.95rem, 3.5vw, 1.1rem);
+    line-height: 1.5;
+    margin-bottom: var(--spacing-lg);
   }
 }
 
 @media (max-width: 480px) {
   .hero {
-    height: calc(100vh - var(--header-height-small));
-    min-height: 400px;
+    height: auto;
+    min-height: calc(100vh - var(--header-height-small));
+    padding-bottom: 100px;
   }
   
   .hero-content {
-    padding: var(--spacing-md);
+    padding: var(--spacing-sm) var(--spacing-sm);
+    margin-top: 4vh;
+  }
+  
+  .hero-main-title {
+    font-size: clamp(1.8rem, 9vw, 2.5rem);
+  }
+  
+  .hero-subtitle {
+    font-size: clamp(1.1rem, 4.5vw, 1.5rem);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .hero-description {
+    font-size: clamp(0.9rem, 3.2vw, 1rem);
   }
 }
 
@@ -212,12 +231,19 @@
 /* Responsive adjustments for scroll indicator */
 @media (max-width: 768px) {
   .scroll-indicator {
-    bottom: var(--spacing-md);
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    margin-top: var(--spacing-xl);
     gap: var(--spacing-sm);
+    flex-direction: column;
   }
   
   .scroll-text {
-    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    font-size: clamp(0.85rem, 2.8vw, 1rem);
+    white-space: normal;
+    max-width: 90%;
   }
   
   .chevron-left,
@@ -225,25 +251,27 @@
     width: 32px;
     height: 32px;
   }
+  
+  .chevron-right {
+    display: none;
+  }
 }
 
 @media (max-width: 480px) {
   .scroll-indicator {
-    bottom: var(--spacing-sm);
-    flex-direction: column;
+    margin-top: var(--spacing-lg);
     gap: var(--spacing-xs);
   }
   
   .scroll-text {
-    order: 2;
+    font-size: clamp(0.8rem, 2.5vw, 0.9rem);
     white-space: normal;
-    max-width: 280px;
-    line-height: 1.3;
+    max-width: 95%;
+    line-height: 1.4;
   }
   
   .chevron-left,
   .chevron-right {
-    order: 1;
     width: 28px;
     height: 28px;
   }

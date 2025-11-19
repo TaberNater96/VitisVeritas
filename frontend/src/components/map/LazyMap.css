@@ -59,12 +59,12 @@
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .lazy-map-section {
-    min-height: 400px;
-    margin: 1rem 0;
+    min-height: 500px;
+    padding: var(--spacing-lg) 0;
   }
   
   .map-placeholder {
-    height: 400px;
+    height: 500px;
   }
   
   .loading-spinner {
@@ -75,16 +75,27 @@
   
   .map-placeholder p {
     font-size: 1rem;
+    padding: 0 var(--spacing-md);
   }
 }
 
 /* For very small screens */
 @media (max-width: 480px) {
   .lazy-map-section {
-    min-height: 300px;
+    min-height: 400px;
+    padding: var(--spacing-md) 0;
   }
   
   .map-placeholder {
-    height: 300px;
+    height: 400px;
+  }
+  
+  .loading-spinner {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .map-placeholder p {
+    font-size: 0.9rem;
   }
 }
